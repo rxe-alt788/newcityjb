@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Australia Pandemic Response: Trust & Readiness Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Custom Chart Container Styling for Responsiveness */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        
+        /* Custom Scrollbar */
+        .custom-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 3px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+
+        /* Animation Classes */
+        .fade-in { animation: fadeIn 0.5s ease-in-out; }
+        .slide-up { animation: slideUp 0.4s ease-out; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        body {
+            background-color: #fdfbf7; /* Warm neutral */
+            color: #1f2937;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+    </style>
+    <!-- Chosen Palette: Warm Neutrals & Tactical Accents (Orange/Red/Blue) -->
+    <!-- Application Structure Plan: 
+         1. Review Findings (Memory): What went wrong?
+         2. Current Threat (Perception): What is happening now?
+         3. Gap Analysis (Logic): Where are we failing?
+         4. Trust & Communication (Social): *NEW* - How do we speak and listen to rebuild authority?
+         5. Triune Strategy (Synthesis): Immediate fixes.
+    -->
+    <!-- Visualization & Content Choices:
+         1. Advice Balance Chart (Bar): Goal -> Compare 2020 vs Ideal sources of advice. Method -> Chart.js.
+         2. Communication Simulator (Interactive UI): Goal -> Teach better communication. Method -> JS Logic.
+         3. Radar/Donut/Table maintained from previous version for continuity.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="bg-stone-50 text-stone-800 antialiased selection:bg-orange-200 selection:text-orange-900">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-stone-100/90 backdrop-blur border-b border-stone-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold tracking-tight text-stone-800">Pandemic<span class="text-orange-600">Response</span>Watch</span>
+                </div>
+                <div class="hidden md:flex space-x-6 items-center">
+                    <button onclick="scrollToSection('retrospective')" class="text-stone-600 hover:text-orange-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Review</button>
+                    <button onclick="scrollToSection('current-threat')" class="text-stone-600 hover:text-orange-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Threat</button>
+                    <button onclick="scrollToSection('gap-analysis')" class="text-stone-600 hover:text-orange-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Gaps</button>
+                    <button onclick="scrollToSection('trust-comms')" class="text-stone-600 hover:text-orange-600 px-3 py-2 rounded-md text-sm font-medium transition-colors border-b-2 border-orange-200">Trust & Comms</button>
+                    <button onclick="scrollToSection('triune-fix')" class="bg-stone-800 text-white hover:bg-stone-700 px-4 py-2 rounded-full text-sm font-medium transition-colors shadow-md">Strategy</button>
+                </div>
+                <!-- Mobile menu button stub -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-stone-500 hover:text-stone-800 focus:outline-none">
+                        <span class="text-2xl">☰</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="relative bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32 pt-20 px-4 sm:px-6 lg:px-8">
+                <main class="mt-10 mx-auto max-w-7xl sm:mt-12 md:mt-16 lg:mt-20 xl:mt-28">
+                    <div class="sm:text-center lg:text-left">
+                        <h1 class="text-4xl tracking-tight font-extrabold text-stone-900 sm:text-5xl md:text-6xl">
+                            <span class="block xl:inline">Australia's Response:</span>
+                            <span class="block text-orange-600 xl:inline">Trust, Truth & Action</span>
+                        </h1>
+                        <p class="mt-3 text-base text-stone-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                            An interactive analysis of the "Fault Lines" review, comparing past failures with current readiness. Explore how <strong>trust</strong> and <strong>communication</strong> are the new frontline defense.
+                        </p>
+                        <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                            <div class="rounded-md shadow">
+                                <a href="#trust-comms" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 md:py-4 md:text-lg transition-all">
+                                    The Trust Architecture
+                                </a>
+                            </div>
+                            <div class="mt-3 sm:mt-0 sm:ml-3">
+                                <a href="#gap-analysis" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-orange-700 bg-orange-100 hover:bg-orange-200 md:py-4 md:text-lg transition-all">
+                                    Analyze Gaps
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 bg-stone-50 flex items-center justify-center">
+            <!-- Radar Chart: Readiness Score -->
+            <div class="w-full max-w-lg p-6">
+                <h3 class="text-center text-sm font-semibold text-stone-500 mb-4 uppercase tracking-wider">Readiness Assessment Radar</h3>
+                <div class="chart-container bg-white rounded-xl shadow-lg p-4 border border-stone-100">
+                    <canvas id="readinessRadar"></canvas>
+                </div>
+                <p class="text-center text-xs text-stone-400 mt-2">Comparison: 2020 Capability vs. 2026 Recommended State</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 1: Retrospective (The Review) -->
+    <section id="retrospective" class="py-16 bg-stone-50 border-t border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center mb-12">
+                <h2 class="text-base text-orange-600 font-semibold tracking-wide uppercase">Historical Context</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-stone-900 sm:text-4xl">
+                    Key Findings: The "Fault Lines" Review
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-stone-500 lg:mx-auto">
+                    Independent reviews highlighted critical failures in governance, equity, and procurement.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Interactive List -->
+                <div class="col-span-1 bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden">
+                    <div class="p-4 bg-stone-100 border-b border-stone-200">
+                        <h3 class="font-bold text-stone-700">Identified Systemic Failures</h3>
+                    </div>
+                    <ul class="divide-y divide-stone-100" id="findingsList">
+                        <!-- JS populated -->
+                    </ul>
+                </div>
+
+                <!-- Detail View & Chart -->
+                <div class="col-span-1 lg:col-span-2 flex flex-col space-y-6">
+                    <div class="bg-white rounded-xl shadow-sm border border-stone-200 p-6 transition-all duration-300" id="findingDetailPanel">
+                        <h3 class="text-2xl font-bold text-stone-800 mb-2" id="detailTitle">Select a finding...</h3>
+                        <p class="text-stone-600 mb-4" id="detailText">Click on a failure on the left to understand the specific impact.</p>
+                        
+                        <div class="chart-container" id="impactChartContainer">
+                            <canvas id="impactChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Current Threat & Gov Response -->
+    <section id="current-threat" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-10">
+                <h2 class="text-base text-orange-600 font-semibold tracking-wide uppercase">Real-Time Situation</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-stone-900 sm:text-4xl">
+                    The Emerging Pathogen Profile
+                </p>
+                <p class="mt-4 max-w-3xl text-lg text-stone-500">
+                    Comparing the threat profile of the new "Indian Pathogen" against the government's *immediate* actions.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+                
+                <!-- Threat Profile Card -->
+                <div class="bg-stone-50 rounded-2xl p-6 border border-stone-200 relative">
+                    <div class="absolute top-0 right-0 -mt-3 -mr-3 bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide border border-red-200 shadow-sm">Alert Level: Elevated</div>
+                    <h3 class="text-xl font-bold text-stone-800 mb-4 flex items-center">
+                        <span class="mr-2 text-2xl">🦠</span> Pathogen Metrics
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center border-b border-stone-200 pb-2">
+                            <span class="text-stone-600">Origin</span>
+                            <span class="font-medium text-stone-900">Sub-continent</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-stone-200 pb-2">
+                            <span class="text-stone-600">Transmissibility (R0)</span>
+                            <span class="font-medium text-red-600">High (Est. 3.5 - 5.0)</span>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <h4 class="text-sm font-semibold text-stone-500 mb-2 uppercase">Risk Projection</h4>
+                        <div class="chart-container h-48">
+                            <canvas id="threatGauge"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Current Gov Actions Timeline -->
+                <div class="bg-stone-50 rounded-2xl p-6 border border-stone-200">
+                    <h3 class="text-xl font-bold text-stone-800 mb-4 flex items-center">
+                        <span class="mr-2 text-2xl">🏛️</span> Actions Timeline
+                    </h3>
+                    <div class="space-y-6 relative pl-4 border-l-2 border-stone-300" id="timelineContainer">
+                        <!-- JS Injected -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Gap Analysis -->
+    <section id="gap-analysis" class="py-16 bg-stone-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-extrabold text-stone-900">The Implementation Gap</h2>
+                <p class="mt-4 text-lg text-stone-600">
+                    Comparing "Review Lessons" against "Current Reality". <span class="text-orange-600 font-bold">Click rows to analyze.</span>
+                </p>
+            </div>
+
+            <div class="bg-white shadow-xl rounded-lg overflow-hidden">
+                <div class="flex border-b border-stone-200 bg-stone-50 p-4 space-x-4 overflow-x-auto">
+                    <button class="px-4 py-2 bg-stone-800 text-white rounded-md text-sm font-medium shadow-sm" onclick="filterGaps('all')">All</button>
+                    <button class="px-4 py-2 bg-white text-stone-600 border border-stone-300 rounded-md text-sm font-medium hover:bg-stone-50" onclick="filterGaps('Borders')">Borders</button>
+                    <button class="px-4 py-2 bg-white text-stone-600 border border-stone-300 rounded-md text-sm font-medium hover:bg-stone-50" onclick="filterGaps('Communication')">Communication</button>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-stone-200">
+                        <thead class="bg-stone-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-stone-500 uppercase">Dimension</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-stone-500 uppercase">Lesson</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-stone-500 uppercase">Current Action</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-stone-500 uppercase">Severity</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-stone-200" id="gapTableBody">
+                            <!-- JS Populated -->
+                        </tbody>
+                    </table>
+                </div>
+                <div id="gapDetailArea" class="hidden bg-orange-50 p-6 border-t border-orange-100">
+                    <h4 class="text-lg font-bold text-orange-900 mb-2" id="gapDetailTitle"></h4>
+                    <p class="text-stone-700" id="gapDetailDesc"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Trust & Communication Architecture -->
+    <section id="trust-comms" class="py-16 bg-white border-y border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center mb-16">
+                <h2 class="text-base text-blue-600 font-semibold tracking-wide uppercase">New Architecture</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-stone-900 sm:text-4xl">
+                    Rebuilding Trust: Advice & Communication
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-stone-500 lg:mx-auto">
+                    Trust is the primary currency of pandemic management. To fix the gaps, the government must radically change <strong>where it gets advice</strong> and <strong>how it speaks</strong>.
+                </p>
+            </div>
+
+            <!-- Subsection 1: The Advice Ecosystem -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold text-stone-800 mb-6 border-l-4 border-blue-500 pl-4">1. Inputs: Who should the government listen to?</h3>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                    <div class="col-span-1 text-stone-600 space-y-4">
+                        <p><strong>The Failure (2020):</strong> Advice was insular, heavily weighted towards political strategists and security agencies, with health advice often kept secret.</p>
+                        <p><strong>The Fix (2026):</strong> Trust requires an "Open Architecture". We must elevate community leaders and independent scientists to the same level as federal bureaucrats.</p>
+                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 text-sm">
+                            <strong>Key Insight:</strong> "You cannot communicate effectively with a community you do not listen to."
+                        </div>
+                    </div>
+                    <div class="col-span-1 lg:col-span-2">
+                        <div class="chart-container bg-stone-50 rounded-xl border border-stone-200 p-4">
+                            <canvas id="adviceChart"></canvas>
+                        </div>
+                        <div class="text-center mt-3 space-x-4">
+                            <button onclick="updateAdviceChart('2020')" class="text-xs px-3 py-1 rounded-full bg-stone-200 hover:bg-stone-300 text-stone-700 font-bold transition">View 2020 Model</button>
+                            <button onclick="updateAdviceChart('Recommended')" class="text-xs px-3 py-1 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold transition shadow">View Recommended Model</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subsection 2: Communication Simulator -->
+            <div>
+                <h3 class="text-2xl font-bold text-stone-800 mb-6 border-l-4 border-orange-500 pl-4">2. Outputs: The Communication Simulator</h3>
+                <p class="text-stone-500 mb-6 max-w-3xl">
+                    How we speak determines risk perception. Test the impact of different communication styles on public trust in a hypothetical crisis scenario.
+                </p>
+
+                <div class="bg-stone-900 rounded-2xl p-6 lg:p-10 text-white shadow-2xl grid grid-cols-1 lg:grid-cols-2 gap-10">
+                    <!-- Scenario Panel -->
+                    <div>
+                        <div class="flex items-center space-x-2 mb-4">
+                            <span class="animate-pulse h-3 w-3 bg-red-500 rounded-full"></span>
+                            <span class="text-red-400 font-mono text-sm uppercase tracking-widest">Live Scenario Injection</span>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-4">Scenario: Vaccine Uncertainty</h4>
+                        <p class="text-stone-300 mb-6">
+                            Early data suggests the new booster may have mild but frequent side effects. The data is incomplete but social media rumors are starting. <br><br>
+                            <strong>How do you communicate this?</strong>
+                        </p>
+                        
+                        <div class="space-y-3">
+                            <button onclick="simulateComm('hide')" class="w-full text-left p-4 rounded-lg bg-stone-800 hover:bg-stone-700 border border-stone-700 hover:border-stone-500 transition group">
+                                <span class="font-bold block text-stone-200 group-hover:text-white">Option A: The "Safe & Effective" Shield</span>
+                                <span class="text-sm text-stone-500">Dismiss rumors, repeat slogans, wait for 100% certainty before releasing data.</span>
+                            </button>
+                            <button onclick="simulateComm('transparency')" class="w-full text-left p-4 rounded-lg bg-stone-800 hover:bg-blue-900/30 border border-stone-700 hover:border-blue-500 transition group">
+                                <span class="font-bold block text-stone-200 group-hover:text-blue-300">Option B: Radical Transparency</span>
+                                <span class="text-sm text-stone-500">Acknowledge the rumors, release the raw preliminary data, explain what is unknown.</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Simulation Result Panel -->
+                    <div class="bg-stone-800 rounded-xl p-6 border border-stone-700 flex flex-col justify-center">
+                        <div id="sim-default" class="text-center text-stone-500">
+                            <span class="text-4xl block mb-2">📡</span>
+                            Select an option to simulate public reaction.
+                        </div>
+                        <div id="sim-result" class="hidden fade-in">
+                            <h5 id="sim-title" class="text-xl font-bold mb-2"></h5>
+                            <div class="mb-4">
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span>Public Trust</span>
+                                    <span id="trust-val"></span>
+                                </div>
+                                <div class="w-full bg-stone-700 rounded-full h-2.5">
+                                    <div id="trust-bar" class="bg-blue-500 h-2.5 rounded-full transition-all duration-1000" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span>Compliance Risk</span>
+                                    <span id="risk-val"></span>
+                                </div>
+                                <div class="w-full bg-stone-700 rounded-full h-2.5">
+                                    <div id="risk-bar" class="bg-red-500 h-2.5 rounded-full transition-all duration-1000" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <p id="sim-feedback" class="text-sm text-stone-300 italic border-t border-stone-600 pt-4"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Solution (Triune Intelligence) -->
+    <section id="triune-fix" class="py-16 bg-stone-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-base text-orange-400 font-semibold tracking-wide uppercase">The Solution Framework</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold text-stone-900 sm:text-4xl">
+                    Triune Cognitive Intelligence Strategy
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-stone-500 mx-auto">
+                    Integrating the trust architecture into immediate action across three levels of response.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Reptilian (Instinct) -->
+                <div class="bg-white rounded-xl p-8 border border-stone-200 hover:border-red-500 shadow-sm transition-all cursor-pointer group" onclick="activateTriune('instinct')">
+                    <div class="h-12 w-12 bg-red-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-red-600 group-hover:text-white transition-colors text-red-600">
+                        <span class="text-2xl">🛡️</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-stone-800 mb-2">1. Instinctual Defense</h3>
+                    <p class="text-stone-500 text-sm">Speed over perfection. Border protocols and rapid containment.</p>
+                </div>
+
+                <!-- Limbic (Emotion/Social) -->
+                <div class="bg-white rounded-xl p-8 border border-stone-200 hover:border-yellow-500 shadow-sm transition-all cursor-pointer group" onclick="activateTriune('emotion')">
+                    <div class="h-12 w-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-yellow-600 group-hover:text-white transition-colors text-yellow-600">
+                        <span class="text-2xl">🤝</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-stone-800 mb-2">2. Social Intelligence</h3>
+                    <p class="text-stone-500 text-sm"><strong>The Trust Engine.</strong> Transparent communication and equity support.</p>
+                </div>
+
+                <!-- Neocortex (Rational) -->
+                <div class="bg-white rounded-xl p-8 border border-stone-200 hover:border-blue-500 shadow-sm transition-all cursor-pointer group" onclick="activateTriune('logic')">
+                    <div class="h-12 w-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors text-blue-600">
+                        <span class="text-2xl">🧠</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-stone-800 mb-2">3. Strategic Reason</h3>
+                    <p class="text-stone-500 text-sm">Long-term logistics, genomic sequencing, and data harmonization.</p>
+                </div>
+            </div>
+
+            <!-- Dynamic Fix Panel -->
+            <div id="triuneDetail" class="mt-12 bg-stone-900 rounded-xl p-8 border border-stone-700 hidden fade-in text-stone-100">
+                <h3 class="text-2xl font-bold text-white mb-4" id="triuneTitle"></h3>
+                <p class="text-stone-400 mb-6 text-lg" id="triuneDesc"></p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-sm font-bold text-stone-500 uppercase mb-3">Immediate Actions</h4>
+                        <ul class="space-y-3" id="triuneActions">
+                            <!-- JS -->
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-stone-500 uppercase mb-3">Expected Outcome</h4>
+                        <div class="bg-stone-800 rounded p-4 border-l-4 border-green-500">
+                            <p class="text-stone-300" id="triuneOutcome"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-stone-200 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-stone-400 text-sm">
+                Generated Interactive Analysis | Sources: Fault Lines Review, Independent Panels, Hypothetical Scenarios.
+            </p>
+        </div>
+    </footer>
+
+    <!-- LOGIC -->
+    <script>
+        // --- DATA STORE ---
+
+        const reviewData = [
+            {
+                id: 'gov',
+                title: "Governance Friction",
+                summary: "Confused accountabilities delayed border closures.",
+                statLabel: "Public Trust Decline (2020-2022)",
+                statData: [78, 65, 52, 45],
+                statLabels: ['Q1 2020', 'Q3 2020', 'Q2 2021', 'Q4 2021'],
+                details: "No clear 'Control Tower' for national resource allocation caused state rivalries."
+            },
+            {
+                id: 'equity',
+                title: "The Equity Gap",
+                summary: "Measures disproportionately affected CALD communities.",
+                statLabel: "Financial Stress Index",
+                statData: [10, 25, 45, 60],
+                statLabels: ['Initial', 'Wave 1', 'Wave 2', 'Omicron'],
+                details: "Financial support (JobKeeper) excluded casuals, forcing sick people to work."
+            },
+            {
+                id: 'comms',
+                title: "Communication Failure",
+                summary: "Punitive, inconsistent messaging eroded authority.",
+                statLabel: "Compliance Willingness",
+                statData: [90, 80, 60, 40],
+                statLabels: ['Wave 1', 'Wave 2', 'Wave 3', 'Wave 4'],
+                details: "Reliance on 'Security' framing rather than 'Health' framing alienated vulnerable groups."
+            }
+        ];
+
+        const gapData = [
+            {
+                dim: 'Borders',
+                lesson: "National consistency is vital.",
+                current: "States advising caution; Federal delay.",
+                severity: "High"
+            },
+            {
+                dim: 'Communication',
+                lesson: "Targeted, multi-lingual messaging needed.",
+                current: "Generic English press releases issued.",
+                severity: "Critical"
+            },
+            {
+                dim: 'Advice',
+                lesson: "Publish health advice transparently.",
+                current: "Cabinet decisions currently sealed.",
+                severity: "High"
+            }
+        ];
+
+        const triuneContent = {
+            instinct: {
+                title: "Instinctual Defense",
+                desc: "Immediate executive power to secure the perimeter.",
+                actions: ["7-day pause on arrivals.", "Rapid Antigen Testing at airports."],
+                outcome: "Stops viral load at border."
+            },
+            emotion: {
+                title: "Social Intelligence (Trust Engine)",
+                desc: "Trust is the only way to ensure compliance without coercion. We must treat the public as partners, not subjects.",
+                actions: ["Release the raw modeling data.", "Engage community leaders for messaging.", "Pandemic Leave payments immediately."],
+                outcome: "Maintains social cohesion and voluntary compliance."
+            },
+            logic: {
+                title: "Strategic Reason",
+                desc: "Solving the long-term logistical problem.",
+                actions: ["Advance purchase agreements.", "Scale genomic sequencing."],
+                outcome: "Ensures response evolves with the virus."
+            }
+        };
+
+        // --- CHART LOGIC ---
+
+        let radarChart, impactChart, adviceChart;
+
+        function initRadar() {
+            const ctx = document.getElementById('readinessRadar').getContext('2d');
+            radarChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Governance', 'Communication', 'Supply', 'Health', 'Equity', 'Trust'],
+                    datasets: [{
+                        label: '2020 Capability',
+                        data: [40, 30, 30, 70, 40, 80],
+                        fill: true,
+                        backgroundColor: 'rgba(168, 162, 158, 0.2)',
+                        borderColor: 'rgb(168, 162, 158)',
+                        pointBackgroundColor: 'rgb(168, 162, 158)',
+                    }, {
+                        label: 'Recommended 2026',
+                        data: [90, 85, 80, 85, 90, 95], 
+                        fill: true,
+                        backgroundColor: 'rgba(234, 88, 12, 0.2)',
+                        borderColor: 'rgb(234, 88, 12)',
+                        pointBackgroundColor: 'rgb(234, 88, 12)',
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    scales: { r: { suggestedMin: 0, suggestedMax: 100 } },
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+        }
+
+        function updateImpactChart(data, labels, label) {
+            const ctx = document.getElementById('impactChart').getContext('2d');
+            if (impactChart) impactChart.destroy();
+            impactChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: label,
+                        data: data,
+                        backgroundColor: 'rgba(234, 88, 12, 0.7)',
+                        borderColor: 'rgb(234, 88, 12)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    scales: { y: { beginAtZero: true } }
+                }
+            });
+        }
+
+        // --- NEW: Advice Architecture Chart ---
+        function initAdviceChart() {
+            const ctx = document.getElementById('adviceChart').getContext('2d');
+            adviceChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Federal Politicians', 'Security Agencies', 'Health Bureaucrats', 'Indep. Scientists', 'Community Leaders', 'Social Services'],
+                    datasets: [{
+                        label: 'Influence Weighting',
+                        data: [90, 80, 70, 30, 10, 20], // Default 2020
+                        backgroundColor: [
+                            '#4b5563', '#4b5563', '#4b5563', '#d1d5db', '#d1d5db', '#d1d5db'
+                        ],
+                        borderWidth: 0,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    indexAxis: 'y', // Horizontal bar
+                    maintainAspectRatio: false,
+                    scales: { x: { beginAtZero: true, max: 100 } },
+                    plugins: { legend: { display: false } }
+                }
+            });
+        }
+
+        function updateAdviceChart(model) {
+            let newData, newColors;
+            if (model === '2020') {
+                newData = [90, 80, 70, 30, 10, 20];
+                newColors = ['#4b5563', '#4b5563', '#4b5563', '#d1d5db', '#d1d5db', '#d1d5db'];
+            } else {
+                newData = [50, 50, 80, 90, 85, 80]; // Balanced
+                newColors = ['#9ca3af', '#9ca3af', '#2563eb', '#3b82f6', '#60a5fa', '#93c5fd'];
+            }
+            
+            adviceChart.data.datasets[0].data = newData;
+            adviceChart.data.datasets[0].backgroundColor = newColors;
+            adviceChart.update();
+        }
+
+        // --- NEW: Communication Simulator Logic ---
+        function simulateComm(choice) {
+            const defaultPanel = document.getElementById('sim-default');
+            const resultPanel = document.getElementById('sim-result');
+            const title = document.getElementById('sim-title');
+            const trustBar = document.getElementById('trust-bar');
+            const riskBar = document.getElementById('risk-bar');
+            const feedback = document.getElementById('sim-feedback');
+            const trustVal = document.getElementById('trust-val');
+            const riskVal = document.getElementById('risk-val');
+
+            defaultPanel.classList.add('hidden');
+            resultPanel.classList.remove('hidden');
+
+            // Reset widths for animation
+            trustBar.style.width = '0%';
+            riskBar.style.width = '0%';
+
+            setTimeout(() => {
+                if (choice === 'hide') {
+                    title.innerText = "Outcome: The 'Trust Vacuum'";
+                    title.className = "text-xl font-bold mb-2 text-red-400";
+                    trustBar.style.width = '20%';
+                    trustBar.className = "h-2.5 rounded-full transition-all duration-1000 bg-red-600";
+                    riskBar.style.width = '90%';
+                    trustVal.innerText = "Low";
+                    riskVal.innerText = "Critical";
+                    feedback.innerText = "Analysis: By hiding uncertainty, you created a vacuum filled by conspiracy theories. When side effects inevitably occur, trust collapses completely.";
+                } else {
+                    title.innerText = "Outcome: The 'Resilience' Model";
+                    title.className = "text-xl font-bold mb-2 text-blue-400";
+                    trustBar.style.width = '85%';
+                    trustBar.className = "h-2.5 rounded-full transition-all duration-1000 bg-blue-500";
+                    riskBar.style.width = '30%';
+                    trustVal.innerText = "High";
+                    riskVal.innerText = "Manageable";
+                    feedback.innerText = "Analysis: Treating the public like adults builds 'Cognitive Resilience'. They accept the uncertainty and are more likely to comply because they understand the 'Why'.";
+                }
+            }, 100);
+        }
+
+        // --- STANDARD DOM LOGIC ---
+
+        function populateFindings() {
+            const list = document.getElementById('findingsList');
+            reviewData.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.className = "p-4 hover:bg-orange-50 cursor-pointer transition-colors border-l-4 border-transparent hover:border-orange-500";
+                li.innerHTML = `<h4 class="text-sm font-medium text-stone-900">${item.title}</h4>`;
+                li.onclick = () => loadFindingDetail(index);
+                list.appendChild(li);
+            });
+            loadFindingDetail(0);
+        }
+
+        function loadFindingDetail(index) {
+            const data = reviewData[index];
+            document.getElementById('detailTitle').innerText = data.title;
+            document.getElementById('detailText').innerText = data.details;
+            updateImpactChart(data.statData, data.statLabels, data.statLabel);
+        }
+
+        function populateTimeline() {
+            const timelineData = [
+                { time: "Day 0", event: "Pathogen identified.", type: "neutral" },
+                { time: "Day 2", event: "Travel warning issued.", type: "action" },
+                { time: "Today", event: "Federal Cabinet silence on data.", type: "warning" }
+            ];
+            const container = document.getElementById('timelineContainer');
+            container.innerHTML = '';
+            timelineData.forEach(item => {
+                const div = document.createElement('div');
+                div.className = "relative pl-6 pb-6";
+                let colorClass = item.type === 'warning' ? 'bg-red-500' : (item.type === 'action' ? 'bg-blue-500' : 'bg-stone-400');
+                div.innerHTML = `
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full ${colorClass} border-2 border-white shadow"></div>
+                    <span class="text-xs font-bold text-stone-500 uppercase tracking-wide mb-1 block">${item.time}</span>
+                    <p class="text-stone-800 text-sm">${item.event}</p>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function filterGaps(filter) {
+            const tbody = document.getElementById('gapTableBody');
+            tbody.innerHTML = '';
+            const filtered = filter === 'all' ? gapData : gapData.filter(d => d.dim === filter);
+            filtered.forEach(d => {
+                const row = document.createElement('tr');
+                row.className = "hover:bg-stone-50 cursor-pointer transition";
+                const badgeColor = d.severity === 'Critical' ? 'bg-red-100 text-red-800' : 'bg-orange-100 text-orange-800';
+                row.innerHTML = `
+                    <td class="px-6 py-4 text-sm font-medium text-stone-900">${d.dim}</td>
+                    <td class="px-6 py-4 text-sm text-stone-500">${d.lesson}</td>
+                    <td class="px-6 py-4 text-sm text-stone-500">${d.current}</td>
+                    <td class="px-6 py-4"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${badgeColor}">${d.severity}</span></td>
+                `;
+                row.onclick = () => {
+                    document.getElementById('gapDetailArea').classList.remove('hidden');
+                    document.getElementById('gapDetailArea').classList.add('slide-up');
+                    document.getElementById('gapDetailTitle').innerText = `${d.dim}: Deep Dive`;
+                    document.getElementById('gapDetailDesc').innerText = `Lesson: ${d.lesson} | Reality: ${d.current}`;
+                };
+                tbody.appendChild(row);
+            });
+        }
+
+        function activateTriune(type) {
+            const panel = document.getElementById('triuneDetail');
+            panel.classList.remove('hidden');
+            void panel.offsetWidth; panel.classList.add('fade-in');
+            
+            const content = triuneContent[type];
+            document.getElementById('triuneTitle').innerText = content.title;
+            document.getElementById('triuneDesc').innerText = content.desc;
+            const list = document.getElementById('triuneActions');
+            list.innerHTML = '';
+            content.actions.forEach(action => {
+                const li = document.createElement('li');
+                li.className = "flex items-start text-stone-300";
+                li.innerHTML = `<span class="mr-2 text-orange-500">➜</span> ${action}`;
+                list.appendChild(li);
+            });
+            document.getElementById('triuneOutcome').innerText = content.outcome;
+            panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function initThreatGauge() {
+            const ctx = document.getElementById('threatGauge').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Risk', 'Safety'],
+                    datasets: [{ data: [75, 25], backgroundColor: ['#dc2626', '#e5e7eb'], borderWidth: 0 }]
+                },
+                options: { maintainAspectRatio: false, cutout: '70%', plugins: { title: { display: true, text: '75% Risk Index', position: 'bottom' } } }
+            });
+        }
+
+        window.onload = function() {
+            initRadar();
+            initThreatGauge();
+            initAdviceChart(); // New Chart
+            populateFindings();
+            populateTimeline();
+            filterGaps('all');
+        };
+
+    </script>
+</body>
+</html>

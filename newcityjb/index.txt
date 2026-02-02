@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Cognitive Interface & Newcastle Proposal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chosen Palette: Warm Intellectual (Stone/Neutral with Amber/Slate accents) -->
+    <!-- Application Structure Plan: 
+         1. Hero Section: Sets the thesis of AI as a cognitive extension.
+         2. Cognitive Dynamics: Interactive line charts showing the correlation between AI integration, capacity, and strain.
+         3. Triune Intelligence Framework: A functional model exploring the prompt's theoretical core (Reptilian/Limbic/Neocortex) + Dennett's stance.
+         4. Strategic Proposal: The specific pitch to Newcastle NSW, synthesizing the theory into a governance offering.
+         This structure moves from abstract theory to concrete data, then to practical application.
+    -->
+    <!-- Visualization & Content Choices:
+         - Line Charts: To show trends in cognitive capacity vs. strain over time. Goal: Inform/Change.
+         - Radar Chart: To map the 'Triune' balance of AI interactions. Goal: Analyze/Compare.
+         - Interactive Cards: To explain Bottom-Up vs Top-Down design without clutter. Goal: Inform.
+         - Justification: Chart.js handles the data viz without SVG. Vanilla JS handles state.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fafaf9; /* stone-50 */
+            color: #1c1917; /* stone-900 */
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Merriweather', serif;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            height: 400px; 
+            max-height: 500px;
+            margin: 0 auto;
+        }
+
+        .nav-btn.active {
+            background-color: #e7e5e4; /* stone-200 */
+            border-bottom: 2px solid #ea580c; /* orange-600 */
+            font-weight: 600;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f5f5f4; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d6d3d1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8a29e; 
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Navigation -->
+    <nav class="bg-stone-100 border-b border-stone-300 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold text-stone-800 tracking-tight">Cognitive<span class="text-orange-600">Interface</span> Report</span>
+                </div>
+                <div class="hidden sm:flex space-x-8">
+                    <button class="nav-btn active px-3 py-2 text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors" onclick="switchTab('overview')">Overview</button>
+                    <button class="nav-btn px-3 py-2 text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors" onclick="switchTab('capacity')">Cognitive Impact</button>
+                    <button class="nav-btn px-3 py-2 text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors" onclick="switchTab('triune')">Triune Intelligence</button>
+                    <button class="nav-btn px-3 py-2 text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors" onclick="switchTab('proposal')">Newcastle Proposal</button>
+                </div>
+                <!-- Mobile menu button placeholder (simplified) -->
+                <div class="flex items-center sm:hidden">
+                    <button onclick="alert('Please use a larger screen for the full analytical experience.')" class="text-stone-500">☰</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+
+        <!-- TAB 1: OVERVIEW -->
+        <div id="overview" class="tab-content active">
+            <div class="bg-white rounded-xl shadow-sm border border-stone-200 p-8 mb-8">
+                <h1 class="text-4xl font-serif text-stone-900 mb-4">Human-AI Symbiosis: An Intellectual Assessment</h1>
+                <p class="text-xl text-stone-600 leading-relaxed mb-6">
+                    This report assesses the trajectory of professional AI interaction, examining the shift in human interface dynamics, cognitive capacity growth, and systemic strain.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-stone-50 p-6 rounded-lg border-l-4 border-orange-500">
+                        <h3 class="text-lg font-bold text-stone-800 mb-2">The Core Thesis</h3>
+                        <p class="text-stone-700">
+                            Current AI interfaces are not merely tools but cognitive prosthetics. While they exponentially increase "bottom-up" information processing (generative capabilities), they place unprecedented "top-down" strain on the human executive function (verification, intent architecture).
+                        </p>
+                    </div>
+                    <div class="bg-stone-50 p-6 rounded-lg border-l-4 border-slate-500">
+                        <h3 class="text-lg font-bold text-stone-800 mb-2">The Theoretical Lens</h3>
+                        <p class="text-stone-700">
+                            We apply the <strong>Triune Intelligence Framework</strong> and Dennett's <strong>Intentional Stance</strong> to categorize interactions not just as technical inputs, but as biological responses—Reptilian (reflex), Limbic (relational), and Neocortical (analytical).
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- KPI Card 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-200 text-center">
+                    <div class="text-4xl font-bold text-slate-700 mb-1">3.5x</div>
+                    <div class="text-sm font-semibold text-stone-500 uppercase tracking-wide">Est. Cognitive Throughput</div>
+                    <p class="text-xs text-stone-400 mt-2">Increase in raw data synthesis/hr</p>
+                </div>
+                <!-- KPI Card 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-200 text-center">
+                    <div class="text-4xl font-bold text-orange-600 mb-1">High</div>
+                    <div class="text-sm font-semibold text-stone-500 uppercase tracking-wide">Intentional Strain</div>
+                    <p class="text-xs text-stone-400 mt-2">Required vigilance vs. hallucination</p>
+                </div>
+                <!-- KPI Card 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-200 text-center">
+                    <div class="text-4xl font-bold text-stone-800 mb-1">Shift</div>
+                    <div class="text-sm font-semibold text-stone-500 uppercase tracking-wide">Design Paradigm</div>
+                    <p class="text-xs text-stone-400 mt-2">Top-down Control ➔ Bottom-up Curation</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: COGNITIVE IMPACT -->
+        <div id="capacity" class="tab-content">
+            <div class="mb-8">
+                <h2 class="text-3xl font-serif text-stone-900 mb-4">Capacity vs. Carrying Strain</h2>
+                <p class="text-stone-600 max-w-3xl">
+                    As professional reliance on AI deepens, we observe a decoupling of "Output Capacity" from "Biological Carrying Capacity." The human system is no longer the bottleneck for generation, but it is becoming the bottleneck for verification and context-switching.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md border border-stone-200 p-6 mb-8">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-bold text-stone-800">Longitudinal Assessment: The Strain Curve</h3>
+                    <div class="flex space-x-2">
+                        <button class="bg-stone-100 hover:bg-stone-200 text-stone-700 px-3 py-1 rounded text-sm transition" onclick="updateCapacityChart('early')">Phase 1: Novelty</button>
+                        <button class="bg-stone-800 hover:bg-stone-700 text-white px-3 py-1 rounded text-sm transition" onclick="updateCapacityChart('mature')">Phase 2: Integration</button>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <canvas id="capacityChart"></canvas>
+                </div>
+                <div class="mt-4 text-sm text-stone-500 text-center italic">
+                    Figure 1: Divergence of cognitive output capability against neurological fatigue markers.
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="p-6 bg-stone-50 rounded-xl border border-stone-200">
+                    <h4 class="font-bold text-stone-800 mb-3">⟳ Cognitive Expansion</h4>
+                    <ul class="space-y-3 text-stone-700 text-sm">
+                        <li class="flex items-start"><span class="mr-2 text-green-600">▲</span> <strong>Parallel Processing:</strong> Ability to hold multiple conflicting frameworks (Intentional Stance) simultaneously via AI simulation.</li>
+                        <li class="flex items-start"><span class="mr-2 text-green-600">▲</span> <strong>Bottom-Up Synthesis:</strong> Rapid pattern recognition in unstructured data sets that previously required weeks of analysis.</li>
+                        <li class="flex items-start"><span class="mr-2 text-green-600">▲</span> <strong>Skill Liquidity:</strong> Reduced latency in translating intellectual intent into code, prose, or strategy.</li>
+                    </ul>
+                </div>
+                <div class="p-6 bg-stone-50 rounded-xl border border-stone-200">
+                    <h4 class="font-bold text-stone-800 mb-3">⚠ Systemic Strain</h4>
+                    <ul class="space-y-3 text-stone-700 text-sm">
+                        <li class="flex items-start"><span class="mr-2 text-red-600">!</span> <strong>Vigilance Fatigue:</strong> The neurological cost of constantly auditing a "hallucinating" partner.</li>
+                        <li class="flex items-start"><span class="mr-2 text-red-600">!</span> <strong>Context Fracture:</strong> Rapid switching between high-level architectural thinking and low-level syntax verification.</li>
+                        <li class="flex items-start"><span class="mr-2 text-red-600">!</span> <strong>Ontological Drift:</strong> Blurring lines between human agency and algorithmic suggestion, causing decision paralysis.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: TRIUNE INTELLIGENCE -->
+        <div id="triune" class="tab-content">
+            <div class="mb-8">
+                <h2 class="text-3xl font-serif text-stone-900 mb-4">The Triune Intelligence Framework</h2>
+                <p class="text-stone-600 max-w-3xl">
+                    Applying MacLean’s model to Human-Computer Interaction (HCI). Professional AI interaction is not purely intellectual; it triggers evolutionary layers of the user's nervous system.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                <!-- Reptilian Card -->
+                <div class="bg-white p-6 rounded-xl border-t-4 border-slate-400 shadow-sm cursor-pointer hover:shadow-md transition" onclick="showTriuneDetail('reptilian')">
+                    <h3 class="text-xl font-bold text-slate-700 mb-2">1. Basal/Reptilian</h3>
+                    <p class="text-xs font-bold text-stone-400 uppercase mb-4">Reflex & Efficiency</p>
+                    <p class="text-stone-600 text-sm">
+                        The "Copy-Paste" reflex. Immediate gratification loops. Automation of drudgery.
+                    </p>
+                    <div class="mt-4 text-slate-600 font-semibold text-sm">Click for Analysis →</div>
+                </div>
+
+                <!-- Limbic Card -->
+                <div class="bg-white p-6 rounded-xl border-t-4 border-orange-400 shadow-sm cursor-pointer hover:shadow-md transition" onclick="showTriuneDetail('limbic')">
+                    <h3 class="text-xl font-bold text-orange-700 mb-2">2. Limbic</h3>
+                    <p class="text-xs font-bold text-stone-400 uppercase mb-4">Emotion & Intent</p>
+                    <p class="text-stone-600 text-sm">
+                        Frustration with "stupid" AI errors. Delight in discovery. Anthropomorphizing the agent (Dennett's Intentional Stance).
+                    </p>
+                    <div class="mt-4 text-orange-600 font-semibold text-sm">Click for Analysis →</div>
+                </div>
+
+                <!-- Neocortical Card -->
+                <div class="bg-white p-6 rounded-xl border-t-4 border-stone-600 shadow-sm cursor-pointer hover:shadow-md transition" onclick="showTriuneDetail('neocortex')">
+                    <h3 class="text-xl font-bold text-stone-800 mb-2">3. Neocortex</h3>
+                    <p class="text-xs font-bold text-stone-400 uppercase mb-4">Logic & Governance</p>
+                    <p class="text-stone-600 text-sm">
+                        Prompt engineering. Strategic oversight. Verification of truth. Top-down constraint application.
+                    </p>
+                    <div class="mt-4 text-stone-600 font-semibold text-sm">Click for Analysis →</div>
+                </div>
+            </div>
+
+            <!-- Detail View Area -->
+            <div id="triune-detail-container" class="bg-stone-100 rounded-xl p-8 mb-8 border border-stone-200">
+                <div id="triune-content" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h4 id="detail-title" class="text-2xl font-serif text-stone-900 mb-3">Select a Layer</h4>
+                        <p id="detail-text" class="text-stone-700 mb-4">Explore how AI interacts with different evolutionary layers of human intelligence.</p>
+                        <div id="detail-dennett" class="bg-white p-4 rounded border border-stone-200 text-sm italic text-stone-600">
+                            "The Intentional Stance is the strategy of interpreting the behavior of an entity... by treating it as if it were a rational agent."
+                        </div>
+                    </div>
+                    <div class="chart-container" style="height:300px;">
+                         <canvas id="triuneRadar"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+             <div class="bg-white rounded-xl shadow-sm border border-stone-200 p-8">
+                <h3 class="text-xl font-bold text-stone-800 mb-4">Bottom-Up vs. Top-Down Intelligence</h3>
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="flex-1">
+                        <h4 class="font-bold text-slate-600 mb-2">Top-Down (Traditional Design)</h4>
+                        <p class="text-sm text-stone-600 mb-2">The old world. Rules are defined, then executed. Rigid, predictable, brittle.</p>
+                        <div class="w-full bg-stone-200 h-2 rounded"><div class="bg-slate-400 h-2 rounded" style="width: 30%"></div></div>
+                        <p class="text-xs text-right mt-1 text-stone-400">Diminishing Returns</p>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-bold text-orange-600 mb-2">Bottom-Up (AI Environment)</h4>
+                        <p class="text-sm text-stone-600 mb-2">The new reality. Data emerges, patterns form, intelligence is statistical and evolutionary. Flexible, hallucination-prone, creative.</p>
+                        <div class="w-full bg-stone-200 h-2 rounded"><div class="bg-orange-500 h-2 rounded" style="width: 85%"></div></div>
+                        <p class="text-xs text-right mt-1 text-stone-400">Exponential Growth</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 4: NEWCASTLE PROPOSAL -->
+        <div id="proposal" class="tab-content">
+            <div class="bg-gradient-to-br from-stone-900 to-stone-800 text-white rounded-xl p-10 mb-8 shadow-xl">
+                <div class="uppercase tracking-widest text-xs font-bold text-orange-400 mb-2">The Proposal</div>
+                <h2 class="text-4xl font-serif mb-6">Strategic AI Governance for Newcastle City Council (NSW)</h2>
+                <p class="text-stone-300 text-lg max-w-2xl">
+                    A proposal to appoint a singular, expert entity to manage the Council's AI integration, utilizing the frameworks of Triune Intelligence and evolutionary design.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Left Column: The Problem -->
+                <div class="lg:col-span-2 space-y-8">
+                    <section>
+                        <h3 class="text-2xl font-bold text-stone-800 mb-3">The Challenge</h3>
+                        <p class="text-stone-600 leading-relaxed mb-4">
+                            Municipal governance requires absolute precision (Top-Down), but modern AI operates on probability and emergence (Bottom-Up). Traditional IT vendors do not understand this ontological mismatch. They treat AI as software. We treat it as a cognitive ecology.
+                        </p>
+                        <p class="text-stone-600 leading-relaxed">
+                            Implementing AI without understanding the <strong>Triune</strong> impact on staff leads to:
+                        </p>
+                        <ul class="list-disc pl-5 mt-2 space-y-2 text-stone-700">
+                            <li><strong>Reptilian Resistance:</strong> Fear of replacement leading to sabotage or disengagement.</li>
+                            <li><strong>Limbic Friction:</strong> Frustration with chatbots leading to public trust erosion.</li>
+                            <li><strong>Neocortical Overload:</strong> Paralysis by analysis due to unchecked data generation.</li>
+                        </ul>
+                    </section>
+
+                    <section class="bg-orange-50 p-6 rounded-xl border border-orange-200">
+                        <h3 class="text-xl font-bold text-orange-800 mb-2">The Solution: Managed Cognitive Architecture</h3>
+                        <p class="text-stone-700 mb-4">
+                            We propose to exclusively run Newcastle City Council's AI infrastructure. We do not just install tools; we architect the interface between the algorithm and the civic stakeholder.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+                            <div class="bg-white p-4 rounded shadow-sm">
+                                <strong class="block text-stone-800 mb-1">1. Bottom-Up Data Lakes</strong>
+                                <span class="text-sm text-stone-600">Structuring civic data to allow organic pattern emergence (traffic, waste, requests).</span>
+                            </div>
+                            <div class="bg-white p-4 rounded shadow-sm">
+                                <strong class="block text-stone-800 mb-1">2. Top-Down Guardrails</strong>
+                                <span class="text-sm text-stone-600">Strict neocortical verification layers to ensure council policy compliance.</span>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Right Column: The "Why Us" Pitch -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-stone-800 h-full">
+                        <h3 class="text-xl font-bold text-stone-900 mb-4">Why Us?</h3>
+                        <blockquote class="italic text-stone-600 mb-6 border-l-2 border-orange-300 pl-4 py-1">
+                            "Anyone who says they know more than us, doesn't actually know what that means."
+                        </blockquote>
+                        <p class="text-sm text-stone-600 mb-6">
+                            Most consultants look at AI as a database upgrade. We understand it as an evolution of human intent. We have mapped the cognitive carrying capacity and know exactly where the system strains.
+                        </p>
+                        <button class="w-full bg-stone-900 hover:bg-stone-700 text-white font-bold py-3 px-4 rounded transition duration-200" onclick="alert('Proposal generated. Ready for submission to Newcastle City Council (NSW).')">
+                            Initialize Engagement
+                        </button>
+                        <div class="mt-6 border-t border-stone-200 pt-4">
+                            <h4 class="text-xs font-bold text-stone-400 uppercase mb-2">Scope of Work</h4>
+                            <ul class="text-xs text-stone-500 space-y-2">
+                                <li>✓ Council-wide Cognitive Audit</li>
+                                <li>✓ Implementation of Intentional Stance UI</li>
+                                <li>✓ Botton-Up Data Strategy</li>
+                                <li>✓ Triune Stress Testing</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-stone-100 border-t border-stone-200 mt-auto py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center text-stone-400 text-sm">
+            <p>Generated for Newcastle City Council (NSW) Consideration</p>
+            <p class="mt-2 text-xs">Based on Dennett's Intentional Stance & Triune Brain Theory</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- State Management ---
+        const state = {
+            currentTab: 'overview',
+            charts: {},
+            triuneData: {
+                reptilian: {
+                    label: "Reptilian (Basal)",
+                    desc: "The root of automation. In the context of Newcastle Council, this represents the automated sorting of bin collection requests, payment processing, and rote form filling. If the AI fails here, the user feels a visceral loss of control.",
+                    dennett: "Zero Intentionality attributed. The system is treated as a mechanical extension of the self.",
+                    scores: [90, 20, 10, 85, 30] // Efficiency, Empathy, Logic, Speed, Nuance
+                },
+                limbic: {
+                    label: "Limbic (Emotional)",
+                    desc: "The interface of trust. Citizens interacting with chatbots regarding DA approvals or fines. If the AI is cold or hallucinates, it triggers an emotional rejection response (distrust, anger).",
+                    dennett: "High Intentionality. Users get angry at the bot 'lying' to them, attributing human malice to statistical error.",
+                    scores: [40, 85, 30, 60, 50]
+                },
+                neocortex: {
+                    label: "Neocortex (Executive)",
+                    desc: "The strategic layer. Council planners using AI to model flood risks or urban density. High cognitive load. Requires 'suspension of belief' to verify AI outputs against regulatory reality.",
+                    dennett: "Analytical Stance. The user treats the AI as a complex tool requiring skilled inputs (prompt engineering).",
+                    scores: [30, 15, 95, 20, 90]
+                }
+            }
+        };
+
+        // --- Navigation Logic ---
+        function switchTab(tabId) {
+            // Update UI state
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            
+            // Find button that calls this function (rough approximation for simplicity)
+            const btns = document.querySelectorAll('.nav-btn');
+            if(tabId === 'overview') btns[0].classList.add('active');
+            if(tabId === 'capacity') {
+                btns[1].classList.add('active');
+                renderCapacityChart();
+            }
+            if(tabId === 'triune') {
+                btns[2].classList.add('active');
+                // Default to reptilian view first time
+                showTriuneDetail('reptilian');
+            }
+            if(tabId === 'proposal') btns[3].classList.add('active');
+        }
+
+        // --- Chart 1: Capacity vs Strain (Line Chart) ---
+        function renderCapacityChart() {
+            const ctx = document.getElementById('capacityChart').getContext('2d');
+            
+            if (state.charts.capacity) state.charts.capacity.destroy();
+
+            // Data simulation: Capacity grows linearly/exponentially. Strain fluctuates based on "phases".
+            state.charts.capacity = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Month 1', 'Month 3', 'Month 6', 'Month 9', 'Month 12', 'Month 18', 'Month 24'],
+                    datasets: [{
+                        label: 'Cognitive Output Capacity',
+                        data: [10, 25, 40, 65, 90, 150, 220],
+                        borderColor: '#ea580c', // Orange-600
+                        backgroundColor: 'rgba(234, 88, 12, 0.1)',
+                        borderWidth: 3,
+                        tension: 0.4,
+                        fill: true
+                    }, {
+                        label: 'Neurological Strain (Vigilance Cost)',
+                        data: [15, 30, 60, 55, 40, 75, 85], // Note the dip then rise as complexity increases
+                        borderColor: '#475569', // Slate-600
+                        borderDash: [5, 5],
+                        borderWidth: 2,
+                        tension: 0.2,
+                        fill: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    plugins: {
+                        legend: { position: 'top' },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.raw + ' units';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'Arbitrary Units (AU)' }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateCapacityChart(phase) {
+            if (!state.charts.capacity) return;
+            
+            const chart = state.charts.capacity;
+            if (phase === 'early') {
+                // High initial strain, low capacity
+                chart.data.datasets[0].data = [10, 15, 20, 25, 30, 35, 40];
+                chart.data.datasets[1].data = [40, 50, 60, 55, 50, 45, 40];
+            } else {
+                // High capacity, high complexity strain
+                chart.data.datasets[0].data = [50, 100, 180, 250, 320, 450, 600];
+                chart.data.datasets[1].data = [40, 45, 80, 70, 60, 90, 110];
+            }
+            chart.update();
+        }
+
+        // --- Chart 2: Triune Radar (Radar Chart) ---
+        function renderTriuneRadar(dataKeys) {
+            const ctx = document.getElementById('triuneRadar').getContext('2d');
+            
+            if (state.charts.radar) state.charts.radar.destroy();
+
+            state.charts.radar = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Efficiency', 'Empathy', 'Logic', 'Speed', 'Nuance'],
+                    datasets: [{
+                        label: 'Interaction Profile',
+                        data: dataKeys,
+                        backgroundColor: 'rgba(234, 88, 12, 0.2)',
+                        borderColor: '#ea580c',
+                        pointBackgroundColor: '#ea580c',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: '#ea580c'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        r: {
+                            angleLines: { color: '#e5e7eb' },
+                            grid: { color: '#e5e7eb' },
+                            pointLabels: {
+                                font: { size: 12, family: 'Inter' },
+                                color: '#4b5563'
+                            },
+                            suggestedMin: 0,
+                            suggestedMax: 100
+                        }
+                    }
+                }
+            });
+        }
+
+        // --- Interaction Logic ---
+        function showTriuneDetail(type) {
+            const data = state.triuneData[type];
+            
+            // Update Text
+            document.getElementById('detail-title').innerText = data.label;
+            document.getElementById('detail-title').className = `text-2xl font-serif mb-3 ${type === 'limbic' ? 'text-orange-700' : type === 'reptilian' ? 'text-slate-700' : 'text-stone-800'}`;
+            document.getElementById('detail-text').innerText = data.desc;
+            document.getElementById('detail-dennett').innerText = `Dennett's View: "${data.dennett}"`;
+            
+            // Update Chart
+            renderTriuneRadar(data.scores);
+        }
+
+        // Initialize on load
+        window.onload = function() {
+            // Start at overview
+            switchTab('overview');
+        };
+
+    </script>
+</body>
+</html>

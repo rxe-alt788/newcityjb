@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<!-- saved from url=(0077)file:///C:/Users/John%20Dunn/OneDrive/GitHub/TRIUNE/trinity/method/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trinity Collective: Critical Analysis</title>
+    <script src="./index_files/saved_resource"></script>
+    <script src="./index_files/chart.js.download"></script>
+    <link href="./index_files/css2" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fffbf0; /* Warm Sand */
+            color: #1e293b; /* Slate 800 */
+        }
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            max-height: 400px;
+            margin: auto;
+        }
+        .btn-active {
+            background-color: #0f172a;
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .btn-inactive {
+            background-color: #e2e8f0;
+            color: #64748b;
+        }
+        .btn-inactive:hover {
+            background-color: #cbd5e1;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.top-0{top:0px}.left-0{left:0px}.right-0{right:0px}.z-50{z-index:50}.z-10{z-index:10}.order-1{order:1}.order-2{order:2}.mx-auto{margin-left:auto;margin-right:auto}.mb-10{margin-bottom:2.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mt-1{margin-top:0.25rem}.mb-16{margin-bottom:4rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-8{margin-bottom:2rem}.mt-12{margin-top:3rem}.mt-2{margin-top:0.5rem}.mt-4{margin-top:1rem}.mr-3{margin-right:0.75rem}.inline-block{display:inline-block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-1{height:0.25rem}.h-14{height:3.5rem}.h-3{height:0.75rem}.h-96{height:24rem}.h-6{height:1.5rem}.min-h-screen{min-height:100vh}.w-14{width:3.5rem}.w-16{width:4rem}.w-96{width:24rem}.w-full{width:100%}.w-6{width:1.5rem}.max-w-2xl{max-width:42rem}.max-w-4xl{max-width:56rem}.max-w-6xl{max-width:72rem}.max-w-3xl{max-width:48rem}.flex-shrink-0{flex-shrink:0}.flex-grow{flex-grow:1}.origin-left{transform-origin:left}.-translate-y-1\/2{--tw-translate-y:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.translate-x-1\/2{--tw-translate-x:50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.scale-x-0{--tw-scale-x:0;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-12{gap:3rem}.gap-8{gap:2rem}.space-x-2 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.5rem * var(--tw-space-x-reverse));margin-left:calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-4 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1rem * var(--tw-space-x-reverse));margin-left:calc(1rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-16 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(4rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(4rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-8 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(2rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(2rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.rounded{border-radius:0.25rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-l-4{border-left-width:4px}.border-t{border-top-width:1px}.border-slate-100{--tw-border-opacity:1;border-color:rgb(241 245 249 / var(--tw-border-opacity, 1))}.border-slate-200{--tw-border-opacity:1;border-color:rgb(226 232 240 / var(--tw-border-opacity, 1))}.border-teal-100{--tw-border-opacity:1;border-color:rgb(204 251 241 / var(--tw-border-opacity, 1))}.border-teal-500{--tw-border-opacity:1;border-color:rgb(20 184 166 / var(--tw-border-opacity, 1))}.border-slate-300{--tw-border-opacity:1;border-color:rgb(203 213 225 / var(--tw-border-opacity, 1))}.border-slate-800{--tw-border-opacity:1;border-color:rgb(30 41 59 / var(--tw-border-opacity, 1))}.bg-slate-50{--tw-bg-opacity:1;background-color:rgb(248 250 252 / var(--tw-bg-opacity, 1))}.bg-teal-100{--tw-bg-opacity:1;background-color:rgb(204 251 241 / var(--tw-bg-opacity, 1))}.bg-teal-50{--tw-bg-opacity:1;background-color:rgb(240 253 250 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-white\/80{background-color:rgb(255 255 255 / 0.8)}.bg-indigo-50{--tw-bg-opacity:1;background-color:rgb(238 242 255 / var(--tw-bg-opacity, 1))}.bg-indigo-500{--tw-bg-opacity:1;background-color:rgb(99 102 241 / var(--tw-bg-opacity, 1))}.bg-orange-400{--tw-bg-opacity:1;background-color:rgb(251 146 60 / var(--tw-bg-opacity, 1))}.bg-rose-50{--tw-bg-opacity:1;background-color:rgb(255 241 242 / var(--tw-bg-opacity, 1))}.bg-rose-500{--tw-bg-opacity:1;background-color:rgb(244 63 94 / var(--tw-bg-opacity, 1))}.bg-slate-100{--tw-bg-opacity:1;background-color:rgb(241 245 249 / var(--tw-bg-opacity, 1))}.bg-slate-900{--tw-bg-opacity:1;background-color:rgb(15 23 42 / var(--tw-bg-opacity, 1))}.bg-teal-500{--tw-bg-opacity:1;background-color:rgb(20 184 166 / var(--tw-bg-opacity, 1))}.bg-rose-500\/20{background-color:rgb(244 63 94 / 0.2)}.bg-teal-500\/20{background-color:rgb(20 184 166 / 0.2)}.p-2{padding:0.5rem}.p-6{padding:1.5rem}.p-4{padding:1rem}.p-8{padding:2rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pb-20{padding-bottom:5rem}.pl-4{padding-left:1rem}.pt-20{padding-top:5rem}.pt-4{padding-top:1rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.font-light{font-weight:300}.uppercase{text-transform:uppercase}.italic{font-style:italic}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.tracking-tight{letter-spacing:-0.025em}.tracking-wide{letter-spacing:0.025em}.tracking-wider{letter-spacing:0.05em}.tracking-widest{letter-spacing:0.1em}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105 / var(--tw-text-opacity, 1))}.text-slate-700{--tw-text-opacity:1;color:rgb(51 65 85 / var(--tw-text-opacity, 1))}.text-slate-900{--tw-text-opacity:1;color:rgb(15 23 42 / var(--tw-text-opacity, 1))}.text-teal-700{--tw-text-opacity:1;color:rgb(15 118 110 / var(--tw-text-opacity, 1))}.text-teal-800{--tw-text-opacity:1;color:rgb(17 94 89 / var(--tw-text-opacity, 1))}.text-indigo-600{--tw-text-opacity:1;color:rgb(79 70 229 / var(--tw-text-opacity, 1))}.text-orange-500{--tw-text-opacity:1;color:rgb(249 115 22 / var(--tw-text-opacity, 1))}.text-rose-500{--tw-text-opacity:1;color:rgb(244 63 94 / var(--tw-text-opacity, 1))}.text-rose-600{--tw-text-opacity:1;color:rgb(225 29 72 / var(--tw-text-opacity, 1))}.text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-teal-500{--tw-text-opacity:1;color:rgb(20 184 166 / var(--tw-text-opacity, 1))}.text-teal-600{--tw-text-opacity:1;color:rgb(13 148 136 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-rose-400{--tw-text-opacity:1;color:rgb(251 113 133 / var(--tw-text-opacity, 1))}.text-teal-400{--tw-text-opacity:1;color:rgb(45 212 191 / var(--tw-text-opacity, 1))}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.opacity-10{opacity:0.1}.opacity-50{opacity:0.5}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.blur-3xl{--tw-blur:blur(64px);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-200{transition-duration:200ms}.duration-300{transition-duration:300ms}.hover\:-translate-y-1:hover{--tw-translate-y:-0.25rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:border-indigo-100:hover{--tw-border-opacity:1;border-color:rgb(224 231 255 / var(--tw-border-opacity, 1))}.hover\:border-rose-100:hover{--tw-border-opacity:1;border-color:rgb(255 228 230 / var(--tw-border-opacity, 1))}.hover\:border-teal-100:hover{--tw-border-opacity:1;border-color:rgb(204 251 241 / var(--tw-border-opacity, 1))}.hover\:shadow-xl:hover{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.group:hover .group-hover\:scale-x-100{--tw-scale-x:1;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@media (min-width: 768px){.md\:flex{display:flex}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:p-12{padding:3rem}.md\:text-5xl{font-size:3rem;line-height:1}}@media (min-width: 1024px){.lg\:order-1{order:1}.lg\:order-2{order:2}.lg\:col-span-4{grid-column:span 4 / span 4}.lg\:col-span-8{grid-column:span 8 / span 8}.lg\:grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}.lg\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}}</style></head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Header / Context -->
+    <header class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold tracking-tight text-slate-900">THE TRINITY PROTOCOL</h1>
+                <p class="text-xs text-slate-500 mono">CASE STUDY: PERMISSIONLESS VELOCITY &amp; INSTITUTIONAL LAG</p>
+            </div>
+            <div class="hidden md:flex space-x-4 text-sm font-medium text-slate-600">
+                <span class="px-2 py-1 rounded bg-teal-50 text-teal-700 border border-teal-100">Status: Live</span>
+                <span class="px-2 py-1 rounded bg-slate-50 text-slate-700 border border-slate-100">Source: Open</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        
+        <!-- Hero: The Hypothesis -->
+        <section class="max-w-4xl mx-auto px-4 py-16 text-center">
+            <div class="inline-block bg-teal-100 text-teal-800 text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-wide">Critical Analysis</div>
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+                When the signal is faster than the system.
+            </h2>
+            <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed">
+                The <span class="font-semibold text-slate-900">January 2026 Sydney Spate</span> exposed a fatal latency in traditional governance. 
+                Trinity's response wasn't just a "shark tool"—it was a demonstration of a new operating model for problem-solving.
+                <br><br>
+                Analyze the event through two lenses: the <strong>Ecological Reality</strong> (The Sharks) or the <strong>System Architecture</strong> (The AI/Tech Methodology).
+            </p>
+
+            <!-- Master Toggle -->
+            <div class="flex justify-center space-x-2 bg-white p-2 rounded-xl shadow-md border border-slate-200 inline-flex">
+                <button id="view-ecology" class="px-6 py-3 rounded-lg font-medium text-sm transition-all duration-200 btn-active" onclick="switchView(&#39;ecology&#39;)">
+                    View 1: The Event (Ecology)
+                </button>
+                <button id="view-system" class="px-6 py-3 rounded-lg font-medium text-sm transition-all duration-200 btn-inactive" onclick="switchView(&#39;system&#39;)">
+                    View 2: The Method (Analysis)
+                </button>
+            </div>
+        </section>
+
+        <!-- Dynamic Content Container -->
+        <div id="dashboard-content" class="max-w-6xl mx-auto px-4 pb-20 space-y-16">
+            
+            <!-- SECTION 1: THE DATA (Timeline) -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                <div class="lg:col-span-4 space-y-6">
+                    <div id="text-timeline-header" class="border-l-4 border-teal-500 pl-4 fade-in">
+                        <h3 class="text-2xl font-bold text-slate-900">The Spatio-Temporal Spate</h3>
+                        <p class="text-sm text-slate-500 mt-1 mono">JAN 18 - JAN 20, 2026</p>
+                    </div>
+                    
+                    <div id="text-timeline-body" class="text-slate-600 space-y-4 fade-in">
+                    <p>Within a compact 48-hour window, the NSW coast recorded a cluster of four distinct shark interactions. This was not random.</p>
+                    <p class="mt-4"><strong class="text-teal-600">Trigger Event:</strong> Heavy rainfall disrupted salinity and clarity, creating "brackish" conditions favored by Bull Sharks.</p>
+                    <p class="mt-4"><strong class="text-rose-600">Impact:</strong> Fatality at Shark Beach (Nielsen Park), Vaucluse, highlighting localized predator intensity during environmental stress.</p>
+                </div>
+
+                    <!-- Key Metric Box -->
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm fade-in">
+                        <div class="flex items-center justify-between mb-2">
+                            <span id="metric-label" class="text-xs font-bold text-slate-400 uppercase fade-in">Incident Density</span>
+                            <span class="text-teal-500 text-xs mono">HIGH ANOMALY</span>
+                        </div>
+                        <div id="metric-value" class="text-3xl font-bold text-slate-900 fade-in">4 Events</div>
+                        <div id="metric-sub" class="text-sm text-slate-500 mt-1 fade-in">in 48 Hours</div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-8 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm relative">
+                    <h4 class="text-sm font-semibold text-slate-400 mb-4 uppercase tracking-wider">Correlation Analysis</h4>
+                    <div class="chart-container">
+                        <canvas id="spateChart" width="1022" height="525" style="display: block; box-sizing: border-box; height: 350px; width: 681.3px;"></canvas>
+                    </div>
+                    <p class="text-xs text-center text-slate-400 mt-4 mono">FIG 1.0: CORRELATION OF ENVIRONMENTAL SIGNAL VS EVENTS</p>
+                </div>
+            </div>
+
+            <!-- SECTION 2: THE LAG (Bar Chart Comparison) -->
+            <div class="bg-slate-900 text-white rounded-3xl p-8 md:p-12 overflow-hidden relative shadow-2xl">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-teal-500 opacity-10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+                    <div class="order-2 lg:order-1">
+                        <div class="chart-container">
+                            <canvas id="lagChart" width="732" height="525" style="display: block; box-sizing: border-box; height: 350px; width: 488px;"></canvas>
+                        </div>
+                    </div>
+                    <div class="order-1 lg:order-2 space-y-6">
+                        <div id="text-lag-header" class="fade-in"><h3 class="text-2xl font-bold text-white">The Ecology of Institutional Lag</h3></div>
+                        <div id="text-lag-body" class="text-slate-300 space-y-4 leading-relaxed fade-in">
+                    <p>Harm arrives as "Lag"—the delay between the moment environmental conditions change and the moment the public safety system adjusts.</p>
+                    <p>While the water turned murky, the "Flags" remained static. The government operates on a seasonal calendar; the shark operates on condition.</p>
+                </div>
+                        <ul id="lag-list" class="space-y-3 pt-4 border-t border-slate-800 fade-in">
+                    <li class="flex items-center"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-teal-500/20 text-teal-400 flex items-center justify-center text-sm mr-3">✓</span> <span>Environmental Change: <strong>Hours</strong></span></li>
+                    <li class="flex items-center"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 flex items-center justify-center text-sm mr-3">⚠</span> <span>Policy Review: <strong>Years</strong></span></li>
+                    <li class="flex items-center"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 flex items-center justify-center text-sm mr-3">⚠</span> <span>Signage Deployment: <strong>Days/Weeks</strong></span></li>
+                </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 3: THE DISCOURSE & RISK (Radar + Sentiment) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col">
+                    <div class="mb-6">
+                        <h4 class="text-lg font-bold text-slate-900">Risk Architecture</h4>
+                        <p id="radar-desc" class="text-sm text-slate-500 mt-1 fade-in">Comparing historical safety baselines against the 2026 reality.</p>
+                    </div>
+                    <div class="chart-container flex-grow">
+                        <canvas id="radarChart" width="718" height="582" style="display: block; box-sizing: border-box; height: 388.3px; width: 478.7px;"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col">
+                    <div class="mb-6">
+                        <h4 class="text-lg font-bold text-slate-900">The Narrative Shift</h4>
+                        <p id="discourse-desc" class="text-sm text-slate-500 mt-1">Analyzing the public sentiment drivers during the crisis.</p>
+                    </div>
+                    
+                    <div class="space-y-8">
+                        <div>
+                            <div class="flex justify-between text-sm font-medium mb-2">
+                                <span class="text-slate-700">Infrastructure Failure (Pollution/Sewerage)</span>
+                                <span class="text-teal-600 font-bold">65% Dominance</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-3">
+                                <div class="bg-teal-500 h-3 rounded-full shadow-sm" style="width: 65%"></div>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-2">Shift from "Shark as Monster" to "City as Cause"</p>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm font-medium mb-2">
+                                <span class="text-slate-700">Traditional "Jaws" Narrative</span>
+                                <span class="text-rose-500 font-bold">15% Dominance</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-3">
+                                <div class="bg-rose-500 h-3 rounded-full shadow-sm" style="width: 15%"></div>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-2">Significant decline in predator-blame</p>
+                        </div>
+
+                         <div>
+                            <div class="flex justify-between text-sm font-medium mb-2">
+                                <span class="text-slate-700">Institutional Distrust</span>
+                                <span class="text-orange-500 font-bold">20% Dominance</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-3">
+                                <div class="bg-orange-400 h-3 rounded-full shadow-sm" style="width: 20%"></div>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-2">Frustration with "Review" culture</p>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-slate-300 italic text-slate-600 text-sm leading-relaxed">
+                            "The legacy of Nico Antic... is a permanent change in how NSW manages its coastal identity. The 'creaking' pipes of the city have become as central to the story as the animals."
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 4: THE CRYSTALLIZATION (Benefits) -->
+            <section class="border-t border-slate-200 pt-20">
+                <div class="text-center mb-16 max-w-3xl mx-auto">
+                    <h3 class="text-3xl font-bold text-slate-900">Crystallizing the Merit</h3>
+                    <p class="text-slate-600 mt-4 text-lg">Why Trinity's approach is the prototype for the next era of Applied AI.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="group hover:-translate-y-1 transition-all duration-300 p-8 rounded-2xl bg-white border border-slate-200 hover:shadow-xl hover:border-teal-100 relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-teal-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                        <div class="w-14 h-14 bg-teal-50 text-teal-600 rounded-xl flex items-center justify-center text-2xl mb-6 shadow-sm">
+                            ⚡
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-900 mb-3">Permissionless Velocity</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Traditional systems wait for consensus. Trinity waits for data. In an AI context, this is the shift from <strong>Human-in-the-Loop</strong> (approval required) to <strong>Human-on-the-Loop</strong> (monitoring output).
+                        </p>
+                    </div>
+
+                    <div class="group hover:-translate-y-1 transition-all duration-300 p-8 rounded-2xl bg-white border border-slate-200 hover:shadow-xl hover:border-rose-100 relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-rose-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                        <div class="w-14 h-14 bg-rose-50 text-rose-600 rounded-xl flex items-center justify-center text-2xl mb-6 shadow-sm">
+                            🎯
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-900 mb-3">Probabilistic Honesty</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Institutions sell "Safety" (a binary lie). Trinity sells "Risk Management" (a probabilistic truth). This builds higher trust through transparent uncertainty.
+                        </p>
+                    </div>
+
+                    <div class="group hover:-translate-y-1 transition-all duration-300 p-8 rounded-2xl bg-white border border-slate-200 hover:shadow-xl hover:border-indigo-100 relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                        <div class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center text-2xl mb-6 shadow-sm">
+                            🔓
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-900 mb-3">Open Source Auditing</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            By hiding nothing, Trinity invites critique rather than avoiding it. This creates a <strong>Self-Correcting System</strong> that improves as it operates.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-16 border-t border-slate-800 mt-12">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h5 class="text-white font-bold tracking-widest text-sm mb-6 uppercase">Trinity Collective Analysis</h5>
+            <p class="text-lg font-light mb-8 max-w-2xl mx-auto italic text-slate-300">
+                "Governance must catch up with the world it operates in. The ability to act with the tempo of the tide will determine the depth of public trust."
+            </p>
+            <div class="w-16 h-1 bg-teal-500 mx-auto mb-8 rounded-full"></div>
+            <div class="text-xs mono opacity-50">
+                DATA SOURCE: OPEN ACCESS REPORTING (JAN 2026) | JD STRATEGY: HIGHEST ORDER RELAY
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const content = {
+            ecology: {
+                timelineHeader: "The Spatio-Temporal Spate",
+                timelineSub: "JAN 18 - JAN 20, 2026",
+                timelineBody: `
+                    <p>Within a compact 48-hour window, the NSW coast recorded a cluster of four distinct shark interactions. This was not random.</p>
+                    <p class="mt-4"><strong class="text-teal-600">Trigger Event:</strong> Heavy rainfall disrupted salinity and clarity, creating "brackish" conditions favored by Bull Sharks.</p>
+                    <p class="mt-4"><strong class="text-rose-600">Impact:</strong> Fatality at Shark Beach (Nielsen Park), Vaucluse, highlighting localized predator intensity during environmental stress.</p>
+                `,
+                metricLabel: "Incident Density",
+                metricValue: "4 Events",
+                metricSub: "in 48 Hours",
+                lagHeader: "The Ecology of Institutional Lag",
+                lagBody: `
+                    <p>Harm arrives as "Lag"—the delay between the moment environmental conditions change and the moment the public safety system adjusts.</p>
+                    <p>While the water turned murky, the "Flags" remained static. The government operates on a seasonal calendar; the shark operates on condition.</p>
+                `,
+                lagList: `
+                    <li class="flex items-center"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-teal-500/20 text-teal-400 flex items-center justify-center text-sm mr-3">✓</span> <span>Environmental Change: <strong>Hours</strong></span></li>
+                    <li class="flex items-center"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 flex items-center justify-center text-sm mr-3">⚠</span> <span>Policy Review: <strong>Years</strong></span></li>
+                    <li class="flex items-center"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 flex items-center justify-center text-sm mr-3">⚠</span> <span>Signage Deployment: <strong>Days/Weeks</strong></span></li>
+                `,
+                radarDesc: "Comparing historical safety baselines against the 2026 reality.",
+                chartSpateLabel1: "Rainfall (mm)",
+                chartSpateLabel2: "Interactions"
+            },
+            system: {
+                timelineHeader: "The Velocity of Action",
+                timelineSub: "TRINITY RESPONSE TIME",
+                timelineBody: `
+                    <p><strong>The Core Critique:</strong> An underground collective solved the data visualization problem before the government reached consensus.</p>
+                    <p class="mt-4"><strong class="text-teal-600">Methodology:</strong> Trinity identified the 'Rainfall/Risk' correlation immediately. They didn't ask for permission to warn; they built the tool to show the risk.</p>
+                    <p class="mt-4"><strong class="text-indigo-600">Insight:</strong> Failure wasn't an option for the government, so they did nothing. Trinity feared no failure, so they acted.</p>
+                `,
+                metricLabel: "Development Time",
+                metricValue: "< 24 Hours",
+                metricSub: "Concept to Deployment",
+                lagHeader: "The 'Waterfall' vs 'Agile' Crisis",
+                lagBody: `
+                    <p>This is a prototype for <strong>Autonomous Agency</strong> in risk management.</p>
+                    <p>Legacy institutions function like 'Waterfall' development—long planning, high risk of irrelevance. Trinity functions like an AI Agent: continuous sensing, immediate actuation.</p>
+                `,
+                lagList: `
+                    <li class="flex items-center"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-teal-500/20 text-teal-400 flex items-center justify-center text-sm mr-3">✓</span> <span>Data-Driven Decision (AI Model)</span></li>
+                    <li class="flex items-center"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-teal-500/20 text-teal-400 flex items-center justify-center text-sm mr-3">✓</span> <span>Open Source Transparency</span></li>
+                    <li class="flex items-center"><span class="flex-shrink-0 w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 flex items-center justify-center text-sm mr-3">⚠</span> <span>Bureaucratic Approval Chains</span></li>
+                `,
+                radarDesc: "Comparing the 'Legacy Model' of stability vs the 'Trinity Model' of agility.",
+                chartSpateLabel1: "System Signal (Rain)",
+                chartSpateLabel2: "System Failure (Attacks)"
+            }
+        };
+
+        let spateChart, lagChart, radarChart;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initCharts();
+            switchView('ecology');
+        });
+
+        function initCharts() {
+            Chart.defaults.font.family = "'Inter', sans-serif";
+            
+            const ctxSpate = document.getElementById('spateChart').getContext('2d');
+            spateChart = new Chart(ctxSpate, {
+                type: 'line',
+                data: {
+                    labels: ['Jan 15', 'Jan 16', 'Jan 17', 'Jan 18', 'Jan 19', 'Jan 20', 'Jan 21'],
+                    datasets: [
+                        {
+                            label: 'Rainfall (mm)',
+                            data: [5, 12, 58, 48, 20, 10, 2],
+                            backgroundColor: 'rgba(20, 184, 166, 0.2)',
+                            borderColor: '#14b8a6',
+                            borderWidth: 2,
+                            fill: true,
+                            yAxisID: 'y',
+                            tension: 0.4
+                        },
+                        {
+                            label: 'Interactions',
+                            type: 'bar',
+                            data: [0, 0, 0, 2, 2, 0, 0],
+                            backgroundColor: '#f43f5e',
+                            yAxisID: 'y1',
+                            barThickness: 15
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom', labels: { usePointStyle: true } } },
+                    scales: {
+                        y: { position: 'left', title: { display: true, text: 'Signal Strength' } },
+                        y1: { position: 'right', min: 0, max: 5, grid: { display: false } }
+                    }
+                }
+            });
+
+            const ctxLag = document.getElementById('lagChart').getContext('2d');
+            lagChart = new Chart(ctxLag, {
+                type: 'bar',
+                data: {
+                    labels: ['Env. Shift', 'Trinity Action', 'Public Sense', 'Govt Review'],
+                    datasets: [{
+                        label: 'Time to Action',
+                        data: [1, 2, 10, 100],
+                        backgroundColor: ['#f43f5e', '#14b8a6', '#f59e0b', '#64748b'],
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { 
+                        x: { display: false }, 
+                        y: { ticks: { color: 'white', font: {weight: '500'} }, grid: { display: false } } 
+                    }
+                }
+            });
+
+            const ctxRadar = document.getElementById('radarChart').getContext('2d');
+            radarChart = new Chart(ctxRadar, {
+                type: 'radar',
+                data: {
+                    labels: ['Responsiveness', 'Data Usage', 'Public Trust', 'Flexibility', 'Cost Efficiency'],
+                    datasets: [
+                        {
+                            label: 'Legacy / Historical',
+                            data: [2, 3, 4, 1, 2],
+                            backgroundColor: 'rgba(100, 116, 139, 0.2)',
+                            borderColor: '#64748b'
+                        },
+                        {
+                            label: 'Trinity / Dynamic',
+                            data: [9, 10, 8, 9, 10],
+                            backgroundColor: 'rgba(20, 184, 166, 0.2)',
+                            borderColor: '#14b8a6'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: { r: { min: 0, max: 10, ticks: { display: false } } },
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+        }
+
+        function switchView(mode) {
+            const btnEcology = document.getElementById('view-ecology');
+            const btnSystem = document.getElementById('view-system');
+            
+            if (mode === 'ecology') {
+                btnEcology.classList.replace('btn-inactive', 'btn-active');
+                btnSystem.classList.replace('btn-active', 'btn-inactive');
+            } else {
+                btnSystem.classList.replace('btn-inactive', 'btn-active');
+                btnEcology.classList.replace('btn-active', 'btn-inactive');
+            }
+
+            const elements = [
+                {id: 'text-timeline-header', val: content[mode].timelineHeader, type: 'html', key: 'h3'},
+                {id: 'text-timeline-body', val: content[mode].timelineBody, type: 'html'},
+                {id: 'metric-label', val: content[mode].metricLabel, type: 'text'},
+                {id: 'metric-value', val: content[mode].metricValue, type: 'text'},
+                {id: 'metric-sub', val: content[mode].metricSub, type: 'text'},
+                {id: 'text-lag-header', val: `<h3 class="text-2xl font-bold text-white">${content[mode].lagHeader}</h3>`, type: 'html'},
+                {id: 'text-lag-body', val: content[mode].lagBody, type: 'html'},
+                {id: 'lag-list', val: content[mode].lagList, type: 'html'},
+                {id: 'radar-desc', val: content[mode].radarDesc, type: 'text'}
+            ];
+
+            elements.forEach(el => {
+                const domEl = document.getElementById(el.id);
+                domEl.classList.remove('fade-in');
+                void domEl.offsetWidth; 
+                
+                if (el.key === 'h3') {
+                     domEl.querySelector('h3').innerText = el.val;
+                     if(content[mode].timelineSub) domEl.querySelector('p').innerText = content[mode].timelineSub;
+                } else {
+                    if (el.type === 'html') domEl.innerHTML = el.val;
+                    else domEl.innerText = el.val;
+                }
+                domEl.classList.add('fade-in');
+            });
+
+            updateCharts(mode);
+        }
+
+        function updateCharts(mode) {
+            spateChart.data.datasets[0].label = mode === 'ecology' ? 'Rainfall (mm)' : 'System Input (Rain)';
+            spateChart.data.datasets[1].label = mode === 'ecology' ? 'Interactions' : 'System Failures';
+            spateChart.update();
+
+            if (mode === 'ecology') {
+                radarChart.data.labels = ['Temp Duration', 'Rainfall', 'Turbidity', 'Exposure', 'Prey Movement'];
+            } else {
+                radarChart.data.labels = ['Responsiveness', 'Data Usage', 'Public Trust', 'Flexibility', 'Cost Efficiency'];
+            }
+            radarChart.update();
+        }
+    </script>
+
+</body></html>

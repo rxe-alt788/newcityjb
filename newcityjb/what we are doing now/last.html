@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trinity Collective | Reform Mandate 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --trinity-black: #0a0a0a;
+            --trinity-accent: #facc15;
+            --trinity-danger: #ef4444;
+            --trinity-safe: #22c55e;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--trinity-black);
+            color: #e5e5e5;
+            scroll-behavior: smooth;
+        }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .gradient-text {
+            background: linear-gradient(to right, #ffffff, #a3a3a3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .status-badge {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .slider-custom {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 4px;
+            background: #333;
+            border-radius: 2px;
+            outline: none;
+        }
+        .slider-custom::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            background: var(--trinity-accent);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass py-4 px-6 md:px-12 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-yellow-400 rounded-sm flex items-center justify-center text-black font-extrabold text-xl italic">T</div>
+            <span class="mono text-sm tracking-tighter font-bold uppercase">Trinity Collective // NSW-2026</span>
+        </div>
+        <div class="hidden md:flex gap-8 mono text-[10px] uppercase tracking-widest text-neutral-400">
+            <a href="#anatomy" class="hover:text-white transition">Anatomy</a>
+            <a href="#lag" class="hover:text-white transition">Institutional Lag</a>
+            <a href="#simulator" class="hover:text-white transition text-yellow-400 font-bold">4NICO Simulator</a>
+            <a href="#mandate" class="hover:text-white transition">Mandate</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="min-h-screen flex flex-col justify-center items-center px-6 pt-24 text-center">
+        <div class="max-w-4xl">
+            <h1 class="text-5xl md:text-8xl font-extrabold mb-6 leading-tight tracking-tight">
+                Governance and the <span class="gradient-text">Ecology of Institutional Lag</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-neutral-400 mb-8 max-w-2xl mx-auto leading-relaxed">
+                A critical assessment of the Trinity Collective’s Reform Mandate following the 2026 New South Wales Shark Spate.
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#simulator" class="px-8 py-4 bg-white text-black font-bold uppercase text-sm tracking-widest hover:bg-yellow-400 transition">Enter 4NICO Simulator</a>
+                <a href="#anatomy" class="px-8 py-4 border border-white/20 text-white font-bold uppercase text-sm tracking-widest hover:bg-white/10 transition">Read Assessment</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Incident Log Section -->
+    <section id="anatomy" class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+            <div>
+                <h2 class="mono text-yellow-400 text-xs uppercase tracking-widest mb-4 font-bold tracking-widest">January 2026 Spate Intensity</h2>
+                <h3 class="text-4xl font-bold mb-6">The Anatomy of Crisis</h3>
+                <p class="text-neutral-400 mb-6 leading-relaxed">
+                    Between January 18 and 20, 2026, the traditional paradigm of beach safety governance ruptured. Within 48 hours, four distinct interactions occurred from Sydney Harbour to Point Plomer. The statistical density exposed a critical gap between environmental reality and administrative response.
+                </p>
+                <div class="p-6 bg-red-950/20 border-l-2 border-red-500 italic text-red-200">
+                    "This represents a definitive rupture. The statistical density is the highest recorded in over a decade."
+                </div>
+            </div>
+            <div class="overflow-x-auto glass p-1">
+                <table class="w-full text-left mono text-[11px] uppercase">
+                    <thead class="bg-white/5 text-neutral-500">
+                        <tr>
+                            <th class="p-3">Date</th>
+                            <th class="p-3">Victim</th>
+                            <th class="p-3">Location</th>
+                            <th class="p-3">Result</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/10">
+                        <tr>
+                            <td class="p-3">01-18</td>
+                            <td class="p-3">Nico Antic (12)</td>
+                            <td class="p-3">Vaucluse</td>
+                            <td class="p-3 text-red-500">Fatal</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3">01-18</td>
+                            <td class="p-3">Male (27)</td>
+                            <td class="p-3">Vaucluse</td>
+                            <td class="p-3 text-red-400">Critical</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3">01-19</td>
+                            <td class="p-3">Boy (11)</td>
+                            <td class="p-3">Dee Why</td>
+                            <td class="p-3 text-neutral-400">Uninjured</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3">01-19</td>
+                            <td class="p-3">Man (20s)</td>
+                            <td class="p-3">North Steyne</td>
+                            <td class="p-3 text-red-400">Critical</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Institutional Lag Section -->
+    <section id="lag" class="py-24 bg-white/5">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-3 gap-8">
+            <div class="md:col-span-2">
+                <h2 class="mono text-yellow-400 text-xs uppercase tracking-widest mb-4 font-bold">Theoretical Framework</h2>
+                <h3 class="text-4xl font-bold mb-8 italic">The Mechanics of Institutional Lag</h3>
+                <div class="grid md:grid-cols-2 gap-8 text-neutral-400 leading-relaxed">
+                    <p>
+                        John Dunn posits that failures are symptoms of "institutional decay." The state relies on 1937-era symbols (nets) rather than modern ecological shifts. Institutional lag is the lethal delay between environmental change and systemic adjustment.
+                    </p>
+                    <p>
+                        Current management is linear: incident occurs, data is captured, review initiates, strategy updates. This tempo is optimized for political stability but fails fast-moving, climate-linked risks. 
+                    </p>
+                </div>
+            </div>
+            <div class="glass p-8 flex flex-col justify-center border-yellow-400/20">
+                <div class="text-5xl font-bold text-yellow-400 mb-2">85%</div>
+                <div class="mono text-xs uppercase tracking-tighter">Capacity waste on media cycles and PR.</div>
+                <hr class="my-6 border-white/10">
+                <div class="text-4xl font-bold text-white mb-2">3.8x</div>
+                <div class="mono text-xs uppercase tracking-tighter">Global average warming in EAC hotspots.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4NICO Simulator (Interactive) -->
+    <section id="simulator" class="py-24 px-6 md:px-12">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="mono text-yellow-400 text-xs uppercase tracking-widest mb-4 font-bold">Operational Suite: Live Test</h2>
+                <h3 class="text-4xl font-bold mb-4 italic">Sensory Blind Spot Simulator</h3>
+                <p class="text-neutral-400">Honoring Nico Antic by operationalizing data into proactive mandates. Adjust environmental variables to see the Trinity Collective advice.</p>
+            </div>
+
+            <div class="glass p-8 md:p-12 rounded-lg border-2 border-white/5 shadow-2xl">
+                <!-- Status Display -->
+                <div id="status-container" class="mb-10 p-6 bg-neutral-800/50 rounded flex items-center justify-between transition-all duration-500 border border-white/5">
+                    <div>
+                        <div class="mono text-[10px] uppercase text-neutral-500 mb-1">Current Guidance Level</div>
+                        <div id="status-text" class="text-3xl font-extrabold uppercase tracking-tighter">System Active</div>
+                    </div>
+                    <div id="status-indicator" class="w-12 h-12 rounded-full bg-green-500 shadow-[0_0_20px_rgba(34,197,94,0.4)]"></div>
+                </div>
+
+                <!-- Controls -->
+                <div class="space-y-12">
+                    <!-- Rainfall -->
+                    <div>
+                        <div class="flex justify-between mb-4 mono text-xs uppercase">
+                            <span>Rainfall (24h Window)</span>
+                            <span id="rain-val" class="text-yellow-400">0mm</span>
+                        </div>
+                        <input type="range" id="rain-input" min="0" max="100" value="0" class="slider-custom">
+                        <div class="flex justify-between mt-2 text-[10px] text-neutral-500 mono">
+                            <span>0mm</span>
+                            <span>45mm (Threshold)</span>
+                            <span>100mm+</span>
+                        </div>
+                    </div>
+
+                    <!-- Water Temp -->
+                    <div>
+                        <div class="flex justify-between mb-4 mono text-xs uppercase">
+                            <span>Water Temperature</span>
+                            <span id="temp-val" class="text-yellow-400">18°C</span>
+                        </div>
+                        <input type="range" id="temp-input" min="15" max="30" value="18" class="slider-custom">
+                        <div class="flex justify-between mt-2 text-[10px] text-neutral-500 mono">
+                            <span>15°C</span>
+                            <span>24°C (Danger)</span>
+                            <span>30°C</span>
+                        </div>
+                    </div>
+
+                    <!-- Turbidity -->
+                    <div>
+                        <div class="flex justify-between mb-4 mono text-xs uppercase">
+                            <span>Water Visibility / Turbidity</span>
+                            <span id="turb-val" class="text-yellow-400">Clear</span>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4">
+                            <button onclick="setTurbidity('Clear')" class="turb-btn py-3 border border-white/20 mono text-[10px] hover:bg-white hover:text-black transition uppercase">Clear</button>
+                            <button onclick="setTurbidity('Brackish')" class="turb-btn py-3 border border-white/20 mono text-[10px] hover:bg-white hover:text-black transition uppercase">Brackish</button>
+                            <button onclick="setTurbidity('Opaque')" class="turb-btn py-3 border border-white/20 mono text-[10px] hover:bg-white hover:text-black transition uppercase">Opaque</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mandate Output -->
+                <div class="mt-12 p-6 bg-black/50 border border-white/10 rounded">
+                    <div class="mono text-[10px] uppercase text-neutral-500 mb-4">Mandatory Action Protocol</div>
+                    <div id="mandate-output" class="text-lg leading-relaxed text-neutral-200">
+                        Baseline vigilence. Standard patrol protocols sufficient.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nutrient Cascade Section -->
+    <section class="py-24 px-6 md:px-12 bg-white/5 overflow-hidden relative">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div class="relative">
+                <div class="absolute -top-12 -left-12 w-64 h-64 bg-yellow-400/10 rounded-full blur-3xl"></div>
+                <h3 class="text-4xl font-bold mb-6 italic">Infrastructure as Predator</h3>
+                <p class="text-neutral-400 leading-relaxed mb-6">
+                    The 2026 spate coincided with the <strong>Malabar Fatberg</strong>—a "four-bus sized" blockage. Nutrient flushes trigger biological cascades. Bull sharks, optimized for zero-visibility and high-nitrogen plumes, arrive to "exploratory bite" in these sensory blind spots.
+                </p>
+                <ul class="space-y-4 mono text-xs uppercase tracking-tighter">
+                    <li class="flex gap-4 items-center text-neutral-300">
+                        <span class="w-2 h-2 bg-yellow-400"></span> 45mm Rainfall = Nutrient Cascade
+                    </li>
+                    <li class="flex gap-4 items-center text-neutral-300">
+                        <span class="w-2 h-2 bg-yellow-400"></span> Poo Balls = Visceral Signal of Failure
+                    </li>
+                    <li class="flex gap-4 items-center text-neutral-300">
+                        <span class="w-2 h-2 bg-yellow-400"></span> Sensory Advantage: Predator
+                    </li>
+                </ul>
+            </div>
+            <div class="glass p-8 border-red-500/20">
+                <div class="mb-4 text-red-500 mono text-xs font-bold tracking-[0.2em] uppercase underline decoration-2 underline-offset-8">Critical Causal Chain</div>
+                <div class="space-y-8 mt-12">
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 flex-shrink-0 bg-red-500 rounded-full flex items-center justify-center font-bold text-black">1</div>
+                        <div>
+                            <div class="font-bold uppercase text-sm">Infrastructure Failure</div>
+                            <div class="text-xs text-neutral-500 mt-1">Malabar Outfall Overflows / Fatberg Blockage</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 flex-shrink-0 bg-red-500 rounded-full flex items-center justify-center font-bold text-black">2</div>
+                        <div>
+                            <div class="font-bold uppercase text-sm">Biological Response</div>
+                            <div class="text-xs text-neutral-500 mt-1">Effluent attracts baitfish; apex predators follow scent plumes.</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 flex-shrink-0 bg-red-500 rounded-full flex items-center justify-center font-bold text-black">3</div>
+                        <div>
+                            <div class="font-bold uppercase text-sm">Sensory Blind Spot</div>
+                            <div class="text-xs text-neutral-500 mt-1">Turbidity renders drones/lifeguards blind. Human-Shark overlap peaks.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Mandate -->
+    <footer id="mandate" class="py-24 px-6 md:px-12 bg-black border-t border-white/10">
+        <div class="max-w-7xl mx-auto text-center md:text-left grid md:grid-cols-4 gap-12">
+            <div class="md:col-span-2">
+                <div class="flex items-center gap-2 mb-8">
+                    <div class="w-8 h-8 bg-yellow-400 rounded-sm flex items-center justify-center text-black font-extrabold text-xl italic">T</div>
+                    <span class="mono text-sm tracking-tighter font-bold uppercase">The Trinity Collective</span>
+                </div>
+                <h4 class="text-2xl font-bold italic mb-4">"Patterned by AI. Directed by You."</h4>
+                <p class="text-neutral-500 leading-relaxed max-w-md">
+                    We humans are still in command. Our ability to adapt our institutions at the speed of the weather is the ultimate test of modern cognition.
+                </p>
+            </div>
+            <div>
+                <h5 class="mono text-xs font-bold uppercase mb-6 text-yellow-400">Legal Authority</h5>
+                <ul class="space-y-4 text-xs mono text-neutral-400 uppercase tracking-widest">
+                    <li>S632 Local Govt Act</li>
+                    <li>S5M Civil Liability Act</li>
+                    <li>The Power of the Edge</li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="mono text-xs font-bold uppercase mb-6 text-yellow-400">Tactical Documents</h5>
+                <ul class="space-y-4 text-xs mono text-neutral-400 uppercase tracking-widest">
+                    <li>GOVNOW.HTML</li>
+                    <li>4NICO.HTML</li>
+                    <li>JDSTRAT-PRESTIGE</li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="mono text-[10px] text-neutral-600 uppercase">January 2026 // Sydney Australia // Critical Assessment</div>
+            <div class="mono text-[10px] text-neutral-600 uppercase flex gap-4">
+                <span>Simulation Without Surrender</span>
+                <span class="text-yellow-400">Live Status: Critical</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentTurbidity = 'Clear';
+        const rainInput = document.getElementById('rain-input');
+        const tempInput = document.getElementById('temp-input');
+        
+        const rainValDisplay = document.getElementById('rain-val');
+        const tempValDisplay = document.getElementById('temp-val');
+        const turbValDisplay = document.getElementById('turb-val');
+
+        const statusText = document.getElementById('status-text');
+        const statusIndicator = document.getElementById('status-indicator');
+        const statusContainer = document.getElementById('status-container');
+        const mandateOutput = document.getElementById('mandate-output');
+
+        function setTurbidity(val) {
+            currentTurbidity = val;
+            turbValDisplay.innerText = val;
+            updateSimulator();
+            
+            // Highlight button
+            document.querySelectorAll('.turb-btn').forEach(btn => {
+                if(btn.innerText.toLowerCase() === val.toLowerCase()) {
+                    btn.classList.add('bg-white', 'text-black');
+                } else {
+                    btn.classList.remove('bg-white', 'text-black');
+                }
+            });
+        }
+
+        function updateSimulator() {
+            const rain = parseInt(rainInput.value);
+            const temp = parseInt(tempInput.value);
+            
+            rainValDisplay.innerText = rain + 'mm';
+            tempValDisplay.innerText = temp + '°C';
+
+            let state = 'SAFE'; // SAFE, MEDIUM, CRITICAL
+
+            if (rain >= 45 && currentTurbidity === 'Opaque') {
+                state = 'CRITICAL';
+            } else if (rain >= 45 || temp >= 24 || currentTurbidity === 'Brackish') {
+                state = 'MEDIUM';
+            } else {
+                state = 'SAFE';
+            }
+
+            renderState(state, rain, temp);
+        }
+
+        function renderState(state, rain, temp) {
+            if (state === 'CRITICAL') {
+                statusText.innerText = "MANDATE ACTIVE";
+                statusText.className = "text-3xl font-extrabold uppercase tracking-tighter text-red-500";
+                statusIndicator.className = "w-12 h-12 rounded-full bg-red-500 shadow-[0_0_20px_rgba(239,68,68,0.6)] animate-pulse";
+                statusContainer.className = "mb-10 p-6 bg-red-950/20 rounded flex items-center justify-between transition-all duration-500 border border-red-500/30";
+                mandateOutput.innerHTML = `<span class="text-red-500 font-bold uppercase">IMMEDIATE ACTION MANDATED:</span> Extreme sensory blind spot detected. Rainfall of ${rain}mm has triggered estuarine flush. All swimmers must exit the water. Drone patrols suspended due to visual opacity. River mouth exclusion zones in effect.`;
+            } else if (state === 'MEDIUM') {
+                statusText.innerText = "ELEVATED RISK";
+                statusText.className = "text-3xl font-extrabold uppercase tracking-tighter text-yellow-400";
+                statusIndicator.className = "w-12 h-12 rounded-full bg-yellow-400 shadow-[0_0_20px_rgba(250,204,21,0.4)]";
+                statusContainer.className = "mb-10 p-6 bg-yellow-950/20 rounded flex items-center justify-between transition-all duration-500 border border-yellow-500/30";
+                mandateOutput.innerHTML = `<span class="text-yellow-400 font-bold uppercase">CAUTION MANDATED:</span> Shifting environmental variables. ${rain > 45 ? 'Heavy rainfall' : ''} ${temp >= 24 ? 'High water temp' : ''} conducive to predator activity. Avoid river mouths and deep channels. Visibility decreasing.`;
+            } else {
+                statusText.innerText = "SYSTEM ACTIVE";
+                statusText.className = "text-3xl font-extrabold uppercase tracking-tighter text-green-500";
+                statusIndicator.className = "w-12 h-12 rounded-full bg-green-500 shadow-[0_0_20px_rgba(34,197,94,0.4)]";
+                statusContainer.className = "mb-10 p-6 bg-neutral-800/50 rounded flex items-center justify-between transition-all duration-500 border border-white/5";
+                mandateOutput.innerHTML = "Baseline vigilance. No major environmental thresholds breached. Standard patrolled areas remain effective.";
+            }
+        }
+
+        rainInput.addEventListener('input', updateSimulator);
+        tempInput.addEventListener('input', updateSimulator);
+        
+        // Init
+        setTurbidity('Clear');
+        updateSimulator();
+    </script>
+</body>
+</html>

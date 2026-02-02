@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newcastle LGA: Calibrated Deployment Analysis</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Palette Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            bg: '#F8FAFC',       /* Cool Gray Background - Professional */
+                            card: '#FFFFFF',     /* White Card */
+                            text: '#334155',     /* Slate 700 */
+                            subtext: '#64748B',  /* Slate 500 */
+                            data: '#0F766E',     /* Teal - The Data/Go Signal */
+                            risk: '#6366F1',     /* Indigo - The Reflection/Safety Layer */
+                            warning: '#F59E0B',  /* Amber - Caution */
+                            border: '#E2E8F0',   /* Slate 200 */
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #F8FAFC;
+            color: #334155;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        .step-card {
+            transition: all 0.2s ease;
+        }
+        .step-card:hover {
+            border-color: #94A3B8;
+        }
+        .active-step {
+            border-color: #6366F1;
+            background-color: #EEF2FF;
+        }
+        /* Custom Range Slider */
+        input[type=range] {
+            -webkit-appearance: none; 
+            background: transparent; 
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #6366F1;
+            cursor: pointer;
+            margin-top: -6px; 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #CBD5E1;
+            border-radius: 2px;
+        }
+    </style>
+
+    <!-- Application Structure Plan:
+         1. Executive Summary: Framing the "Pivot" - Data provides the vector, we provide the steering.
+         2. Evolution Analysis: 3 Stages, culminating in "Calibrated Interface" (Balanced).
+         3. The Convergence Point (New): Interactive visualizer showing the trade-off between "Raw Speed" (Data) and "System Stability" (Reflection).
+         4. Operational Sandboxing: How we safely test high-intensity changes (4NICO protocol reframed).
+         5. Commercial Logic: The "Invisible Inflation" calculator (Retained as it was strong).
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+</head>
+<body class="antialiased pb-20">
+
+    <!-- Navigation -->
+    <nav class="w-full bg-white border-b border-brand-border sticky top-0 z-50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <span class="font-bold text-lg text-brand-text tracking-tight">Newcastle LGA <span class="font-normal text-brand-subtext">| Optimisation Pilot</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8 text-sm font-medium text-brand-subtext">
+                    <a href="#evolution" class="hover:text-brand-risk transition-colors">Evolution</a>
+                    <a href="#convergence" class="hover:text-brand-risk transition-colors">The Pivot</a>
+                    <a href="#sandboxing" class="hover:text-brand-risk transition-colors">Sandboxing</a>
+                </div>
+                <div class="flex items-center">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-medium bg-indigo-50 text-indigo-700 border border-indigo-100">
+                        Operational
+                    </span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
+
+        <!-- Intro Section -->
+        <section class="max-w-4xl mx-auto text-center space-y-4">
+            <h1 class="text-3xl md:text-4xl font-bold text-brand-text">
+                From Data Directive to <span class="text-brand-risk">Calibrated Action</span>
+            </h1>
+            <p class="text-lg text-brand-subtext leading-relaxed">
+                The data is clear on <em>where</em> we must go. Our role is to manage <em>how</em> we get there. 
+                We provide the necessary layer of risk management and reflection—"sandboxing" the intensity of AI 
+                to ensure it integrates safely with Council governance.
+            </p>
+        </section>
+
+        <!-- SECTION 1: Evolution (Refined) -->
+        <section id="evolution" class="bg-white rounded-xl shadow-sm border border-brand-border p-6 md:p-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                
+                <!-- Left: Narrative Flow -->
+                <div class="space-y-4">
+                    <h2 class="text-2xl font-bold text-brand-text mb-4">1. Evolution of the Interface</h2>
+                    
+                    <!-- Phase 1 -->
+                    <div id="phase1-card" class="step-card border border-brand-border rounded-lg p-5 cursor-pointer" onclick="updateEvolution(1)">
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="font-semibold text-brand-text">Phase 1: Innate Facilitation</h3>
+                            <span class="text-xs text-brand-subtext uppercase tracking-wider">Public-Private Pilot</span>
+                        </div>
+                        <p class="text-sm text-brand-subtext">Identifying friction. High energy, unstructured problem solving in the Energy & Housing zones.</p>
+                    </div>
+
+                    <!-- Phase 2 -->
+                    <div id="phase2-card" class="step-card border border-brand-border rounded-lg p-5 cursor-pointer" onclick="updateEvolution(2)">
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="font-semibold text-brand-text">Phase 2: Relational Insight</h3>
+                            <span class="text-xs text-brand-subtext uppercase tracking-wider">The Collective</span>
+                        </div>
+                        <p class="text-sm text-brand-subtext">Recognizing that technical errors (like S138 lags) are often symptoms of strained human processes.</p>
+                    </div>
+
+                    <!-- Phase 3 -->
+                    <div id="phase3-card" class="step-card active-step border border-brand-risk rounded-lg p-5 cursor-pointer" onclick="updateEvolution(3)">
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="font-semibold text-brand-text">Phase 3: The Calibrated Interface</h3>
+                            <span class="text-xs text-brand-risk font-bold uppercase tracking-wider">Commercial Target</span>
+                        </div>
+                        <p class="text-sm text-brand-subtext">Deploying AI agents with a "Human-in-the-Loop" safety layer. High intensity execution, governed by reflective pause.</p>
+                    </div>
+                </div>
+
+                <!-- Right: Chart -->
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h4 class="text-xs font-bold text-center text-brand-subtext uppercase mb-4">Operational Balance Profile</h4>
+                    <div class="chart-container">
+                        <canvas id="evolutionChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: The Convergence Point (The Pivot) -->
+        <section id="convergence" class="bg-white rounded-xl shadow-sm border border-brand-border p-6 md:p-8">
+            <div class="mb-8 max-w-3xl">
+                <h2 class="text-2xl font-bold text-brand-text">2. The Convergence Point</h2>
+                <p class="mt-2 text-brand-subtext">
+                    Data signals a need for speed, but institutional reality demands stability. 
+                    We sit at the pivot point, applying "Brakes and Steering" to the raw acceleration of AI.
+                    <span class="block mt-2 text-xs font-mono text-brand-risk bg-indigo-50 inline-block px-2 py-1 rounded">Adjust the slider to see the effect of the "Reflective Layer".</span>
+                </p>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-8">
+                
+                <!-- Controls -->
+                <div class="w-full md:w-1/3 bg-gray-50 p-6 rounded-lg border border-brand-border flex flex-col justify-center">
+                    <label class="font-bold text-brand-text text-sm mb-4">Level of Risk Management (Reflection)</label>
+                    
+                    <div class="flex justify-between text-xs text-brand-subtext mb-2">
+                        <span>Raw Data (Unchecked)</span>
+                        <span>Full Sandbox</span>
+                    </div>
+                    
+                    <input type="range" id="reflectionSlider" min="0" max="100" value="70" class="w-full mb-6" oninput="updateConvergence()">
+                    
+                    <div id="status-box" class="p-4 rounded border text-sm transition-colors">
+                        <div class="font-bold mb-1" id="status-title">Calibrated</div>
+                        <div class="text-xs opacity-90" id="status-desc">High velocity maintained, but key risks are caught in the sandbox.</div>
+                    </div>
+                </div>
+
+                <!-- Visualizer -->
+                <div class="w-full md:w-2/3 relative h-64 bg-brand-bg rounded-lg border border-brand-border overflow-hidden p-4">
+                    <!-- Tracks -->
+                    <div class="absolute top-1/2 left-4 right-4 h-1 bg-gray-200 -translate-y-1/2"></div>
+                    
+                    <!-- Elements -->
+                    <div class="relative h-full w-full flex items-center">
+                        
+                        <!-- The Data (Teal Ball) -->
+                        <div id="data-orb" class="absolute w-12 h-12 bg-teal-600 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg transition-all duration-700 ease-in-out left-0 z-10">
+                            DATA
+                        </div>
+
+                        <!-- The Filter/Sandbox (Indigo Bar) -->
+                        <div id="filter-bar" class="absolute h-32 w-4 bg-indigo-500 rounded opacity-80 transition-all duration-300 left-[60%] top-1/2 -translate-y-1/2 shadow-lg z-0"></div>
+
+                        <!-- The Result (Ghost Ball) -->
+                        <div id="result-orb" class="absolute w-12 h-12 border-2 border-teal-600 border-dashed rounded-full flex items-center justify-center text-teal-700 text-xs font-bold transition-all duration-700 ease-in-out left-[90%] opacity-0">
+                            VALUE
+                        </div>
+                    </div>
+                    
+                    <div class="absolute bottom-2 left-4 text-xs text-gray-400">Input: Council Data</div>
+                    <div class="absolute bottom-2 right-4 text-xs text-gray-400">Output: Action</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: Operational Sandboxing (The Protocol) -->
+        <section id="sandboxing" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="md:col-span-3">
+                <h2 class="text-2xl font-bold text-brand-text">3. Operational Sandboxing</h2>
+                <p class="text-brand-subtext mt-2 max-w-3xl">
+                    We don't just "deploy AI". We build a containment field (Sandbox) where the data's recommendations are tested against environmental realities before becoming policy.
+                </p>
+            </div>
+
+            <!-- Card 1: Data Scan -->
+            <div class="bg-white p-6 rounded-lg border-t-4 border-teal-500 shadow-sm">
+                <div class="text-teal-600 font-bold mb-2 text-sm uppercase">Step 1: The Vector</div>
+                <h3 class="text-lg font-bold text-brand-text mb-2">Automated Detection</h3>
+                <p class="text-sm text-brand-subtext">
+                    The AI scans the S138 backlog or housing approvals, identifying bottlenecks purely on quantitative logic. It says "Go Here."
+                </p>
+            </div>
+
+            <!-- Card 2: The Sandbox (Pivot) -->
+            <div class="bg-indigo-50 p-6 rounded-lg border-t-4 border-indigo-500 shadow-sm">
+                <div class="text-indigo-600 font-bold mb-2 text-sm uppercase">Step 2: The Sandbox</div>
+                <h3 class="text-lg font-bold text-brand-text mb-2">Reflective Review</h3>
+                <p class="text-sm text-brand-subtext">
+                    Before actioning, the Human Agent reviews the context. Is there a weather event? Is there a political nuance? The "Sandbox" allows us to simulate the outcome safely.
+                </p>
+            </div>
+
+            <!-- Card 3: Execution -->
+            <div class="bg-white p-6 rounded-lg border-t-4 border-gray-400 shadow-sm">
+                <div class="text-gray-600 font-bold mb-2 text-sm uppercase">Step 3: Release</div>
+                <h3 class="text-lg font-bold text-brand-text mb-2">Calibrated Execution</h3>
+                <p class="text-sm text-brand-subtext">
+                    Only after passing the sandbox check is the data released as an actionable instruction. This prevents "Institutional Theatre" and errors.
+                </p>
+            </div>
+        </section>
+
+        <!-- SECTION 4: Value (Invisible Inflation) -->
+        <section id="value" class="bg-white rounded-xl shadow-sm border border-brand-border p-6 md:p-8">
+            <div class="flex items-center mb-6">
+                <h2 class="text-2xl font-bold text-brand-text mr-4">4. Stopping the "Invisible Inflation"</h2>
+                <span class="px-3 py-1 rounded-full bg-red-100 text-red-700 text-xs font-bold">Why we do this</span>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <p class="text-brand-subtext mb-6">
+                        Without our "Calibrated Interface", delays like the S138 lag (4-6 weeks) negate the benefits of any digital system. 
+                        We enter to stop the bleed of time, which is effectively a bleed of capital.
+                    </p>
+                    <div class="p-4 bg-brand-bg rounded border border-brand-border">
+                        <label class="block text-xs font-bold text-brand-subtext uppercase mb-1">Portfolio Value ($M)</label>
+                        <input type="number" id="portfolioInput" value="50" class="w-full p-2 border border-gray-300 rounded mb-4" oninput="calcInflation()">
+                        
+                        <label class="block text-xs font-bold text-brand-subtext uppercase mb-1">Delay Weeks Saved</label>
+                        <input type="range" id="weeksInput" min="1" max="10" value="4" class="w-full mb-1" oninput="calcInflation()">
+                        <div class="text-right text-xs text-brand-subtext" id="weeksDisplay">4 Weeks</div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col justify-center items-center bg-brand-bg rounded border border-brand-border p-6">
+                    <div class="text-sm text-brand-subtext uppercase tracking-widest mb-2">Capital Unlocked</div>
+                    <div class="text-4xl font-bold text-brand-text mb-2" id="capitalDisplay">$0</div>
+                    <div class="text-xs text-brand-subtext text-center max-w-xs">
+                        Value returned to the local economy by removing the "Invisible Inflation" of delay.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mt-12 border-t border-brand-border pt-8 text-center">
+            <p class="text-xs text-brand-subtext">Contractis Newcastle Pilot • Calibrated Deployment Model</p>
+        </footer>
+
+    </main>
+
+    <!-- Logic -->
+    <script>
+        // --- EVOLUTION DATA ---
+        const evolutionData = {
+            1: {
+                data: [80, 20, 10, 30, 20], // High Energy, Low Stability
+                label: "Phase 1: High Energy, Low Structure"
+            },
+            2: {
+                data: [60, 50, 60, 70, 40], // Increasing Insight
+                label: "Phase 2: Relational Awareness"
+            },
+            3: {
+                data: [85, 90, 80, 85, 90], // Balanced High Performance
+                label: "Phase 3: Calibrated Performance"
+            }
+        };
+
+        const ctx = document.getElementById('evolutionChart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['Operational Intensity', 'Risk Management', 'Data Accuracy', 'Human Insight', 'System Stability'],
+                datasets: [{
+                    label: 'Metric Score',
+                    data: evolutionData[3].data,
+                    backgroundColor: 'rgba(99, 102, 241, 0.2)', // Indigo tint
+                    borderColor: '#6366F1',
+                    pointBackgroundColor: '#6366F1',
+                    pointBorderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: { color: '#E2E8F0' },
+                        grid: { color: '#E2E8F0' },
+                        pointLabels: { font: { size: 10, family: 'Inter' }, color: '#64748B' },
+                        suggestedMin: 0,
+                        suggestedMax: 100,
+                        ticks: { display: false }
+                    }
+                },
+                plugins: { legend: { display: false } }
+            }
+        });
+
+        function updateEvolution(phase) {
+            // UI Toggle
+            [1, 2, 3].forEach(p => {
+                const el = document.getElementById(`phase${p}-card`);
+                if(p === phase) {
+                    el.classList.add('active-step', 'border-brand-risk');
+                    el.classList.remove('border-brand-border');
+                } else {
+                    el.classList.remove('active-step', 'border-brand-risk');
+                    el.classList.add('border-brand-border');
+                }
+            });
+            // Chart Update
+            chart.data.datasets[0].data = evolutionData[phase].data;
+            chart.update();
+        }
+
+        // --- CONVERGENCE VISUALIZER ---
+        function updateConvergence() {
+            const slider = document.getElementById('reflectionSlider');
+            const val = parseInt(slider.value);
+            const statusBox = document.getElementById('status-box');
+            const title = document.getElementById('status-title');
+            const desc = document.getElementById('status-desc');
+            const filterBar = document.getElementById('filter-bar');
+            const dataOrb = document.getElementById('data-orb');
+            const resultOrb = document.getElementById('result-orb');
+
+            // Visual elements
+            filterBar.style.opacity = val / 100;
+            
+            // Logic States
+            if (val < 30) {
+                // Too Risky
+                statusBox.className = "p-4 rounded border text-sm transition-colors bg-red-50 border-red-200 text-red-800";
+                title.innerText = "Unchecked Velocity";
+                desc.innerText = "Data moves too fast for the system. High risk of 'Institutional Theatre' or error.";
+                
+                // Animation Logic
+                dataOrb.style.left = "90%"; // Shoots through
+                dataOrb.style.backgroundColor = "#EF4444"; // Red
+                resultOrb.style.opacity = "0";
+
+            } else if (val > 80) {
+                // Stagnation
+                statusBox.className = "p-4 rounded border text-sm transition-colors bg-yellow-50 border-yellow-200 text-yellow-800";
+                title.innerText = "Over-Regulation";
+                desc.innerText = "Too much reflection stalls the data. Opportunity cost increases.";
+                
+                // Animation Logic
+                dataOrb.style.left = "55%"; // Stops at filter
+                dataOrb.style.backgroundColor = "#F59E0B"; // Yellow
+                resultOrb.style.opacity = "0";
+
+            } else {
+                // Sweet Spot
+                statusBox.className = "p-4 rounded border text-sm transition-colors bg-indigo-50 border-indigo-200 text-indigo-800";
+                title.innerText = "Calibrated Convergence";
+                desc.innerText = "Optimal balance. Data is filtered through the sandbox, ensuring safe, high-value execution.";
+                
+                // Animation Logic
+                dataOrb.style.left = "55%"; // Hits filter
+                dataOrb.style.backgroundColor = "#0F766E"; // Teal
+                setTimeout(() => {
+                    resultOrb.style.opacity = "1"; // Value appears
+                }, 300);
+            }
+        }
+
+        // --- INFLATION CALCULATOR ---
+        function calcInflation() {
+            const portfolio = document.getElementById('portfolioInput').value * 1000000;
+            const weeks = document.getElementById('weeksInput').value;
+            
+            document.getElementById('weeksDisplay').innerText = weeks + " Weeks";
+
+            // Simple Cost of Capital Logic (5% annual)
+            const annualRate = 0.05;
+            const savings = (portfolio * annualRate * weeks) / 52;
+
+            const formatter = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                maximumFractionDigits: 0
+            });
+
+            document.getElementById('capitalDisplay').innerText = formatter.format(savings);
+        }
+
+        // Init
+        updateEvolution(3);
+        calcInflation();
+        setTimeout(updateConvergence, 500); // Trigger initial visual state
+
+    </script>
+</body>
+</html>

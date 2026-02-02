@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<!-- saved from url=(0080)file:///C:/Users/John%20Dunn/OneDrive/GitHub/TRIUNE/trinity/protocols/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Australia Pandemic Response: Trust &amp; Readiness Dashboard</title>
+    <script src="./Australia Pandemic Response_ Trust &amp; Readiness Dashboard_files/saved_resource"></script>
+    <script src="./Australia Pandemic Response_ Trust &amp; Readiness Dashboard_files/chart.js.download"></script>
+    <style>
+        /* Custom Chart Container Styling for Responsiveness */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        
+        /* Custom Scrollbar */
+        .custom-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 3px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+
+        /* Animation Classes */
+        .fade-in { animation: fadeIn 0.5s ease-in-out; }
+        .slide-up { animation: slideUp 0.4s ease-out; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        body {
+            background-color: #fdfbf7; /* Warm neutral */
+            color: #1f2937;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+    </style>
+    <!-- Chosen Palette: Warm Neutrals & Tactical Accents (Orange/Red/Blue) -->
+    <!-- Application Structure Plan: 
+         1. Review Findings (Memory): What went wrong?
+         2. Current Threat (Perception): What is happening now?
+         3. Gap Analysis (Logic): Where are we failing?
+         4. Trust & Communication (Social): *NEW* - How do we speak and listen to rebuild authority?
+         5. Triune Strategy (Synthesis): Immediate fixes.
+    -->
+    <!-- Visualization & Content Choices:
+         1. Advice Balance Chart (Bar): Goal -> Compare 2020 vs Ideal sources of advice. Method -> Chart.js.
+         2. Communication Simulator (Interactive UI): Goal -> Teach better communication. Method -> JS Logic.
+         3. Radar/Donut/Table maintained from previous version for continuity.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.right-0{right:0px}.top-0{top:0px}.-left-\[9px\]{left:-9px}.z-10{z-index:10}.z-50{z-index:50}.col-span-1{grid-column:span 1 / span 1}.mx-auto{margin-left:auto;margin-right:auto}.-mr-3{margin-right:-0.75rem}.-mt-3{margin-top:-0.75rem}.mb-1{margin-bottom:0.25rem}.mb-10{margin-bottom:2.5rem}.mb-12{margin-bottom:3rem}.mb-16{margin-bottom:4rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mr-2{margin-right:0.5rem}.mt-10{margin-top:2.5rem}.mt-12{margin-top:3rem}.mt-2{margin-top:0.5rem}.mt-3{margin-top:0.75rem}.mt-4{margin-top:1rem}.mt-5{margin-top:1.25rem}.mt-6{margin-top:1.5rem}.block{display:block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-12{height:3rem}.h-16{height:4rem}.h-2\.5{height:0.625rem}.h-3{height:0.75rem}.h-48{height:12rem}.h-4{height:1rem}.w-12{width:3rem}.w-3{width:0.75rem}.w-full{width:100%}.w-4{width:1rem}.min-w-full{min-width:100%}.max-w-2xl{max-width:42rem}.max-w-3xl{max-width:48rem}.max-w-7xl{max-width:80rem}.max-w-lg{max-width:32rem}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite}.cursor-pointer{cursor:pointer}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-10{gap:2.5rem}.gap-8{gap:2rem}.space-x-2 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.5rem * var(--tw-space-x-reverse));margin-left:calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-4 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1rem * var(--tw-space-x-reverse));margin-left:calc(1rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-6 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1.5rem * var(--tw-space-x-reverse));margin-left:calc(1.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.divide-y > :not([hidden]) ~ :not([hidden]){--tw-divide-y-reverse:0;border-top-width:calc(1px * calc(1 - var(--tw-divide-y-reverse)));border-bottom-width:calc(1px * var(--tw-divide-y-reverse))}.divide-stone-100 > :not([hidden]) ~ :not([hidden]){--tw-divide-opacity:1;border-color:rgb(245 245 244 / var(--tw-divide-opacity, 1))}.divide-stone-200 > :not([hidden]) ~ :not([hidden]){--tw-divide-opacity:1;border-color:rgb(231 229 228 / var(--tw-divide-opacity, 1))}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-md{border-radius:0.375rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-y{border-top-width:1px;border-bottom-width:1px}.border-b{border-bottom-width:1px}.border-b-2{border-bottom-width:2px}.border-l-2{border-left-width:2px}.border-l-4{border-left-width:4px}.border-t{border-top-width:1px}.border-blue-100{--tw-border-opacity:1;border-color:rgb(219 234 254 / var(--tw-border-opacity, 1))}.border-blue-500{--tw-border-opacity:1;border-color:rgb(59 130 246 / var(--tw-border-opacity, 1))}.border-green-500{--tw-border-opacity:1;border-color:rgb(34 197 94 / var(--tw-border-opacity, 1))}.border-orange-100{--tw-border-opacity:1;border-color:rgb(255 237 213 / var(--tw-border-opacity, 1))}.border-orange-200{--tw-border-opacity:1;border-color:rgb(254 215 170 / var(--tw-border-opacity, 1))}.border-orange-500{--tw-border-opacity:1;border-color:rgb(249 115 22 / var(--tw-border-opacity, 1))}.border-red-200{--tw-border-opacity:1;border-color:rgb(254 202 202 / var(--tw-border-opacity, 1))}.border-stone-100{--tw-border-opacity:1;border-color:rgb(245 245 244 / var(--tw-border-opacity, 1))}.border-stone-200{--tw-border-opacity:1;border-color:rgb(231 229 228 / var(--tw-border-opacity, 1))}.border-stone-300{--tw-border-opacity:1;border-color:rgb(214 211 209 / var(--tw-border-opacity, 1))}.border-stone-600{--tw-border-opacity:1;border-color:rgb(87 83 78 / var(--tw-border-opacity, 1))}.border-stone-700{--tw-border-opacity:1;border-color:rgb(68 64 60 / var(--tw-border-opacity, 1))}.border-transparent{border-color:transparent}.border-white{--tw-border-opacity:1;border-color:rgb(255 255 255 / var(--tw-border-opacity, 1))}.bg-blue-100{--tw-bg-opacity:1;background-color:rgb(219 234 254 / var(--tw-bg-opacity, 1))}.bg-blue-50{--tw-bg-opacity:1;background-color:rgb(239 246 255 / var(--tw-bg-opacity, 1))}.bg-blue-500{--tw-bg-opacity:1;background-color:rgb(59 130 246 / var(--tw-bg-opacity, 1))}.bg-blue-600{--tw-bg-opacity:1;background-color:rgb(37 99 235 / var(--tw-bg-opacity, 1))}.bg-orange-100{--tw-bg-opacity:1;background-color:rgb(255 237 213 / var(--tw-bg-opacity, 1))}.bg-orange-50{--tw-bg-opacity:1;background-color:rgb(255 247 237 / var(--tw-bg-opacity, 1))}.bg-orange-600{--tw-bg-opacity:1;background-color:rgb(234 88 12 / var(--tw-bg-opacity, 1))}.bg-red-100{--tw-bg-opacity:1;background-color:rgb(254 226 226 / var(--tw-bg-opacity, 1))}.bg-red-500{--tw-bg-opacity:1;background-color:rgb(239 68 68 / var(--tw-bg-opacity, 1))}.bg-stone-100{--tw-bg-opacity:1;background-color:rgb(245 245 244 / var(--tw-bg-opacity, 1))}.bg-stone-100\/90{background-color:rgb(245 245 244 / 0.9)}.bg-stone-200{--tw-bg-opacity:1;background-color:rgb(231 229 228 / var(--tw-bg-opacity, 1))}.bg-stone-50{--tw-bg-opacity:1;background-color:rgb(250 250 249 / var(--tw-bg-opacity, 1))}.bg-stone-700{--tw-bg-opacity:1;background-color:rgb(68 64 60 / var(--tw-bg-opacity, 1))}.bg-stone-800{--tw-bg-opacity:1;background-color:rgb(41 37 36 / var(--tw-bg-opacity, 1))}.bg-stone-900{--tw-bg-opacity:1;background-color:rgb(28 25 23 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-yellow-100{--tw-bg-opacity:1;background-color:rgb(254 249 195 / var(--tw-bg-opacity, 1))}.bg-stone-400{--tw-bg-opacity:1;background-color:rgb(168 162 158 / var(--tw-bg-opacity, 1))}.p-4{padding:1rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.px-8{padding-left:2rem;padding-right:2rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pb-2{padding-bottom:0.5rem}.pb-8{padding-bottom:2rem}.pl-4{padding-left:1rem}.pt-20{padding-top:5rem}.pt-4{padding-top:1rem}.pb-6{padding-bottom:1.5rem}.pl-6{padding-left:1.5rem}.text-left{text-align:left}.text-center{text-align:center}.font-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.italic{font-style:italic}.leading-8{line-height:2rem}.leading-5{line-height:1.25rem}.tracking-tight{letter-spacing:-0.025em}.tracking-wide{letter-spacing:0.025em}.tracking-wider{letter-spacing:0.05em}.tracking-widest{letter-spacing:0.1em}.text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235 / var(--tw-text-opacity, 1))}.text-orange-400{--tw-text-opacity:1;color:rgb(251 146 60 / var(--tw-text-opacity, 1))}.text-orange-600{--tw-text-opacity:1;color:rgb(234 88 12 / var(--tw-text-opacity, 1))}.text-orange-700{--tw-text-opacity:1;color:rgb(194 65 12 / var(--tw-text-opacity, 1))}.text-orange-900{--tw-text-opacity:1;color:rgb(124 45 18 / var(--tw-text-opacity, 1))}.text-red-400{--tw-text-opacity:1;color:rgb(248 113 113 / var(--tw-text-opacity, 1))}.text-red-600{--tw-text-opacity:1;color:rgb(220 38 38 / var(--tw-text-opacity, 1))}.text-red-800{--tw-text-opacity:1;color:rgb(153 27 27 / var(--tw-text-opacity, 1))}.text-stone-100{--tw-text-opacity:1;color:rgb(245 245 244 / var(--tw-text-opacity, 1))}.text-stone-200{--tw-text-opacity:1;color:rgb(231 229 228 / var(--tw-text-opacity, 1))}.text-stone-300{--tw-text-opacity:1;color:rgb(214 211 209 / var(--tw-text-opacity, 1))}.text-stone-400{--tw-text-opacity:1;color:rgb(168 162 158 / var(--tw-text-opacity, 1))}.text-stone-500{--tw-text-opacity:1;color:rgb(120 113 108 / var(--tw-text-opacity, 1))}.text-stone-600{--tw-text-opacity:1;color:rgb(87 83 78 / var(--tw-text-opacity, 1))}.text-stone-700{--tw-text-opacity:1;color:rgb(68 64 60 / var(--tw-text-opacity, 1))}.text-stone-800{--tw-text-opacity:1;color:rgb(41 37 36 / var(--tw-text-opacity, 1))}.text-stone-900{--tw-text-opacity:1;color:rgb(28 25 23 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-yellow-600{--tw-text-opacity:1;color:rgb(202 138 4 / var(--tw-text-opacity, 1))}.text-orange-800{--tw-text-opacity:1;color:rgb(154 52 18 / var(--tw-text-opacity, 1))}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.shadow{--tw-shadow:0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.backdrop-blur{--tw-backdrop-blur:blur(8px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-1000{transition-duration:1000ms}.duration-300{transition-duration:300ms}.selection\:bg-orange-200 *::selection{--tw-bg-opacity:1;background-color:rgb(254 215 170 / var(--tw-bg-opacity, 1))}.selection\:text-orange-900 *::selection{--tw-text-opacity:1;color:rgb(124 45 18 / var(--tw-text-opacity, 1))}.selection\:bg-orange-200::selection{--tw-bg-opacity:1;background-color:rgb(254 215 170 / var(--tw-bg-opacity, 1))}.selection\:text-orange-900::selection{--tw-text-opacity:1;color:rgb(124 45 18 / var(--tw-text-opacity, 1))}.hover\:border-blue-500:hover{--tw-border-opacity:1;border-color:rgb(59 130 246 / var(--tw-border-opacity, 1))}.hover\:border-red-500:hover{--tw-border-opacity:1;border-color:rgb(239 68 68 / var(--tw-border-opacity, 1))}.hover\:border-stone-500:hover{--tw-border-opacity:1;border-color:rgb(120 113 108 / var(--tw-border-opacity, 1))}.hover\:border-yellow-500:hover{--tw-border-opacity:1;border-color:rgb(234 179 8 / var(--tw-border-opacity, 1))}.hover\:border-orange-500:hover{--tw-border-opacity:1;border-color:rgb(249 115 22 / var(--tw-border-opacity, 1))}.hover\:bg-blue-700:hover{--tw-bg-opacity:1;background-color:rgb(29 78 216 / var(--tw-bg-opacity, 1))}.hover\:bg-blue-900\/30:hover{background-color:rgb(30 58 138 / 0.3)}.hover\:bg-orange-200:hover{--tw-bg-opacity:1;background-color:rgb(254 215 170 / var(--tw-bg-opacity, 1))}.hover\:bg-orange-700:hover{--tw-bg-opacity:1;background-color:rgb(194 65 12 / var(--tw-bg-opacity, 1))}.hover\:bg-stone-300:hover{--tw-bg-opacity:1;background-color:rgb(214 211 209 / var(--tw-bg-opacity, 1))}.hover\:bg-stone-50:hover{--tw-bg-opacity:1;background-color:rgb(250 250 249 / var(--tw-bg-opacity, 1))}.hover\:bg-stone-700:hover{--tw-bg-opacity:1;background-color:rgb(68 64 60 / var(--tw-bg-opacity, 1))}.hover\:bg-orange-50:hover{--tw-bg-opacity:1;background-color:rgb(255 247 237 / var(--tw-bg-opacity, 1))}.hover\:text-orange-600:hover{--tw-text-opacity:1;color:rgb(234 88 12 / var(--tw-text-opacity, 1))}.hover\:text-stone-800:hover{--tw-text-opacity:1;color:rgb(41 37 36 / var(--tw-text-opacity, 1))}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.group:hover .group-hover\:bg-blue-600{--tw-bg-opacity:1;background-color:rgb(37 99 235 / var(--tw-bg-opacity, 1))}.group:hover .group-hover\:bg-red-600{--tw-bg-opacity:1;background-color:rgb(220 38 38 / var(--tw-bg-opacity, 1))}.group:hover .group-hover\:bg-yellow-600{--tw-bg-opacity:1;background-color:rgb(202 138 4 / var(--tw-bg-opacity, 1))}.group:hover .group-hover\:text-blue-300{--tw-text-opacity:1;color:rgb(147 197 253 / var(--tw-text-opacity, 1))}.group:hover .group-hover\:text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}@media (min-width: 640px){.sm\:mx-auto{margin-left:auto;margin-right:auto}.sm\:ml-3{margin-left:0.75rem}.sm\:mt-0{margin-top:0px}.sm\:mt-12{margin-top:3rem}.sm\:mt-5{margin-top:1.25rem}.sm\:mt-8{margin-top:2rem}.sm\:flex{display:flex}.sm\:max-w-xl{max-width:36rem}.sm\:justify-center{justify-content:center}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:pb-16{padding-bottom:4rem}.sm\:text-center{text-align:center}.sm\:text-4xl{font-size:2.25rem;line-height:2.5rem}.sm\:text-5xl{font-size:3rem;line-height:1}.sm\:text-lg{font-size:1.125rem;line-height:1.75rem}}@media (min-width: 768px){.md\:mt-16{margin-top:4rem}.md\:mt-5{margin-top:1.25rem}.md\:flex{display:flex}.md\:hidden{display:none}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:py-4{padding-top:1rem;padding-bottom:1rem}.md\:pb-20{padding-bottom:5rem}.md\:text-6xl{font-size:3.75rem;line-height:1}.md\:text-lg{font-size:1.125rem;line-height:1.75rem}.md\:text-xl{font-size:1.25rem;line-height:1.75rem}}@media (min-width: 1024px){.lg\:absolute{position:absolute}.lg\:inset-y-0{top:0px;bottom:0px}.lg\:right-0{right:0px}.lg\:col-span-2{grid-column:span 2 / span 2}.lg\:mx-0{margin-left:0px;margin-right:0px}.lg\:mx-auto{margin-left:auto;margin-right:auto}.lg\:mt-20{margin-top:5rem}.lg\:w-1\/2{width:50%}.lg\:w-full{width:100%}.lg\:max-w-2xl{max-width:42rem}.lg\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.lg\:justify-start{justify-content:flex-start}.lg\:p-10{padding:2.5rem}.lg\:px-8{padding-left:2rem;padding-right:2rem}.lg\:pb-28{padding-bottom:7rem}.lg\:text-left{text-align:left}.lg\:text-center{text-align:center}}@media (min-width: 1280px){.xl\:mt-28{margin-top:7rem}.xl\:inline{display:inline}.xl\:pb-32{padding-bottom:8rem}}</style></head>
+<body class="bg-stone-50 text-stone-800 antialiased selection:bg-orange-200 selection:text-orange-900">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-stone-100/90 backdrop-blur border-b border-stone-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold tracking-tight text-stone-800">Pandemic<span class="text-orange-600">Response</span>Watch</span>
+                </div>
+                <div class="hidden md:flex space-x-6 items-center">
+                    <button onclick="scrollToSection(&#39;retrospective&#39;)" class="text-stone-600 hover:text-orange-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Review</button>
+                    <button onclick="scrollToSection(&#39;current-threat&#39;)" class="text-stone-600 hover:text-orange-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Threat</button>
+                    <button onclick="scrollToSection(&#39;gap-analysis&#39;)" class="text-stone-600 hover:text-orange-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Gaps</button>
+                    <button onclick="scrollToSection(&#39;trust-comms&#39;)" class="text-stone-600 hover:text-orange-600 px-3 py-2 rounded-md text-sm font-medium transition-colors border-b-2 border-orange-200">Trust &amp; Comms</button>
+                    <button onclick="scrollToSection(&#39;triune-fix&#39;)" class="bg-stone-800 text-white hover:bg-stone-700 px-4 py-2 rounded-full text-sm font-medium transition-colors shadow-md">Strategy</button>
+                </div>
+                <!-- Mobile menu button stub -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-stone-500 hover:text-stone-800 focus:outline-none">
+                        <span class="text-2xl">☰</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="relative bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32 pt-20 px-4 sm:px-6 lg:px-8">
+                <main class="mt-10 mx-auto max-w-7xl sm:mt-12 md:mt-16 lg:mt-20 xl:mt-28">
+                    <div class="sm:text-center lg:text-left">
+                        <h1 class="text-4xl tracking-tight font-extrabold text-stone-900 sm:text-5xl md:text-6xl">
+                            <span class="block xl:inline">Australia's Response:</span>
+                            <span class="block text-orange-600 xl:inline">Trust, Truth &amp; Action</span>
+                        </h1>
+                        <p class="mt-3 text-base text-stone-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                            An interactive analysis of the "Fault Lines" review, comparing past failures with current readiness. Explore how <strong>trust</strong> and <strong>communication</strong> are the new frontline defense.
+                        </p>
+                        <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                            <div class="rounded-md shadow">
+                                <a href="file:///C:/Users/John%20Dunn/OneDrive/GitHub/TRIUNE/trinity/protocols/index.html#trust-comms" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 md:py-4 md:text-lg transition-all">
+                                    The Trust Architecture
+                                </a>
+                            </div>
+                            <div class="mt-3 sm:mt-0 sm:ml-3">
+                                <a href="file:///C:/Users/John%20Dunn/OneDrive/GitHub/TRIUNE/trinity/protocols/index.html#gap-analysis" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-orange-700 bg-orange-100 hover:bg-orange-200 md:py-4 md:text-lg transition-all">
+                                    Analyze Gaps
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 bg-stone-50 flex items-center justify-center">
+            <!-- Radar Chart: Readiness Score -->
+            <div class="w-full max-w-lg p-6">
+                <h3 class="text-center text-sm font-semibold text-stone-500 mb-4 uppercase tracking-wider">Readiness Assessment Radar</h3>
+                <div class="chart-container bg-white rounded-xl shadow-lg p-4 border border-stone-100">
+                    <canvas id="readinessRadar" width="646" height="475" style="display: block; box-sizing: border-box; height: 316.7px; width: 430.7px;"></canvas>
+                </div>
+                <p class="text-center text-xs text-stone-400 mt-2">Comparison: 2020 Capability vs. 2026 Recommended State</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 1: Retrospective (The Review) -->
+    <section id="retrospective" class="py-16 bg-stone-50 border-t border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center mb-12">
+                <h2 class="text-base text-orange-600 font-semibold tracking-wide uppercase">Historical Context</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-stone-900 sm:text-4xl">
+                    Key Findings: The "Fault Lines" Review
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-stone-500 lg:mx-auto">
+                    Independent reviews highlighted critical failures in governance, equity, and procurement.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Interactive List -->
+                <div class="col-span-1 bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden">
+                    <div class="p-4 bg-stone-100 border-b border-stone-200">
+                        <h3 class="font-bold text-stone-700">Identified Systemic Failures</h3>
+                    </div>
+                    <ul class="divide-y divide-stone-100" id="findingsList">
+                        <!-- JS populated -->
+                    <li class="p-4 hover:bg-orange-50 cursor-pointer transition-colors border-l-4 border-transparent hover:border-orange-500"><h4 class="text-sm font-medium text-stone-900">Governance Friction</h4></li><li class="p-4 hover:bg-orange-50 cursor-pointer transition-colors border-l-4 border-transparent hover:border-orange-500"><h4 class="text-sm font-medium text-stone-900">The Equity Gap</h4></li><li class="p-4 hover:bg-orange-50 cursor-pointer transition-colors border-l-4 border-transparent hover:border-orange-500"><h4 class="text-sm font-medium text-stone-900">Communication Failure</h4></li></ul>
+                </div>
+
+                <!-- Detail View & Chart -->
+                <div class="col-span-1 lg:col-span-2 flex flex-col space-y-6">
+                    <div class="bg-white rounded-xl shadow-sm border border-stone-200 p-6 transition-all duration-300" id="findingDetailPanel">
+                        <h3 class="text-2xl font-bold text-stone-800 mb-2" id="detailTitle">Governance Friction</h3>
+                        <p class="text-stone-600 mb-4" id="detailText">No clear 'Control Tower' for national resource allocation caused state rivalries.</p>
+                        
+                        <div class="chart-container" id="impactChartContainer">
+                            <canvas id="impactChart" width="900" height="525" style="display: block; box-sizing: border-box; height: 350px; width: 600px;"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Current Threat & Gov Response -->
+    <section id="current-threat" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-10">
+                <h2 class="text-base text-orange-600 font-semibold tracking-wide uppercase">Real-Time Situation</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-stone-900 sm:text-4xl">
+                    The Emerging Pathogen Profile
+                </p>
+                <p class="mt-4 max-w-3xl text-lg text-stone-500">
+                    Comparing the threat profile of the new "Indian Pathogen" against the government's *immediate* actions.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+                
+                <!-- Threat Profile Card -->
+                <div class="bg-stone-50 rounded-2xl p-6 border border-stone-200 relative">
+                    <div class="absolute top-0 right-0 -mt-3 -mr-3 bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide border border-red-200 shadow-sm">Alert Level: Elevated</div>
+                    <h3 class="text-xl font-bold text-stone-800 mb-4 flex items-center">
+                        <span class="mr-2 text-2xl">🦠</span> Pathogen Metrics
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center border-b border-stone-200 pb-2">
+                            <span class="text-stone-600">Origin</span>
+                            <span class="font-medium text-stone-900">Sub-continent</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-stone-200 pb-2">
+                            <span class="text-stone-600">Transmissibility (R0)</span>
+                            <span class="font-medium text-red-600">High (Est. 3.5 - 5.0)</span>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <h4 class="text-sm font-semibold text-stone-500 mb-2 uppercase">Risk Projection</h4>
+                        <div class="chart-container h-48">
+                            <canvas id="threatGauge" width="796" height="288" style="display: block; box-sizing: border-box; height: 192px; width: 531px;"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Current Gov Actions Timeline -->
+                <div class="bg-stone-50 rounded-2xl p-6 border border-stone-200">
+                    <h3 class="text-xl font-bold text-stone-800 mb-4 flex items-center">
+                        <span class="mr-2 text-2xl">🏛️</span> Actions Timeline
+                    </h3>
+                    <div class="space-y-6 relative pl-4 border-l-2 border-stone-300" id="timelineContainer"><div class="relative pl-6 pb-6">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-stone-400 border-2 border-white shadow"></div>
+                    <span class="text-xs font-bold text-stone-500 uppercase tracking-wide mb-1 block">Day 0</span>
+                    <p class="text-stone-800 text-sm">Pathogen identified.</p>
+                </div><div class="relative pl-6 pb-6">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-500 border-2 border-white shadow"></div>
+                    <span class="text-xs font-bold text-stone-500 uppercase tracking-wide mb-1 block">Day 2</span>
+                    <p class="text-stone-800 text-sm">Travel warning issued.</p>
+                </div><div class="relative pl-6 pb-6">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-red-500 border-2 border-white shadow"></div>
+                    <span class="text-xs font-bold text-stone-500 uppercase tracking-wide mb-1 block">Today</span>
+                    <p class="text-stone-800 text-sm">Federal Cabinet silence on data.</p>
+                </div></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Gap Analysis -->
+    <section id="gap-analysis" class="py-16 bg-stone-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-extrabold text-stone-900">The Implementation Gap</h2>
+                <p class="mt-4 text-lg text-stone-600">
+                    Comparing "Review Lessons" against "Current Reality". <span class="text-orange-600 font-bold">Click rows to analyze.</span>
+                </p>
+            </div>
+
+            <div class="bg-white shadow-xl rounded-lg overflow-hidden">
+                <div class="flex border-b border-stone-200 bg-stone-50 p-4 space-x-4 overflow-x-auto">
+                    <button class="px-4 py-2 bg-stone-800 text-white rounded-md text-sm font-medium shadow-sm" onclick="filterGaps(&#39;all&#39;)">All</button>
+                    <button class="px-4 py-2 bg-white text-stone-600 border border-stone-300 rounded-md text-sm font-medium hover:bg-stone-50" onclick="filterGaps(&#39;Borders&#39;)">Borders</button>
+                    <button class="px-4 py-2 bg-white text-stone-600 border border-stone-300 rounded-md text-sm font-medium hover:bg-stone-50" onclick="filterGaps(&#39;Communication&#39;)">Communication</button>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-stone-200">
+                        <thead class="bg-stone-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-stone-500 uppercase">Dimension</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-stone-500 uppercase">Lesson</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-stone-500 uppercase">Current Action</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-stone-500 uppercase">Severity</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-stone-200" id="gapTableBody"><tr class="hover:bg-stone-50 cursor-pointer transition">
+                    <td class="px-6 py-4 text-sm font-medium text-stone-900">Borders</td>
+                    <td class="px-6 py-4 text-sm text-stone-500">National consistency is vital.</td>
+                    <td class="px-6 py-4 text-sm text-stone-500">States advising caution; Federal delay.</td>
+                    <td class="px-6 py-4"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-orange-100 text-orange-800">High</span></td>
+                </tr><tr class="hover:bg-stone-50 cursor-pointer transition">
+                    <td class="px-6 py-4 text-sm font-medium text-stone-900">Communication</td>
+                    <td class="px-6 py-4 text-sm text-stone-500">Targeted, multi-lingual messaging needed.</td>
+                    <td class="px-6 py-4 text-sm text-stone-500">Generic English press releases issued.</td>
+                    <td class="px-6 py-4"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Critical</span></td>
+                </tr><tr class="hover:bg-stone-50 cursor-pointer transition">
+                    <td class="px-6 py-4 text-sm font-medium text-stone-900">Advice</td>
+                    <td class="px-6 py-4 text-sm text-stone-500">Publish health advice transparently.</td>
+                    <td class="px-6 py-4 text-sm text-stone-500">Cabinet decisions currently sealed.</td>
+                    <td class="px-6 py-4"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-orange-100 text-orange-800">High</span></td>
+                </tr></tbody>
+                    </table>
+                </div>
+                <div id="gapDetailArea" class="hidden bg-orange-50 p-6 border-t border-orange-100">
+                    <h4 class="text-lg font-bold text-orange-900 mb-2" id="gapDetailTitle"></h4>
+                    <p class="text-stone-700" id="gapDetailDesc"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Trust & Communication Architecture -->
+    <section id="trust-comms" class="py-16 bg-white border-y border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center mb-16">
+                <h2 class="text-base text-blue-600 font-semibold tracking-wide uppercase">New Architecture</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-stone-900 sm:text-4xl">
+                    Rebuilding Trust: Advice &amp; Communication
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-stone-500 lg:mx-auto">
+                    Trust is the primary currency of pandemic management. To fix the gaps, the government must radically change <strong>where it gets advice</strong> and <strong>how it speaks</strong>.
+                </p>
+            </div>
+
+            <!-- Subsection 1: The Advice Ecosystem -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold text-stone-800 mb-6 border-l-4 border-blue-500 pl-4">1. Inputs: Who should the government listen to?</h3>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                    <div class="col-span-1 text-stone-600 space-y-4">
+                        <p><strong>The Failure (2020):</strong> Advice was insular, heavily weighted towards political strategists and security agencies, with health advice often kept secret.</p>
+                        <p><strong>The Fix (2026):</strong> Trust requires an "Open Architecture". We must elevate community leaders and independent scientists to the same level as federal bureaucrats.</p>
+                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 text-sm">
+                            <strong>Key Insight:</strong> "You cannot communicate effectively with a community you do not listen to."
+                        </div>
+                    </div>
+                    <div class="col-span-1 lg:col-span-2">
+                        <div class="chart-container bg-stone-50 rounded-xl border border-stone-200 p-4">
+                            <canvas id="adviceChart" width="850" height="475" style="display: block; box-sizing: border-box; height: 316.7px; width: 566.7px;"></canvas>
+                        </div>
+                        <div class="text-center mt-3 space-x-4">
+                            <button onclick="updateAdviceChart(&#39;2020&#39;)" class="text-xs px-3 py-1 rounded-full bg-stone-200 hover:bg-stone-300 text-stone-700 font-bold transition">View 2020 Model</button>
+                            <button onclick="updateAdviceChart(&#39;Recommended&#39;)" class="text-xs px-3 py-1 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold transition shadow">View Recommended Model</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subsection 2: Communication Simulator -->
+            <div>
+                <h3 class="text-2xl font-bold text-stone-800 mb-6 border-l-4 border-orange-500 pl-4">2. Outputs: The Communication Simulator</h3>
+                <p class="text-stone-500 mb-6 max-w-3xl">
+                    How we speak determines risk perception. Test the impact of different communication styles on public trust in a hypothetical crisis scenario.
+                </p>
+
+                <div class="bg-stone-900 rounded-2xl p-6 lg:p-10 text-white shadow-2xl grid grid-cols-1 lg:grid-cols-2 gap-10">
+                    <!-- Scenario Panel -->
+                    <div>
+                        <div class="flex items-center space-x-2 mb-4">
+                            <span class="animate-pulse h-3 w-3 bg-red-500 rounded-full"></span>
+                            <span class="text-red-400 font-mono text-sm uppercase tracking-widest">Live Scenario Injection</span>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-4">Scenario: Vaccine Uncertainty</h4>
+                        <p class="text-stone-300 mb-6">
+                            Early data suggests the new booster may have mild but frequent side effects. The data is incomplete but social media rumors are starting. <br><br>
+                            <strong>How do you communicate this?</strong>
+                        </p>
+                        
+                        <div class="space-y-3">
+                            <button onclick="simulateComm(&#39;hide&#39;)" class="w-full text-left p-4 rounded-lg bg-stone-800 hover:bg-stone-700 border border-stone-700 hover:border-stone-500 transition group">
+                                <span class="font-bold block text-stone-200 group-hover:text-white">Option A: The "Safe &amp; Effective" Shield</span>
+                                <span class="text-sm text-stone-500">Dismiss rumors, repeat slogans, wait for 100% certainty before releasing data.</span>
+                            </button>
+                            <button onclick="simulateComm(&#39;transparency&#39;)" class="w-full text-left p-4 rounded-lg bg-stone-800 hover:bg-blue-900/30 border border-stone-700 hover:border-blue-500 transition group">
+                                <span class="font-bold block text-stone-200 group-hover:text-blue-300">Option B: Radical Transparency</span>
+                                <span class="text-sm text-stone-500">Acknowledge the rumors, release the raw preliminary data, explain what is unknown.</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Simulation Result Panel -->
+                    <div class="bg-stone-800 rounded-xl p-6 border border-stone-700 flex flex-col justify-center">
+                        <div id="sim-default" class="text-center text-stone-500">
+                            <span class="text-4xl block mb-2">📡</span>
+                            Select an option to simulate public reaction.
+                        </div>
+                        <div id="sim-result" class="hidden fade-in">
+                            <h5 id="sim-title" class="text-xl font-bold mb-2"></h5>
+                            <div class="mb-4">
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span>Public Trust</span>
+                                    <span id="trust-val"></span>
+                                </div>
+                                <div class="w-full bg-stone-700 rounded-full h-2.5">
+                                    <div id="trust-bar" class="bg-blue-500 h-2.5 rounded-full transition-all duration-1000" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span>Compliance Risk</span>
+                                    <span id="risk-val"></span>
+                                </div>
+                                <div class="w-full bg-stone-700 rounded-full h-2.5">
+                                    <div id="risk-bar" class="bg-red-500 h-2.5 rounded-full transition-all duration-1000" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <p id="sim-feedback" class="text-sm text-stone-300 italic border-t border-stone-600 pt-4"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Solution (Triune Intelligence) -->
+    <section id="triune-fix" class="py-16 bg-stone-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-base text-orange-400 font-semibold tracking-wide uppercase">The Solution Framework</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold text-stone-900 sm:text-4xl">
+                    Triune Cognitive Intelligence Strategy
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-stone-500 mx-auto">
+                    Integrating the trust architecture into immediate action across three levels of response.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Reptilian (Instinct) -->
+                <div class="bg-white rounded-xl p-8 border border-stone-200 hover:border-red-500 shadow-sm transition-all cursor-pointer group" onclick="activateTriune(&#39;instinct&#39;)">
+                    <div class="h-12 w-12 bg-red-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-red-600 group-hover:text-white transition-colors text-red-600">
+                        <span class="text-2xl">🛡️</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-stone-800 mb-2">1. Instinctual Defense</h3>
+                    <p class="text-stone-500 text-sm">Speed over perfection. Border protocols and rapid containment.</p>
+                </div>
+
+                <!-- Limbic (Emotion/Social) -->
+                <div class="bg-white rounded-xl p-8 border border-stone-200 hover:border-yellow-500 shadow-sm transition-all cursor-pointer group" onclick="activateTriune(&#39;emotion&#39;)">
+                    <div class="h-12 w-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-yellow-600 group-hover:text-white transition-colors text-yellow-600">
+                        <span class="text-2xl">🤝</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-stone-800 mb-2">2. Social Intelligence</h3>
+                    <p class="text-stone-500 text-sm"><strong>The Trust Engine.</strong> Transparent communication and equity support.</p>
+                </div>
+
+                <!-- Neocortex (Rational) -->
+                <div class="bg-white rounded-xl p-8 border border-stone-200 hover:border-blue-500 shadow-sm transition-all cursor-pointer group" onclick="activateTriune(&#39;logic&#39;)">
+                    <div class="h-12 w-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors text-blue-600">
+                        <span class="text-2xl">🧠</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-stone-800 mb-2">3. Strategic Reason</h3>
+                    <p class="text-stone-500 text-sm">Long-term logistics, genomic sequencing, and data harmonization.</p>
+                </div>
+            </div>
+
+            <!-- Dynamic Fix Panel -->
+            <div id="triuneDetail" class="mt-12 bg-stone-900 rounded-xl p-8 border border-stone-700 hidden fade-in text-stone-100">
+                <h3 class="text-2xl font-bold text-white mb-4" id="triuneTitle"></h3>
+                <p class="text-stone-400 mb-6 text-lg" id="triuneDesc"></p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-sm font-bold text-stone-500 uppercase mb-3">Immediate Actions</h4>
+                        <ul class="space-y-3" id="triuneActions">
+                            <!-- JS -->
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-stone-500 uppercase mb-3">Expected Outcome</h4>
+                        <div class="bg-stone-800 rounded p-4 border-l-4 border-green-500">
+                            <p class="text-stone-300" id="triuneOutcome"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-stone-200 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-stone-400 text-sm">
+                Generated Interactive Analysis | Sources: Fault Lines Review, Independent Panels, Hypothetical Scenarios.
+            </p>
+        </div>
+    </footer>
+
+    <!-- LOGIC -->
+    <script>
+        // --- DATA STORE ---
+
+        const reviewData = [
+            {
+                id: 'gov',
+                title: "Governance Friction",
+                summary: "Confused accountabilities delayed border closures.",
+                statLabel: "Public Trust Decline (2020-2022)",
+                statData: [78, 65, 52, 45],
+                statLabels: ['Q1 2020', 'Q3 2020', 'Q2 2021', 'Q4 2021'],
+                details: "No clear 'Control Tower' for national resource allocation caused state rivalries."
+            },
+            {
+                id: 'equity',
+                title: "The Equity Gap",
+                summary: "Measures disproportionately affected CALD communities.",
+                statLabel: "Financial Stress Index",
+                statData: [10, 25, 45, 60],
+                statLabels: ['Initial', 'Wave 1', 'Wave 2', 'Omicron'],
+                details: "Financial support (JobKeeper) excluded casuals, forcing sick people to work."
+            },
+            {
+                id: 'comms',
+                title: "Communication Failure",
+                summary: "Punitive, inconsistent messaging eroded authority.",
+                statLabel: "Compliance Willingness",
+                statData: [90, 80, 60, 40],
+                statLabels: ['Wave 1', 'Wave 2', 'Wave 3', 'Wave 4'],
+                details: "Reliance on 'Security' framing rather than 'Health' framing alienated vulnerable groups."
+            }
+        ];
+
+        const gapData = [
+            {
+                dim: 'Borders',
+                lesson: "National consistency is vital.",
+                current: "States advising caution; Federal delay.",
+                severity: "High"
+            },
+            {
+                dim: 'Communication',
+                lesson: "Targeted, multi-lingual messaging needed.",
+                current: "Generic English press releases issued.",
+                severity: "Critical"
+            },
+            {
+                dim: 'Advice',
+                lesson: "Publish health advice transparently.",
+                current: "Cabinet decisions currently sealed.",
+                severity: "High"
+            }
+        ];
+
+        const triuneContent = {
+            instinct: {
+                title: "Instinctual Defense",
+                desc: "Immediate executive power to secure the perimeter.",
+                actions: ["7-day pause on arrivals.", "Rapid Antigen Testing at airports."],
+                outcome: "Stops viral load at border."
+            },
+            emotion: {
+                title: "Social Intelligence (Trust Engine)",
+                desc: "Trust is the only way to ensure compliance without coercion. We must treat the public as partners, not subjects.",
+                actions: ["Release the raw modeling data.", "Engage community leaders for messaging.", "Pandemic Leave payments immediately."],
+                outcome: "Maintains social cohesion and voluntary compliance."
+            },
+            logic: {
+                title: "Strategic Reason",
+                desc: "Solving the long-term logistical problem.",
+                actions: ["Advance purchase agreements.", "Scale genomic sequencing."],
+                outcome: "Ensures response evolves with the virus."
+            }
+        };
+
+        // --- CHART LOGIC ---
+
+        let radarChart, impactChart, adviceChart;
+
+        function initRadar() {
+            const ctx = document.getElementById('readinessRadar').getContext('2d');
+            radarChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Governance', 'Communication', 'Supply', 'Health', 'Equity', 'Trust'],
+                    datasets: [{
+                        label: '2020 Capability',
+                        data: [40, 30, 30, 70, 40, 80],
+                        fill: true,
+                        backgroundColor: 'rgba(168, 162, 158, 0.2)',
+                        borderColor: 'rgb(168, 162, 158)',
+                        pointBackgroundColor: 'rgb(168, 162, 158)',
+                    }, {
+                        label: 'Recommended 2026',
+                        data: [90, 85, 80, 85, 90, 95], 
+                        fill: true,
+                        backgroundColor: 'rgba(234, 88, 12, 0.2)',
+                        borderColor: 'rgb(234, 88, 12)',
+                        pointBackgroundColor: 'rgb(234, 88, 12)',
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    scales: { r: { suggestedMin: 0, suggestedMax: 100 } },
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+        }
+
+        function updateImpactChart(data, labels, label) {
+            const ctx = document.getElementById('impactChart').getContext('2d');
+            if (impactChart) impactChart.destroy();
+            impactChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: label,
+                        data: data,
+                        backgroundColor: 'rgba(234, 88, 12, 0.7)',
+                        borderColor: 'rgb(234, 88, 12)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    scales: { y: { beginAtZero: true } }
+                }
+            });
+        }
+
+        // --- NEW: Advice Architecture Chart ---
+        function initAdviceChart() {
+            const ctx = document.getElementById('adviceChart').getContext('2d');
+            adviceChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Federal Politicians', 'Security Agencies', 'Health Bureaucrats', 'Indep. Scientists', 'Community Leaders', 'Social Services'],
+                    datasets: [{
+                        label: 'Influence Weighting',
+                        data: [90, 80, 70, 30, 10, 20], // Default 2020
+                        backgroundColor: [
+                            '#4b5563', '#4b5563', '#4b5563', '#d1d5db', '#d1d5db', '#d1d5db'
+                        ],
+                        borderWidth: 0,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    indexAxis: 'y', // Horizontal bar
+                    maintainAspectRatio: false,
+                    scales: { x: { beginAtZero: true, max: 100 } },
+                    plugins: { legend: { display: false } }
+                }
+            });
+        }
+
+        function updateAdviceChart(model) {
+            let newData, newColors;
+            if (model === '2020') {
+                newData = [90, 80, 70, 30, 10, 20];
+                newColors = ['#4b5563', '#4b5563', '#4b5563', '#d1d5db', '#d1d5db', '#d1d5db'];
+            } else {
+                newData = [50, 50, 80, 90, 85, 80]; // Balanced
+                newColors = ['#9ca3af', '#9ca3af', '#2563eb', '#3b82f6', '#60a5fa', '#93c5fd'];
+            }
+            
+            adviceChart.data.datasets[0].data = newData;
+            adviceChart.data.datasets[0].backgroundColor = newColors;
+            adviceChart.update();
+        }
+
+        // --- NEW: Communication Simulator Logic ---
+        function simulateComm(choice) {
+            const defaultPanel = document.getElementById('sim-default');
+            const resultPanel = document.getElementById('sim-result');
+            const title = document.getElementById('sim-title');
+            const trustBar = document.getElementById('trust-bar');
+            const riskBar = document.getElementById('risk-bar');
+            const feedback = document.getElementById('sim-feedback');
+            const trustVal = document.getElementById('trust-val');
+            const riskVal = document.getElementById('risk-val');
+
+            defaultPanel.classList.add('hidden');
+            resultPanel.classList.remove('hidden');
+
+            // Reset widths for animation
+            trustBar.style.width = '0%';
+            riskBar.style.width = '0%';
+
+            setTimeout(() => {
+                if (choice === 'hide') {
+                    title.innerText = "Outcome: The 'Trust Vacuum'";
+                    title.className = "text-xl font-bold mb-2 text-red-400";
+                    trustBar.style.width = '20%';
+                    trustBar.className = "h-2.5 rounded-full transition-all duration-1000 bg-red-600";
+                    riskBar.style.width = '90%';
+                    trustVal.innerText = "Low";
+                    riskVal.innerText = "Critical";
+                    feedback.innerText = "Analysis: By hiding uncertainty, you created a vacuum filled by conspiracy theories. When side effects inevitably occur, trust collapses completely.";
+                } else {
+                    title.innerText = "Outcome: The 'Resilience' Model";
+                    title.className = "text-xl font-bold mb-2 text-blue-400";
+                    trustBar.style.width = '85%';
+                    trustBar.className = "h-2.5 rounded-full transition-all duration-1000 bg-blue-500";
+                    riskBar.style.width = '30%';
+                    trustVal.innerText = "High";
+                    riskVal.innerText = "Manageable";
+                    feedback.innerText = "Analysis: Treating the public like adults builds 'Cognitive Resilience'. They accept the uncertainty and are more likely to comply because they understand the 'Why'.";
+                }
+            }, 100);
+        }
+
+        // --- STANDARD DOM LOGIC ---
+
+        function populateFindings() {
+            const list = document.getElementById('findingsList');
+            reviewData.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.className = "p-4 hover:bg-orange-50 cursor-pointer transition-colors border-l-4 border-transparent hover:border-orange-500";
+                li.innerHTML = `<h4 class="text-sm font-medium text-stone-900">${item.title}</h4>`;
+                li.onclick = () => loadFindingDetail(index);
+                list.appendChild(li);
+            });
+            loadFindingDetail(0);
+        }
+
+        function loadFindingDetail(index) {
+            const data = reviewData[index];
+            document.getElementById('detailTitle').innerText = data.title;
+            document.getElementById('detailText').innerText = data.details;
+            updateImpactChart(data.statData, data.statLabels, data.statLabel);
+        }
+
+        function populateTimeline() {
+            const timelineData = [
+                { time: "Day 0", event: "Pathogen identified.", type: "neutral" },
+                { time: "Day 2", event: "Travel warning issued.", type: "action" },
+                { time: "Today", event: "Federal Cabinet silence on data.", type: "warning" }
+            ];
+            const container = document.getElementById('timelineContainer');
+            container.innerHTML = '';
+            timelineData.forEach(item => {
+                const div = document.createElement('div');
+                div.className = "relative pl-6 pb-6";
+                let colorClass = item.type === 'warning' ? 'bg-red-500' : (item.type === 'action' ? 'bg-blue-500' : 'bg-stone-400');
+                div.innerHTML = `
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full ${colorClass} border-2 border-white shadow"></div>
+                    <span class="text-xs font-bold text-stone-500 uppercase tracking-wide mb-1 block">${item.time}</span>
+                    <p class="text-stone-800 text-sm">${item.event}</p>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function filterGaps(filter) {
+            const tbody = document.getElementById('gapTableBody');
+            tbody.innerHTML = '';
+            const filtered = filter === 'all' ? gapData : gapData.filter(d => d.dim === filter);
+            filtered.forEach(d => {
+                const row = document.createElement('tr');
+                row.className = "hover:bg-stone-50 cursor-pointer transition";
+                const badgeColor = d.severity === 'Critical' ? 'bg-red-100 text-red-800' : 'bg-orange-100 text-orange-800';
+                row.innerHTML = `
+                    <td class="px-6 py-4 text-sm font-medium text-stone-900">${d.dim}</td>
+                    <td class="px-6 py-4 text-sm text-stone-500">${d.lesson}</td>
+                    <td class="px-6 py-4 text-sm text-stone-500">${d.current}</td>
+                    <td class="px-6 py-4"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${badgeColor}">${d.severity}</span></td>
+                `;
+                row.onclick = () => {
+                    document.getElementById('gapDetailArea').classList.remove('hidden');
+                    document.getElementById('gapDetailArea').classList.add('slide-up');
+                    document.getElementById('gapDetailTitle').innerText = `${d.dim}: Deep Dive`;
+                    document.getElementById('gapDetailDesc').innerText = `Lesson: ${d.lesson} | Reality: ${d.current}`;
+                };
+                tbody.appendChild(row);
+            });
+        }
+
+        function activateTriune(type) {
+            const panel = document.getElementById('triuneDetail');
+            panel.classList.remove('hidden');
+            void panel.offsetWidth; panel.classList.add('fade-in');
+            
+            const content = triuneContent[type];
+            document.getElementById('triuneTitle').innerText = content.title;
+            document.getElementById('triuneDesc').innerText = content.desc;
+            const list = document.getElementById('triuneActions');
+            list.innerHTML = '';
+            content.actions.forEach(action => {
+                const li = document.createElement('li');
+                li.className = "flex items-start text-stone-300";
+                li.innerHTML = `<span class="mr-2 text-orange-500">➜</span> ${action}`;
+                list.appendChild(li);
+            });
+            document.getElementById('triuneOutcome').innerText = content.outcome;
+            panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function initThreatGauge() {
+            const ctx = document.getElementById('threatGauge').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Risk', 'Safety'],
+                    datasets: [{ data: [75, 25], backgroundColor: ['#dc2626', '#e5e7eb'], borderWidth: 0 }]
+                },
+                options: { maintainAspectRatio: false, cutout: '70%', plugins: { title: { display: true, text: '75% Risk Index', position: 'bottom' } } }
+            });
+        }
+
+        window.onload = function() {
+            initRadar();
+            initThreatGauge();
+            initAdviceChart(); // New Chart
+            populateFindings();
+            populateTimeline();
+            filterGaps('all');
+        };
+
+    </script>
+
+</body></html>

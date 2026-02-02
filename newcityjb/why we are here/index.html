@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ind-NC // Strategy & Execution</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500&family=Teko:wght@400;600&family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        /* --- GLOBAL VARIABLES --- */
+        :root {
+            /* Palette */
+            --bg-black: #000000;
+            --bg-panel: #0a0a0a;
+            --bg-card: #111111;
+            --text-white: #ffffff;
+            --text-muted: #888888;
+            
+            /* Accents */
+            --accent-cyan: #00f0ff;
+            --accent-purple: #7000ff;
+            --accent-green: #00ff9d;
+            
+            /* Borders */
+            --border-light: 1px solid rgba(255, 255, 255, 0.1);
+            --border-stark: 2px solid #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-black); color: var(--text-white); overflow-x: hidden; }
+
+        /* --- SECTION 1: THE MANIFESTO (Stark, Hacker Style) --- */
+        .section-manifesto {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid #333;
+            font-family: 'Fira Code', monospace; /* Keeping your original font preference */
+            padding: 40px;
+            position: relative;
+        }
+
+        .manifesto-container {
+            max-width: 700px;
+            width: 100%;
+            border: var(--border-stark);
+            padding: 3rem;
+            box-shadow: 15px 15px 0px #222;
+            background: #000;
+            z-index: 2;
+        }
+
+        h1.manifesto-title {
+            font-family: 'Teko', sans-serif;
+            font-size: 5rem;
+            line-height: 0.8;
+            text-transform: uppercase;
+            margin: 0 0 10px 0;
+            letter-spacing: 2px;
+        }
+
+        .sub-head {
+            border-bottom: 1px dashed white;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        h2.manifesto-subtitle {
+            font-family: 'Teko', sans-serif;
+            font-size: 3rem;
+            text-transform: uppercase;
+            background: white;
+            color: black;
+            display: inline-block;
+            padding: 0 15px;
+            transform: skewX(-10deg);
+            margin-bottom: 30px;
+        }
+
+        ul.manifesto-list { list-style: none; margin-top: 20px; }
+        li.manifesto-item {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+        li.manifesto-item::before { content: "//"; margin-right: 15px; color: var(--accent-cyan); font-weight: bold; }
+
+        /* Scroll Indicator */
+        .scroll-hint {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            opacity: 0.5;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);} 40% {transform: translateX(-50%) translateY(-10px);} 60% {transform: translateX(-50%) translateY(-5px);} }
+
+        /* --- SECTION 2: THE EXECUTION (Modern, Ind-NC Style) --- */
+        .section-execution {
+            padding: 80px 20px;
+            font-family: 'Inter', sans-serif; /* Switching to cleaner font for data */
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .exec-header {
+            margin-bottom: 60px;
+            border-left: 4px solid var(--accent-purple);
+            padding-left: 30px;
+        }
+
+        .exec-header h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+        }
+
+        /* AgentZ Panel */
+        .agent-panel {
+            background: linear-gradient(180deg, rgba(112, 0, 255, 0.08) 0%, rgba(0,0,0,0) 100%);
+            border: 1px solid rgba(112, 0, 255, 0.3);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 80px;
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .agent-icon { font-size: 3rem; color: var(--accent-purple); display: flex; justify-content: center; align-items: center; }
+
+        /* Grid */
+        .wins-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 80px;
+        }
+
+        .win-card {
+            background: var(--bg-card);
+            border: 1px solid #333;
+            padding: 30px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .win-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 10px 30px -10px rgba(0, 240, 255, 0.15);
+        }
+
+        .win-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            margin-bottom: 15px;
+            display: block;
+            letter-spacing: 0.05em;
+        }
+
+        .win-card h3 { font-size: 1.4rem; margin-bottom: 15px; font-weight: 600; color: #fff; }
+        .win-card p { color: #aaa; font-size: 0.95rem; line-height: 1.6; }
+        .highlight-text { color: #fff; border-bottom: 1px dotted var(--accent-cyan); font-weight: 500; }
+
+        /* Calculator Section */
+        .calc-wrapper {
+            background: #0f0f0f;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 40px;
+        }
+
+        .calc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #222;
+            padding-bottom: 20px;
+        }
+
+        .calc-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .calc-inputs { flex: 1; min-width: 300px; }
+        .calc-output { 
+            flex: 1; 
+            min-width: 300px; 
+            background: rgba(0, 255, 157, 0.05); 
+            border: 1px solid rgba(0, 255, 157, 0.2); 
+            border-radius: 8px;
+            padding: 30px;
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .input-group { margin-bottom: 25px; }
+        .input-group label { display: block; color: var(--text-muted); margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; }
+        .input-group input[type="range"] { width: 100%; accent-color: var(--accent-green); cursor: pointer; }
+        .input-value { font-size: 1.2rem; color: var(--accent-green); font-weight: 700; font-family: 'JetBrains Mono', monospace; margin-top: 5px; }
+
+        .big-dollar { font-size: 3.5rem; color: var(--accent-green); font-weight: 800; line-height: 1; margin-bottom: 10px; }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #444;
+            border-top: 1px solid #111;
+        }
+
+        @media (max-width: 768px) {
+            h1.manifesto-title { font-size: 3.5rem; }
+            .manifesto-container { padding: 1.5rem; }
+            .agent-panel { grid-template-columns: 1fr; text-align: center; }
+            .agent-icon { margin-bottom: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="section-manifesto">
+        <div class="manifesto-container">
+            <h1 class="manifesto-title">Optimise AI</h1>
+            <div class="sub-head">
+                <span>System: Gov/3.0</span>
+                <span>[Status: Online]</span>
+            </div>
+            
+            <h2 class="manifesto-subtitle">Why We’re Here</h2>
+
+            <ul class="manifesto-list">
+                <li class="manifesto-item">To give staff and consumers a stable interface for reflection and creation.</li>
+                <li class="manifesto-item">To ensure human agency stays central at all times.</li>
+                <li class="manifesto-item">Strengthen the workforce — not replace them.</li>
+                <li class="manifesto-item">To bridge Industry Velocity with Council Governance.</li>
+            </ul>
+        </div>
+        
+        <div class="scroll-hint">SCROLL FOR OUTPUT //</div>
+    </section>
+
+    <section class="section-execution">
+        
+        <div class="exec-header">
+            <div style="font-family: 'JetBrains Mono', monospace; color: var(--accent-purple); margin-bottom: 10px;">// DECLASSIFIED OUTCOMES</div>
+            <h2>The Achievements</h2>
+            <p style="color: var(--text-muted); max-width: 600px;">Specific, codified reforms achieved through the alignment of AgentZ logic and executive leadership.</p>
+        </div>
+
+        <div class="agent-panel">
+            <div class="agent-icon">❖</div>
+            <div>
+                <h3 style="color: #fff; margin-bottom: 10px; font-weight: 600;">System: AgentZ Deployment</h3>
+                <p style="color: #ccc; font-size: 0.95rem; line-height: 1.6;">
+                    AgentZ was utilized not as a chatbot, but as a <span style="color: var(--accent-purple);">navigation layer</span>. By digesting complex DCPs and cross-referencing them with Industry pain points, it converted vague frustrations into the specific policy language required for Council adoption.
+                </p>
+            </div>
+        </div>
+
+        <div class="wins-grid">
+            <div class="win-card">
+                <span class="win-tag">01 // EFFICIENCY</span>
+                <h3>Concurrent S.138</h3>
+                <p><span class="highlight-text">Outcome:</span> Applicants can now lodge driveway applications parallel to the DA. This removes weeks of administrative "dead time" previously caused by sequential processing.</p>
+            </div>
+            <div class="win-card">
+                <span class="win-tag">02 // COMPLIANCE</span>
+                <h3>Ridge Height Surveys</h3>
+                <p><span class="highlight-text">Outcome:</span> Mandatory pre-commencement surveys implemented. This "measure twice" policy prevents costly stop-work orders on constrained lots.</p>
+            </div>
+            <div class="win-card">
+                <span class="win-tag">03 // FINANCE</span>
+                <h3>S7.11 Certainty</h3>
+                <p><span class="highlight-text">Outcome:</span> Process redesigned to provide contribution estimates <em>upon request</em>. Removes guesswork from financial planning and cash-flow forecasting.</p>
+            </div>
+            <div class="win-card">
+                <span class="win-tag">04 // FLEXIBILITY</span>
+                <h3>Landscape Variance</h3>
+                <p><span class="highlight-text">Outcome:</span> Interim pathway created. Applicants can now justify variations by meeting the "intent" of controls, offering relief while 2026 DCP amendments are drafted.</p>
+            </div>
+        </div>
+
+        <div class="calc-wrapper">
+            <div class="calc-header">
+                <div>
+                    <h3 style="color: var(--accent-green); font-size: 1.5rem; margin-bottom: 5px;">The Civic Dividend</h3>
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #666;">MEASURING THE COST OF DELAY</div>
+                </div>
+            </div>
+
+            <div class="calc-flex">
+                <div class="calc-inputs">
+                    <div class="input-group">
+                        <label>DELAY COST PER DAY ($)</label>
+                        <input type="range" id="costPerDay" min="500" max="2500" step="100" value="1000" oninput="calculate()">
+                        <div class="input-value">$<span id="costDisplay">1,000</span></div>
+                    </div>
+                    <div class="input-group">
+                        <label>WEEKS SAVED (VIA REFORM)</label>
+                        <input type="range" id="weeksSaved" min="1" max="12" step="1" value="4" oninput="calculate()">
+                        <div class="input-value"><span id="weeksDisplay">4</span> Weeks</div>
+                    </div>
+                </div>
+
+                <div class="calc-output">
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--accent-green); margin-bottom: 5px;">SAVINGS PER SITE</div>
+                    <div class="big-dollar" id="totalSavings">$28,000</div>
+                    <div style="color: #888; font-size: 0.85rem; margin-top: 10px;">Capital released back into the local economy by removing friction.</div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <footer>
+        IND-NC STRATEGIC PARTNERSHIP // 2026<br>
+        GENERATED FOR JD (INNAIT CEO)
+    </footer>
+
+    <script>
+        function calculate() {
+            const cost = parseInt(document.getElementById('costPerDay').value);
+            const weeks = parseInt(document.getElementById('weeksSaved').value);
+            
+            // Update displays
+            document.getElementById('costDisplay').innerText = cost.toLocaleString();
+            document.getElementById('weeksDisplay').innerText = weeks;
+
+            // Math: Cost * 7 days * Weeks
+            const total = cost * 7 * weeks;
+            
+            // Update Result
+            document.getElementById('totalSavings').innerText = '$' + total.toLocaleString();
+        }
+        // Init
+        calculate();
+    </script>
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimise AI // Why & How</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&family=Teko:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CORE VARIABLES --- */
+        :root {
+            --bg-deep: #000000;
+            --bg-panel: #0a0a0a;
+            --fg-white: #ffffff;
+            --fg-muted: #888888;
+            --accent-cyan: #00f0ff;
+            --accent-purple: #7000ff;
+            --border-stark: 2px solid #ffffff;
+            --border-dim: 1px solid #333333;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            background-color: var(--bg-deep); 
+            color: var(--fg-white); 
+            font-family: 'Fira Code', monospace; 
+            overflow-x: hidden; 
+        }
+
+        /* --- ZONE 1: THE MANIFESTO (Your Original Design) --- */
+        .zone-manifesto {
+            min-height: 100vh; /* Full viewport height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            position: relative;
+            border-bottom: 1px dashed #333;
+        }
+
+        .container-manifesto { 
+            max-width: 700px; 
+            width: 100%; 
+            border: var(--border-stark); 
+            padding: 3rem; 
+            position: relative; 
+            box-shadow: 15px 15px 0px #222; 
+            background: #000;
+            z-index: 10;
+        }
+
+        h1.title-main { 
+            font-family: 'Teko', sans-serif; 
+            font-size: 5rem; 
+            line-height: 0.8; 
+            text-transform: uppercase; 
+            margin: 0 0 10px 0; 
+            letter-spacing: 2px; 
+        }
+
+        .sub-head { 
+            border-bottom: 1px dashed white; 
+            padding-bottom: 10px; 
+            margin-bottom: 30px; 
+            font-size: 0.9rem; 
+            opacity: 0.8; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+        }
+
+        h2.title-sub { 
+            font-family: 'Teko', sans-serif; 
+            font-size: 3rem; 
+            margin: 20px 0; 
+            text-transform: uppercase; 
+            background: white; 
+            color: black; 
+            display: inline-block; 
+            padding: 0 15px; 
+            transform: skewX(-10deg); 
+        }
+
+        ul.manifesto-list { list-style: none; padding: 0; margin-top: 30px; }
+        li.manifesto-item { margin-bottom: 20px; padding-left: 0; display: flex; align-items: flex-start; line-height: 1.4; }
+        li.manifesto-item::before { content: "//"; margin-right: 15px; font-weight: bold; opacity: 0.5; color: var(--accent-cyan); }
+
+        /* Scroll Indicator */
+        .scroll-prompt {
+            position: absolute;
+            bottom: 40px;
+            text-align: center;
+            opacity: 0.5;
+            font-size: 0.8rem;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0% { opacity: 0.3; transform: translateY(0); } 50% { opacity: 1; transform: translateY(5px); } 100% { opacity: 0.3; transform: translateY(0); } }
+
+        /* --- ZONE 2: DEPLOYMENT (The 'How') --- */
+        .zone-deployment {
+            padding: 100px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .deployment-header {
+            border-left: 4px solid var(--accent-purple);
+            padding-left: 30px;
+            margin-bottom: 60px;
+        }
+
+        .deployment-header h2 {
+            font-family: 'Teko', sans-serif;
+            font-size: 4rem;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .deployment-header p {
+            color: var(--fg-muted);
+            font-family: 'Inter', sans-serif;
+            max-width: 600px;
+            font-size: 1.1rem;
+        }
+
+        /* The Grid System */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        /* Feature Cards */
+        .feature-block {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-dim);
+            padding: 30px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .feature-block:hover {
+            border-color: var(--accent-purple);
+            transform: translateY(-5px);
+        }
+
+        .block-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--accent-purple);
+        }
+
+        .block-title {
+            font-family: 'Fira Code', monospace;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .block-text {
+            font-family: 'Inter', sans-serif;
+            color: #aaa;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* The "Zero Economic Distortion" Callout */
+        .neutrality-box {
+            grid-column: 1 / -1;
+            border: 1px dashed var(--fg-muted);
+            padding: 40px;
+            margin-top: 20px;
+            background: radial-gradient(circle at center, #111 0%, #000 100%);
+            text-align: center;
+        }
+
+        .neutrality-title {
+            color: var(--accent-cyan);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .neutrality-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            color: #fff;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 100px;
+            border-top: 1px solid #222;
+            padding: 40px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #444;
+        }
+
+    </style>
+</head>
+<body>
+
+    <section class="zone-manifesto">
+        <div class="container-manifesto">
+            <h1>Optimise AI</h1>
+            <div class="sub-head">System: Gov/3.0</div>
+            
+            <h2>Why We’re Here</h2>
+
+            <ul class="manifesto-list">
+                <li class="manifesto-item">To give staff and consumers a stable interface for reflection and creation.</li>
+                <li class="manifesto-item">To ensure human agency stays central at all times.</li>
+                <li class="manifesto-item">Strengthen the workforce — not replace them.</li>
+                <li class="manifesto-item">
+                    <span style="border-bottom: 2px solid #fff; font-weight: 600;">ACTION NOT ABSTRACTION</span>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="scroll-prompt">
+            <div>SCROLL TO DECLASSIFY PROCESS</div>
+            <div>↓</div>
+        </div>
+    </section>
+
+    <section class="zone-deployment">
+        
+        <div class="deployment-header">
+            <h2>The Deployment</h2>
+            <p>How we utilized AgentZ to bridge the gap between Industry Velocity and Council Governance.</p>
+        </div>
+
+        <div class="process-grid">
+            
+            <div class="feature-block">
+                <div class="block-icon">❖</div>
+                <h3 class="block-title">The "AgentZ" Layer</h3>
+                <p class="block-text">
+                    AgentZ was not deployed as a chatbot, but as a high-order navigation layer. It digested complex Council DCPs (Development Control Plans) and cross-referenced them with real-world Industry pain points to isolate friction areas like S.138 driveways and Ridge Height ambiguity.
+                </p>
+            </div>
+
+            <div class="feature-block">
+                <div class="block-icon">⚡</div>
+                <h3 class="block-title">Permissionless Infrastructure</h3>
+                <p class="block-text">
+                    We built frameworks that did not require permission to exist. By establishing protocols that functioned <em>outside</em> the slow internal machinery but <em>aligned</em> with its rules, we created tools that could be adopted immediately, rather than waiting for a committee vote.
+                </p>
+            </div>
+
+            <div class="feature-block">
+                <div class="block-icon">⚙</div>
+                <h3 class="block-title">Critical Decision Support</h3>
+                <p class="block-text">
+                    The framework didn't just automate tasks; it refined protocols at critical decision points. It flagged when a "human in the loop" was necessary versus when an automated "S7.11 Estimate" could safely trigger, ensuring speed without losing governance.
+                </p>
+            </div>
+
+            <div class="neutrality-box">
+                <div class="neutrality-title">Protocol: Zero Economic Distortion</div>
+                <p class="neutrality-text">
+                    "We acted as the mediating party between Industry and Government, but we chose deliberately to be engaged by <strong>no one party</strong>."
+                </p>
+                <div style="margin-top: 20px; font-size: 0.95rem; color: #888; font-family: 'Inter', sans-serif;">
+                    To accept a fee from either side would introduce bias. We did not want economic distortion destabilizing the model. Our currency was stability and efficiency, not billable hours.
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+        IND-NC STRATEGIC FRAMEWORK // 2026<br>
+        GENERATED FOR JD // INNAIT CEO
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<!-- saved from url=(0081)file:///C:/Users/John%20Dunn/OneDrive/GitHub/TRIUNE/trinity/newcityjb/index2.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Strategy: From Global Defense to Local Governance</title>
+    <script src="./AI Strategy_ From Global Defense to Local Governance_files/saved_resource"></script>
+    <script src="./AI Strategy_ From Global Defense to Local Governance_files/chart.js.download"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F5F5F0; /* Warm Neutral Background */
+            color: #2D3748;
+        }
+
+        /* Chart Container Styling - MANDATORY & CRITICAL */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+
+        .card {
+            background-color: #FFFFFF;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-item.active {
+            border-bottom: 2px solid #2B6CB0;
+            color: #2B6CB0;
+            font-weight: 600;
+        }
+
+        .metric-value {
+            font-variant-numeric: tabular-nums;
+        }
+    </style>
+    <!-- Chosen Palette: Warm Neutrals with Strategic Accents. Background #F5F5F0 (Isabelline), Text #2D3748 (Dark Slate), Accents #2B6CB0 (US Blue), #2C7A7B (Aus Teal) -->
+    <!-- Application Structure Plan: The app follows a funnel structure. 
+         1. Macro View: Comparing the US "War" strategy (Speed/Dominance) vs. Australian General Strategy (Governance/Policy).
+         2. Analysis: Interactive Radar chart to visualize the divergent priorities (Speed vs. Safety).
+         3. Synthesis: Transforming "War" tactics into "Civic" utility.
+         4. Micro View (Newcastle): Specific actionable strategies for a local council, using the US "Reciprocity" and "Sovereignty" concepts adapted for local governance.
+         This structure moves from abstract global comparison to concrete local action, facilitating the user's goal of understanding "what Newcastle should do." -->
+    <!-- Visualization & Content Choices:
+         1. Radar Chart: Goal -> Compare Attributes. Method -> Chart.js Radar. Justification -> Best for showing multi-axis alignment differences (Risk vs Speed vs Ethics).
+         2. Timeline/Gantt (simulated with Bar): Goal -> Show Procurement Speed. Method -> Chart.js Horizontal Bar. Justification -> Visualizes the "30-day" US mandate vs typical timelines.
+         3. Donut Chart: Goal -> Resource Allocation. Method -> Chart.js Doughnut. Justification -> Shows shift from "Shadow AI" to "Strategic AI" in local councils.
+         4. Interactive Cards: Goal -> Recommendations. Method -> HTML/JS. Justification -> Allows users to explore specific tactical steps for Newcastle.
+         CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.sticky{position:sticky}.top-0{top:0px}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.mb-1{margin-bottom:0.25rem}.mb-10{margin-bottom:2.5rem}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mt-1{margin-top:0.25rem}.mt-12{margin-top:3rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.block{display:block}.flex{display:flex}.grid{display:grid}.h-12{height:3rem}.h-16{height:4rem}.h-2\.5{height:0.625rem}.h-3{height:0.75rem}.h-full{height:100%}.w-12{width:3rem}.w-3{width:0.75rem}.w-full{width:100%}.max-w-2xl{max-width:42rem}.max-w-3xl{max-width:48rem}.max-w-7xl{max-width:80rem}.flex-shrink-0{flex-shrink:0}.flex-grow{flex-grow:1}.cursor-pointer{cursor:pointer}.scroll-mt-24{scroll-margin-top:6rem}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-10{gap:2.5rem}.gap-12{gap:3rem}.gap-2{gap:0.5rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-x-8 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(2rem * var(--tw-space-x-reverse));margin-left:calc(2rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-20 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(5rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-l-4{border-left-width:4px}.border-blue-100{--tw-border-opacity:1;border-color:rgb(219 234 254 / var(--tw-border-opacity, 1))}.border-blue-500{--tw-border-opacity:1;border-color:rgb(59 130 246 / var(--tw-border-opacity, 1))}.border-gray-100{--tw-border-opacity:1;border-color:rgb(243 244 246 / var(--tw-border-opacity, 1))}.border-gray-300{--tw-border-opacity:1;border-color:rgb(209 213 219 / var(--tw-border-opacity, 1))}.border-indigo-100{--tw-border-opacity:1;border-color:rgb(224 231 255 / var(--tw-border-opacity, 1))}.border-red-100{--tw-border-opacity:1;border-color:rgb(254 226 226 / var(--tw-border-opacity, 1))}.border-teal-500{--tw-border-opacity:1;border-color:rgb(20 184 166 / var(--tw-border-opacity, 1))}.bg-blue-100{--tw-bg-opacity:1;background-color:rgb(219 234 254 / var(--tw-bg-opacity, 1))}.bg-blue-50{--tw-bg-opacity:1;background-color:rgb(239 246 255 / var(--tw-bg-opacity, 1))}.bg-blue-500{--tw-bg-opacity:1;background-color:rgb(59 130 246 / var(--tw-bg-opacity, 1))}.bg-blue-600{--tw-bg-opacity:1;background-color:rgb(37 99 235 / var(--tw-bg-opacity, 1))}.bg-gray-200{--tw-bg-opacity:1;background-color:rgb(229 231 235 / var(--tw-bg-opacity, 1))}.bg-gray-50{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity, 1))}.bg-gray-900{--tw-bg-opacity:1;background-color:rgb(17 24 39 / var(--tw-bg-opacity, 1))}.bg-indigo-50{--tw-bg-opacity:1;background-color:rgb(238 242 255 / var(--tw-bg-opacity, 1))}.bg-purple-100{--tw-bg-opacity:1;background-color:rgb(243 232 255 / var(--tw-bg-opacity, 1))}.bg-purple-500{--tw-bg-opacity:1;background-color:rgb(168 85 247 / var(--tw-bg-opacity, 1))}.bg-red-50{--tw-bg-opacity:1;background-color:rgb(254 242 242 / var(--tw-bg-opacity, 1))}.bg-teal-100{--tw-bg-opacity:1;background-color:rgb(204 251 241 / var(--tw-bg-opacity, 1))}.bg-teal-500{--tw-bg-opacity:1;background-color:rgb(20 184 166 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.p-3{padding:0.75rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.text-left{text-align:left}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-semibold{font-weight:600}.leading-relaxed{line-height:1.625}.tracking-tight{letter-spacing:-0.025em}.text-blue-500{--tw-text-opacity:1;color:rgb(59 130 246 / var(--tw-text-opacity, 1))}.text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235 / var(--tw-text-opacity, 1))}.text-blue-800{--tw-text-opacity:1;color:rgb(30 64 175 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.text-gray-900{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity, 1))}.text-indigo-800{--tw-text-opacity:1;color:rgb(55 48 163 / var(--tw-text-opacity, 1))}.text-indigo-900{--tw-text-opacity:1;color:rgb(49 46 129 / var(--tw-text-opacity, 1))}.text-purple-600{--tw-text-opacity:1;color:rgb(147 51 234 / var(--tw-text-opacity, 1))}.text-red-600{--tw-text-opacity:1;color:rgb(220 38 38 / var(--tw-text-opacity, 1))}.text-red-800{--tw-text-opacity:1;color:rgb(153 27 27 / var(--tw-text-opacity, 1))}.text-teal-500{--tw-text-opacity:1;color:rgb(20 184 166 / var(--tw-text-opacity, 1))}.text-teal-600{--tw-text-opacity:1;color:rgb(13 148 136 / var(--tw-text-opacity, 1))}.text-teal-800{--tw-text-opacity:1;color:rgb(17 94 89 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.opacity-0{opacity:0}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.selection\:bg-blue-100 *::selection{--tw-bg-opacity:1;background-color:rgb(219 234 254 / var(--tw-bg-opacity, 1))}.selection\:text-blue-900 *::selection{--tw-text-opacity:1;color:rgb(30 58 138 / var(--tw-text-opacity, 1))}.selection\:bg-blue-100::selection{--tw-bg-opacity:1;background-color:rgb(219 234 254 / var(--tw-bg-opacity, 1))}.selection\:text-blue-900::selection{--tw-text-opacity:1;color:rgb(30 58 138 / var(--tw-text-opacity, 1))}.hover\:bg-blue-100:hover{--tw-bg-opacity:1;background-color:rgb(219 234 254 / var(--tw-bg-opacity, 1))}.hover\:bg-blue-50:hover{--tw-bg-opacity:1;background-color:rgb(239 246 255 / var(--tw-bg-opacity, 1))}.hover\:bg-gray-50:hover{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity, 1))}.hover\:bg-gray-800:hover{--tw-bg-opacity:1;background-color:rgb(31 41 55 / var(--tw-bg-opacity, 1))}.hover\:bg-red-100:hover{--tw-bg-opacity:1;background-color:rgb(254 226 226 / var(--tw-bg-opacity, 1))}.hover\:bg-teal-50:hover{--tw-bg-opacity:1;background-color:rgb(240 253 250 / var(--tw-bg-opacity, 1))}.hover\:text-gray-900:hover{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity, 1))}.group:hover .group-hover\:opacity-100{opacity:1}@media (min-width: 640px){.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:text-5xl{font-size:3rem;line-height:1}}@media (min-width: 768px){.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}}@media (min-width: 1024px){.lg\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.lg\:px-8{padding-left:2rem;padding-right:2rem}}</style></head>
+<body class="antialiased selection:bg-blue-100 selection:text-blue-900">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="text-xl font-bold text-gray-800 tracking-tight">AI Strategy<span class="text-blue-600">.Sync</span></span>
+                    </div>
+                </div>
+                <div class="flex space-x-8 items-center">
+                    <button onclick="scrollToSection(&#39;macro&#39;)" class="nav-item text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors">Global Context</button>
+                    <button onclick="scrollToSection(&#39;comparison&#39;)" class="nav-item text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors">Strategic Divergence</button>
+                    <button onclick="scrollToSection(&#39;newcastle&#39;)" class="nav-item text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors">Local Action (Newcastle)</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-white border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="text-center max-w-3xl mx-auto">
+                <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl mb-6">
+                    From <span class="text-blue-600">Dominance</span> to <span class="text-teal-600">Delivery</span>
+                </h1>
+                <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                    Analyzing the aggressive "AI-First" doctrine of the US Department of War and adapting its efficiency models for Australian Local Government. How can Newcastle Council leverage sovereign capability and rapid procurement without compromising civic trust?
+                </p>
+                <div class="flex justify-center gap-4">
+                    <button onclick="scrollToSection(&#39;comparison&#39;)" class="bg-gray-900 text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition shadow-lg font-medium">Explore the Gap</button>
+                    <button onclick="scrollToSection(&#39;newcastle&#39;)" class="bg-white text-gray-900 border border-gray-300 px-6 py-3 rounded-lg hover:bg-gray-50 transition font-medium">View Local Strategy</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-20">
+
+        <!-- SECTION 1: Strategic Divergence (The Apples vs Oranges) -->
+        <section id="comparison" class="scroll-mt-24">
+            <div class="mb-10 text-center max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Strategic Divergence</h2>
+                <p class="text-gray-600">
+                    The US document outlines a "War" footing: aggressive, centralized, and risk-tolerant to achieve dominance. Australian policy (Digital.gov.au) focuses on governance, ethics, and steady adoption. This interactive radar reveals the fundamental trade-offs.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Interactive Chart -->
+                <div class="card p-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4 text-center">Strategy Attribute Profile</h3>
+                    <div class="chart-container">
+                        <canvas id="radarChart" width="792" height="525" style="display: block; box-sizing: border-box; height: 350px; width: 528.3px;"></canvas>
+                    </div>
+                    <div class="mt-6 flex justify-center gap-6 text-sm">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-blue-500"></span>
+                            <span class="text-gray-600">US (War Dept)</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-teal-500"></span>
+                            <span class="text-gray-600">Australia (Gov Policy)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Descriptive Content (Dynamic) -->
+                <div class="space-y-6">
+                    <div class="card p-6 border-l-4 border-blue-500 cursor-pointer hover:bg-blue-50 transition" onclick="updateDetails(&#39;us&#39;)">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="font-bold text-gray-900 text-lg">The US "Dominance" Model</h3>
+                                <p class="text-sm text-gray-500 mt-1">Source: Dept of War Memo (Jan 2026)</p>
+                            </div>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full font-bold">Aggressive</span>
+                        </div>
+                        <ul class="mt-4 space-y-2 text-gray-600 text-sm">
+                            <li class="flex items-start gap-2">
+                                <span class="text-blue-500 font-bold">▸</span> 
+                                <span><strong>Reciprocity:</strong> Acceptance of other agencies' ATOs to speed up adoption.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-blue-500 font-bold">▸</span> 
+                                <span><strong>30-Day Limit:</strong> Strict timelines for system approvals.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-blue-500 font-bold">▸</span> 
+                                <span><strong>Sovereign Cloud:</strong> Mandate for government-only infrastructure.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card p-6 border-l-4 border-teal-500 cursor-pointer hover:bg-teal-50 transition" onclick="updateDetails(&#39;aus&#39;)">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="font-bold text-gray-900 text-lg">The Australian "Assurance" Model</h3>
+                                <p class="text-sm text-gray-500 mt-1">Source: Digital.gov.au</p>
+                            </div>
+                            <span class="bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded-full font-bold">Prudent</span>
+                        </div>
+                        <ul class="mt-4 space-y-2 text-gray-600 text-sm">
+                            <li class="flex items-start gap-2">
+                                <span class="text-teal-500 font-bold">▸</span> 
+                                <span><strong>Ethics First:</strong> Heavy focus on responsible AI framework.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-teal-500 font-bold">▸</span> 
+                                <span><strong>Whole-of-Gov:</strong> Collaborative policy over unilateral mandates.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-teal-500 font-bold">▸</span> 
+                                <span><strong>Risk Aversion:</strong> Slower procurement cycles to ensure safety.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: The Efficiency Gap (Timeline Analysis) -->
+        <section class="bg-white rounded-2xl p-8 shadow-sm">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">The Cost of Caution</h2>
+                    <p class="text-gray-600 mb-6">
+                        The US memo mandates a radical reduction in "Authority to Operate" (ATO) timelines, effectively creating a 30-day fast lane. In contrast, standard Australian Local Government procurement involving rigorous manual risk assessments often spans 6-12 months.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex flex-col">
+                            <div class="flex justify-between text-sm font-medium text-gray-700 mb-1">
+                                <span>US "Fast Lane" Target</span>
+                                <span>30 Days</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-blue-600 h-2.5 rounded-full" style="width: 8%"></div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col">
+                            <div class="flex justify-between text-sm font-medium text-gray-700 mb-1">
+                                <span>Aus Local Gov (Standard)</span>
+                                <span>180+ Days</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-teal-500 h-2.5 rounded-full" style="width: 65%"></div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col">
+                            <div class="flex justify-between text-sm font-medium text-gray-700 mb-1">
+                                <span>Newcastle Opportunity</span>
+                                <span>60 Days</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-purple-500 h-2.5 rounded-full" style="width: 20%"></div>
+                            </div>
+                            <p class="text-xs text-purple-600 mt-1">Target achievable via "Reciprocity"</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center">
+                     <!-- Interactive Insight Box -->
+                    <div id="insight-box" class="bg-indigo-50 border border-indigo-100 rounded-xl p-6">
+                        <h4 class="font-bold text-indigo-900 mb-2">Key Insight: Reciprocity</h4>
+                        <p class="text-indigo-800 text-sm leading-relaxed">
+                            The "Department of War" strategy forces agencies to accept the security accreditations of others. <br><br>
+                            <strong>For Newcastle:</strong> Why re-assess a tool that NSW Government or a Federal agency has already cleared? Adopting a "Presumption of Approval" based on higher-tier accreditation is the single biggest efficiency lever available.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: Newcastle Action Plan -->
+        <section id="newcastle" class="scroll-mt-24">
+            <div class="mb-10 text-center max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Strategic Pivot for Newcastle</h2>
+                <p class="text-gray-600">
+                    Moving from "Ad-Hoc Adoption" to an "AI-First Council." This requires borrowing the structural rigor of the US Military model while maintaining the community focus of Australian governance.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Column 1: The Sovereign Cloud -->
+                <div class="card p-6 flex flex-col h-full">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-2xl">☁️</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">1. Local Data Sovereignty</h3>
+                    <p class="text-gray-600 text-sm flex-grow mb-4">
+                        The US strategy emphasizes a dedicated "Secret Cloud." Newcastle should replicate this logic by establishing a "Sovereign Data Enclave."
+                    </p>
+                    <div class="bg-gray-50 p-3 rounded-lg text-sm border border-gray-100">
+                        <strong class="block text-gray-800 mb-1">Action:</strong>
+                        Ensure all sensitive ratepayer data resides in Australian-hosted instances (e.g., Azure AU Central) with strict egress controls, mirroring the "Sovereign Cloud" requirement.
+                    </div>
+                </div>
+
+                <!-- Column 2: Procurement Reform -->
+                <div class="card p-6 flex flex-col h-full">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4 text-2xl">⚡</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">2. The 30-Day Challenge</h3>
+                    <p class="text-gray-600 text-sm flex-grow mb-4">
+                        Adopt the "Reciprocity" doctrine. If a tool is vetted by the DTA (Digital Transformation Agency), it gets a "Fast Pass" at Council.
+                    </p>
+                    <div class="bg-gray-50 p-3 rounded-lg text-sm border border-gray-100">
+                        <strong class="block text-gray-800 mb-1">Action:</strong>
+                        Rewrite procurement policy to accept NSW Gov &amp; Federal security assessments as valid, bypassing local redundant checks.
+                    </div>
+                </div>
+
+                <!-- Column 3: AI-First Workflows -->
+                <div class="card p-6 flex flex-col h-full">
+                    <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4 text-2xl">🔄</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">3. Re-imagine, Don't Bolt-on</h3>
+                    <p class="text-gray-600 text-sm flex-grow mb-4">
+                        The US Memo states: "Re-imagine how workflows would be designed if AI existed when they were created."
+                    </p>
+                    <div class="bg-gray-50 p-3 rounded-lg text-sm border border-gray-100">
+                        <strong class="block text-gray-800 mb-1">Action:</strong>
+                        Don't just add AI to the "DA Approval Form." Use AI to pre-assess DAs before they are even submitted, reducing the queue.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transition Visualization -->
+            <div class="mt-12 card p-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">The Shift: Shadow to Strategic</h3>
+                        <p class="text-sm text-gray-600 mb-6">
+                            Currently, much AI use in councils is "Shadow AI" (unauthorized ChatGPT use for drafting). The goal is to move this activity into "Official Systems" and high-value "Data Analysis" (e.g., traffic patterns, waste management).
+                        </p>
+                        <div class="space-y-3">
+                            <button class="w-full text-left px-4 py-3 bg-red-50 hover:bg-red-100 rounded-lg border border-red-100 transition flex justify-between items-center group" onclick="updateDonut(&#39;current&#39;)">
+                                <span class="font-medium text-red-800">Current State (Shadow Heavy)</span>
+                                <span class="opacity-0 group-hover:opacity-100 text-red-600 text-sm">View Chart →</span>
+                            </button>
+                            <button class="w-full text-left px-4 py-3 bg-blue-50 hover:bg-blue-100 rounded-lg border border-blue-100 transition flex justify-between items-center group" onclick="updateDonut(&#39;future&#39;)">
+                                <span class="font-medium text-blue-800">Target State (Newcastle Future)</span>
+                                <span class="opacity-0 group-hover:opacity-100 text-blue-600 text-sm">View Chart →</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex justify-center">
+                         <div class="chart-container">
+                            <canvas id="transformationChart" width="828" height="525" style="display: block; box-sizing: border-box; height: 350px; width: 552.3px;"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-2xl font-bold mb-4">Newcastle's Opportunity</h2>
+            <p class="max-w-2xl mx-auto text-gray-400 mb-8">
+                By stripping away the "War" context and focusing on the <strong>mechanisms of efficiency</strong>—reciprocity, sovereign infrastructure, and rapid procurement—Newcastle can lead Australian local government in responsible, effective AI deployment.
+            </p>
+            <div class="text-sm text-gray-500">
+                Analysis based on US Dept of War Memo (2026) &amp; Digital.gov.au Frameworks.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- State Management ---
+        const state = {
+            currentView: 'current' // 'current' or 'future' for the donut chart
+        };
+
+        // --- Navigation ---
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // --- Interaction Logic: Detail Update ---
+        function updateDetails(model) {
+            // Visual feedback could be added here if needed, but the UI cards serve as toggles visually
+            // In a fuller app, this could filter the data table below
+            console.log("Selected model:", model);
+        }
+
+        // --- Chart 1: Radar Comparison (US vs Aus) ---
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctxRadar = document.getElementById('radarChart').getContext('2d');
+            new Chart(ctxRadar, {
+                type: 'radar',
+                data: {
+                    labels: ['Procurement Speed', 'Risk Tolerance', 'Centralization', 'Ethics Focus', 'Sovereignty Mandate'],
+                    datasets: [{
+                        label: 'US Dept of War',
+                        data: [95, 90, 85, 40, 95], // High speed, high risk, low ethics focus relative to speed
+                        fill: true,
+                        backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                        borderColor: 'rgb(59, 130, 246)',
+                        pointBackgroundColor: 'rgb(59, 130, 246)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgb(59, 130, 246)'
+                    }, {
+                        label: 'Aus Local Gov',
+                        data: [30, 20, 40, 95, 60], // Low speed, low risk, high ethics
+                        fill: true,
+                        backgroundColor: 'rgba(45, 212, 191, 0.2)',
+                        borderColor: 'rgb(45, 212, 191)',
+                        pointBackgroundColor: 'rgb(45, 212, 191)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgb(45, 212, 191)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    elements: {
+                        line: { borderWidth: 3 }
+                    },
+                    scales: {
+                        r: {
+                            angleLines: { display: true },
+                            suggestedMin: 0,
+                            suggestedMax: 100,
+                            grid: { color: 'rgba(0, 0, 0, 0.05)' },
+                            pointLabels: {
+                                font: { size: 12, family: "'Inter', sans-serif" },
+                                color: '#4A5568'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false } // Custom legend built in HTML
+                    }
+                }
+            });
+
+            // --- Chart 2: Transformation Donut (Shadow to Strategic) ---
+            const ctxDonut = document.getElementById('transformationChart').getContext('2d');
+            window.donutChart = new Chart(ctxDonut, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Shadow/Ad-Hoc', 'Official Systems', 'Strategic Analysis', 'Infrastructure'],
+                    datasets: [{
+                        data: [60, 25, 10, 5], // Current State: Mostly ad-hoc
+                        backgroundColor: [
+                            '#EF4444', // Red (Shadow)
+                            '#F59E0B', // Amber (Official but basic)
+                            '#3B82F6', // Blue (Strategic Analysis)
+                            '#10B981'  // Green (Infrastructure)
+                        ],
+                        borderWidth: 2,
+                        borderColor: '#ffffff',
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { usePointStyle: true, padding: 20 } },
+                        title: { display: true, text: 'Current State: High Risk "Shadow" Usage', padding: {bottom: 20} }
+                    },
+                    cutout: '60%'
+                }
+            });
+        });
+
+        // --- Interaction Logic: Donut Update ---
+        function updateDonut(view) {
+            const chart = window.donutChart;
+            
+            if (view === 'current') {
+                chart.data.datasets[0].data = [60, 25, 10, 5];
+                chart.options.plugins.title.text = 'Current State: High Risk "Shadow" Usage';
+            } else {
+                // Future State: Shadow reduced, Strategic Analysis & Infrastructure increased
+                chart.data.datasets[0].data = [10, 40, 30, 20];
+                chart.options.plugins.title.text = 'Target State: Integrated & Strategic';
+            }
+            
+            chart.update();
+        }
+
+    </script>
+
+</body></html>

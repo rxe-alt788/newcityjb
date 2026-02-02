@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trinity Protocols: NC-Ind Pilot Update</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container { height: 350px; }
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f5f5f4; }
+        ::-webkit-scrollbar-thumb { background: #d6d3d1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a8a29e; }
+        
+        .fade-in { animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800 antialiased selection:bg-orange-100 selection:text-orange-800">
+
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm border-b border-stone-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-stone-900 text-white rounded-lg flex items-center justify-center font-bold text-xl">T</div>
+                    <span class="font-bold text-xl tracking-tight text-stone-900">Trinity Protocols</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <button onclick="scrollToSection('analysis')" class="text-stone-600 hover:text-stone-900 text-sm font-medium transition-colors">The Protocol</button>
+                    <button onclick="scrollToSection('newcastle')" class="text-stone-600 hover:text-stone-900 text-sm font-medium transition-colors">Application</button>
+                    <button onclick="scrollToSection('proposal')" class="bg-stone-900 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-stone-800 transition-colors">Implementation Mandate</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+                <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+                    <div class="sm:text-center lg:text-left">
+                        <div class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-orange-600 uppercase bg-orange-100 rounded-full">
+                            Systems Architecture
+                        </div>
+                        <h1 class="text-4xl tracking-tight font-extrabold text-stone-900 sm:text-5xl md:text-6xl">
+                            <span class="block xl:inline">Intelligence is</span>
+                            <span class="block text-blue-600 xl:inline">Emergent Through Relation</span>
+                        </h1>
+                        <p class="mt-3 text-base text-stone-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-auto">
+                            Data is static. Intelligence is time-bound. A mandate to implement HITL (Human-in-the-Loop) Interface Protocols for Newcastle City Council to secure decision-making in the age of infinite data.
+                        </p>
+                        <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                            <div class="rounded-md shadow">
+                                <button onclick="scrollToSection('proposal')" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-stone-900 hover:bg-stone-800 md:py-4 md:text-lg transition-all">
+                                    View Implementation Plan
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 bg-stone-100 flex items-center justify-center">
+            <div class="p-8 w-full max-w-md">
+                <div class="grid grid-cols-3 gap-4 text-center items-center">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border border-stone-200 flex flex-col items-center h-32 justify-center">
+                        <span class="text-3xl mb-2">🧠</span>
+                        <span class="font-bold text-stone-800">Council</span>
+                        <span class="text-xs text-stone-500">Context & Accountability</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-center h-32">
+                        <span class="text-stone-400 font-bold text-xs uppercase mb-1">Via Interface</span>
+                        <span class="h-0.5 w-full bg-blue-600"></span>
+                        <span class="text-blue-600 font-bold text-xl my-1">⚡</span>
+                        <span class="h-0.5 w-full bg-blue-600"></span>
+                    </div>
+                    <div class="bg-stone-800 p-6 rounded-xl shadow-lg flex flex-col items-center h-32 justify-center">
+                        <span class="text-3xl mb-2">💾</span>
+                        <span class="font-bold text-white">LLM</span>
+                        <span class="text-xs text-stone-400">Infinite Data Collation</span>
+                    </div>
+                </div>
+                <div class="bg-orange-50 border border-orange-200 p-6 rounded-xl shadow-md text-center mt-6">
+                    <span class="text-orange-600 font-bold text-lg block mb-1">Emergent Intelligence</span>
+                    <span class="text-sm text-stone-600">The result of forced human verification of machine output.</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="analysis" class="py-16 bg-stone-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-extrabold text-stone-900">The Mandate: Interface as Governance</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-xl text-stone-500">
+                    We do not "train" staff. We install protocols that make high-order thinking inevitable.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                
+                <div class="space-y-6">
+                    <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-stone-900">
+                        <h3 class="text-lg font-bold text-stone-900 mb-2">The "Magic Button" Fallacy</h3>
+                        <p class="text-stone-600 leading-relaxed">
+                            Automation assumes the data is the answer. It is not. Data is merely the substrate. If Newcastle Council automates without oversight, you risk hallucinations and liability. We propose a strict <strong>HITL Interface</strong>: a digital environment where no AI output becomes Council Record without human ratification.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-blue-600">
+                        <h3 class="text-lg font-bold text-stone-900 mb-2">The Protocol Approach</h3>
+                        <p class="text-stone-600 leading-relaxed">
+                            Rather than vague workshops, we deploy a specific workflow—the <strong>Trinity Protocol</strong>. This forces a "Check-Verify-Ratify" loop. The interface itself prevents the "lazy" acceptance of AI generation, ensuring that every efficiency gain is backed by human accountability.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="space-y-8">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg font-semibold text-stone-800">Risk vs. Intelligence</h3>
+                            <div class="flex space-x-2">
+                                <span class="w-3 h-3 rounded-full bg-stone-300 inline-block align-middle"></span> <span class="text-xs text-stone-500">Unsupervised AI</span>
+                                <span class="w-3 h-3 rounded-full bg-blue-600 inline-block align-middle"></span> <span class="text-xs text-stone-500">HITL Protocol</span>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="productivityChart"></canvas>
+                        </div>
+                        <p class="text-xs text-center text-stone-400 mt-2">The gap represents "Governance Integrity"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="newcastle" class="py-16 bg-white border-y border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-blue-600 font-semibold tracking-wide uppercase text-sm">Protocol Application</span>
+                <h2 class="text-3xl font-extrabold text-stone-900 mt-2">Active Feedback Loops</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-xl text-stone-500">
+                    How the Trinity Interface transforms specific Council streams.
+                </p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-4 mb-10">
+                <button onclick="showScenario('planning')" id="btn-planning" class="scenario-btn active px-6 py-2 rounded-full border hover:bg-stone-100 font-medium transition-all bg-stone-900 text-white border-stone-900">NC-Ind Pilot</button>
+                <button onclick="showScenario('community')" id="btn-community" class="scenario-btn px-6 py-2 rounded-full border border-stone-300 text-stone-600 hover:bg-stone-100 font-medium transition-all bg-transparent">Community Engagement</button>
+                <button onclick="showScenario('maintenance')" id="btn-maintenance" class="scenario-btn px-6 py-2 rounded-full border border-stone-300 text-stone-600 hover:bg-stone-100 font-medium transition-all bg-transparent">Asset Management</button>
+            </div>
+
+            <div id="scenario-content" class="bg-stone-50 rounded-2xl p-8 border border-stone-200 shadow-inner min-h-[300px] transition-opacity duration-300">
+                </div>
+
+        </div>
+    </section>
+
+    <section id="proposal" class="py-16 bg-stone-900 text-stone-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                
+                <div class="lg:col-span-1">
+                    <h2 class="text-3xl font-extrabold text-white mb-6">The Implementation Mandate</h2>
+                    <p class="text-stone-400 mb-6">
+                        A structured 10-week deployment of the Trinity Interface. We begin with a rigorous pilot, utilizing Go/No-Go protocols to ensure comfort and alignment before scaling.
+                    </p>
+                    
+                    <div class="bg-stone-800 p-6 rounded-lg border border-stone-700 mb-6">
+                        <h4 class="text-white font-bold mb-2">Total Engagement Value</h4>
+                        <div class="text-4xl font-bold text-orange-500 mb-1">$150,000</div>
+                        <p class="text-sm text-stone-400">Deployed in 2 Tranches</p>
+                    </div>
+
+                    <div class="bg-blue-900/30 p-4 rounded-lg border border-blue-800">
+                         <h4 class="text-blue-400 font-bold text-sm mb-1 uppercase">Pilot Tranche (Weeks 1-4)</h4>
+                         <div class="text-2xl font-bold text-white mb-1">$50,000</div>
+                         <p class="text-xs text-blue-200">Subject to Fortnightly Go/No-Go Review</p>
+                    </div>
+
+                </div>
+
+                <div class="lg:col-span-2 bg-white rounded-xl text-stone-800 p-8 shadow-2xl">
+                    <div class="flex border-b border-stone-200 mb-6">
+                        <button onclick="switchTab('scope')" id="tab-scope" class="tab-btn pb-4 px-4 border-b-2 border-blue-600 text-blue-600 font-bold focus:outline-none">Scope of Works</button>
+                        <button onclick="switchTab('budget')" id="tab-budget" class="tab-btn pb-4 px-4 border-b-2 border-transparent text-stone-500 hover:text-stone-700 font-medium focus:outline-none">Investment Breakdown</button>
+                    </div>
+
+                    <div id="view-scope" class="space-y-6 fade-in">
+                        <div class="border-l-4 border-orange-500 pl-4">
+                            <h3 class="font-bold text-xl mb-1">Phase 1: Protocol Configuration (Weeks 1-4)</h3>
+                            <span class="text-xs font-bold text-orange-600 uppercase tracking-wide">The $50k Pilot</span>
+                            <p class="text-stone-600 text-sm mt-2">
+                                We do not disrupt current workflows immediately. Trinity Protocols creates the "Shadow Interface." We ingest Council data streams (DAs, Consultation Logs) and configure the HITL parameters. 
+                                <br><br>
+                                <em>Output: A functioning "Safety Layer" ready for staff onboarding.</em>
+                            </p>
+                        </div>
+                        <div class="border-l-4 border-blue-600 pl-4">
+                            <h3 class="font-bold text-xl mb-1">Phase 2: Comfort-First Onboarding (Weeks 5-7)</h3>
+                            <span class="text-xs font-bold text-blue-600 uppercase tracking-wide">Post-Gate Scale Up</span>
+                            <p class="text-stone-600 text-sm mt-2">
+                                We invite key Council "Champions" into the protocol slowly. The focus is on comfort, internal feedback, and UI optimization. We prove that the interface *reduces* friction rather than adding to it.
+                            </p>
+                        </div>
+                        <div class="border-l-4 border-stone-800 pl-4">
+                            <h3 class="font-bold text-xl mb-1">Phase 3: Mandate & Integration (Weeks 8-10)</h3>
+                            <p class="text-stone-600 text-sm mt-2">
+                                Full deployment. The Trinity Protocol becomes the standard operating procedure for designated high-risk data tasks. Final governance handover.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div id="view-budget" class="hidden fade-in">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                            <div class="chart-container" style="height: 250px;">
+                                <canvas id="budgetChart"></canvas>
+                            </div>
+                            <div class="space-y-4 text-sm">
+                                <div class="p-3 bg-orange-50 border border-orange-100 rounded-lg">
+                                    <div class="flex justify-between font-bold text-stone-800">
+                                        <span>Tranche 1: Protocol Pilot</span>
+                                        <span>$50,000</span>
+                                    </div>
+                                    <p class="text-xs text-stone-500 mt-1">Weeks 1-4. Includes Interface Setup & Shadow Testing.</p>
+                                </div>
+                                <div class="p-3 bg-blue-50 border border-blue-100 rounded-lg">
+                                    <div class="flex justify-between font-bold text-stone-800">
+                                        <span>Tranche 2: Scale & Integrate</span>
+                                        <span>$100,000</span>
+                                    </div>
+                                    <p class="text-xs text-stone-500 mt-1">Weeks 5-10. Staff Onboarding, Optimization & Final Handover.</p>
+                                </div>
+                                
+                                <div class="flex justify-between pt-4 border-t border-stone-200 text-lg font-bold text-stone-900">
+                                    <span>Total Mandate</span>
+                                    <span>$150,000</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-stone-900 text-stone-500 py-8 border-t border-stone-800">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p>© 2025 Trinity Protocols. Intelligence is Emergent.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- Data & State ---
+        const scenarios = {
+            planning: {
+                title: "NC-Ind Pilot (Strategic Integration)",
+                icon: "🏗️",
+                problem: "We have banked successes in initial pilots, but we are not in a rush to deploy. A proven methodology requires further pressure testing.",
+                solution: "Protocol: We deploy the 'NC-Ind Pilot' incorporating ADA/HIA and MJH integration. We augment the application of 'Z' in strictly managed, monitored ways. This is a containment strategy to perfect the protocol.",
+                impact: "Deep pressure-testing of the tool; Validation of methodology before scale."
+            },
+            community: {
+                title: "Community Sentiment Analysis",
+                icon: "🗣️",
+                problem: "Thousands of unstructured comments. Manual synthesis is slow; AI synthesis is often hallucinated or biased.",
+                solution: "Protocol: The Interface clusters sentiments. The Council Officer reviews the clusters and 'injects' local context (e.g., knowing that 'The Hill' refers to a specific heritage zone) to refine the AI's output.",
+                impact: "Context-aware real-time feedback."
+            },
+            maintenance: {
+                title: "Predictive Asset Maintenance",
+                icon: "🔧",
+                problem: "Reactive repairs. Data exists but is disconnected from decision makers.",
+                solution: "Protocol: Maintenance crews query the interface via voice. 'Show me pipes in Zone 4.' The Interface retrieves data; the Human confirms the physical reality. The result is a 'ratified' maintenance schedule.",
+                impact: "Shift from reactive to proactive."
+            }
+        };
+
+        // --- Functions ---
+        
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function showScenario(key) {
+            // Update Buttons
+            document.querySelectorAll('.scenario-btn').forEach(btn => {
+                btn.classList.remove('bg-stone-900', 'text-white', 'border-stone-900');
+                btn.classList.add('bg-transparent', 'text-stone-600', 'border-stone-300');
+            });
+            const activeBtn = document.getElementById(`btn-${key}`);
+            activeBtn.classList.remove('bg-transparent', 'text-stone-600', 'border-stone-300');
+            activeBtn.classList.add('bg-stone-900', 'text-white', 'border-stone-900');
+
+            // Update Content
+            const data = scenarios[key];
+            const contentDiv = document.getElementById('scenario-content');
+            
+            contentDiv.style.opacity = '0';
+            
+            setTimeout(() => {
+                contentDiv.innerHTML = `
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <div class="flex-shrink-0 text-6xl">${data.icon}</div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold text-stone-800 mb-4">${data.title}</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-white p-4 rounded-lg border border-red-100">
+                                    <h4 class="font-bold text-red-800 text-xs uppercase tracking-wide mb-2">The Current Status</h4>
+                                    <p class="text-stone-600 text-sm">${data.problem}</p>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
+                                    <h4 class="font-bold text-blue-800 text-xs uppercase tracking-wide mb-2">The Managed Augmentation</h4>
+                                    <p class="text-stone-700 text-sm font-medium">${data.solution}</p>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex items-center text-orange-600 font-bold text-sm">
+                                <span class="mr-2">⚡</span> Outcome: ${data.impact}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                contentDiv.style.opacity = '1';
+            }, 200);
+        }
+
+        function switchTab(tabName) {
+            document.getElementById('view-scope').classList.add('hidden');
+            document.getElementById('view-budget').classList.add('hidden');
+            
+            document.getElementById('tab-scope').classList.replace('text-blue-600', 'text-stone-500');
+            document.getElementById('tab-scope').classList.replace('border-blue-600', 'border-transparent');
+            
+            document.getElementById('tab-budget').classList.replace('text-blue-600', 'text-stone-500');
+            document.getElementById('tab-budget').classList.replace('border-blue-600', 'border-transparent');
+
+            document.getElementById(`view-${tabName}`).classList.remove('hidden');
+            const activeTab = document.getElementById(`tab-${tabName}`);
+            activeTab.classList.replace('text-stone-500', 'text-blue-600');
+            activeTab.classList.replace('border-transparent', 'border-blue-600');
+        }
+
+        // --- Chart Initialization ---
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            showScenario('planning');
+
+            // 1. Productivity/Risk Chart
+            const ctxProd = document.getElementById('productivityChart').getContext('2d');
+            new Chart(ctxProd, {
+                type: 'bar',
+                data: {
+                    labels: ['Contextual Accuracy', 'Liability Protection', 'Process Speed', 'Decision Auditability'],
+                    datasets: [
+                        {
+                            label: 'Unsupervised Automation',
+                            data: [40, 20, 95, 30],
+                            backgroundColor: '#e5e5e5',
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'HITL Protocol (Trinity)',
+                            data: [95, 100, 85, 100],
+                            backgroundColor: '#2563eb', 
+                            borderRadius: 4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    },
+                    scales: {
+                        y: { beginAtZero: true, max: 100, title: { display: true, text: 'Governance Score' } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+
+            // 2. Budget Chart
+            const ctxBudget = document.getElementById('budgetChart').getContext('2d');
+            new Chart(ctxBudget, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Tranche 1: Pilot & Config', 'Tranche 2: Integration & Scale'],
+                    datasets: [{
+                        data: [50000, 100000],
+                        backgroundColor: [
+                            '#ea580c', // Orange-600
+                            '#2563eb', // Blue-600
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '65%',
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
